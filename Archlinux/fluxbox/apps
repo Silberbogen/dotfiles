@@ -1,0 +1,123 @@
+[app] (name=fbrun)
+  [Position]	(CENTER)	{0 0}
+  [Layer]	{2}
+[end]
+[app] (name=uzbl-tabbed) (class=Uzbl-tabbed)
+  [Dimensions]	{1040 727}
+  [Position]	(UPPERLEFT)	{0 18}
+  [Close]	{yes}
+[end]
+[app] (name=uzbl-core) (class=Uzbl-core)
+  [Dimensions]	{1040 728}
+  [Position]	(UPPERLEFT)	{0 17}
+  [Close]	{yes}
+[end]
+[app] (name=Navigator) (class=Firefox) (role=browser)
+  [Dimensions]	{1259 727}
+  [Position]	(UPPERLEFT)	{0 18}
+  [Close]	{yes}
+[end]
+[app] (name=turpial) (class=Turpial)
+  [Dimensions]	{312 588}
+  [Position]	(UPPERLEFT)	{1052 157}
+  [Close]	{yes}
+[end]
+[app] (name=heybuddy) (class=Heybuddy)
+  [Dimensions]	{499 592}
+  [Position]	(UPPERLEFT)	{865 153}
+  [Close]	{yes}
+[end]
+[app] (name=gvim) (class=Gvim) (role=vim-32330-310680418-1300967540)
+  [Position]	(UPPERLEFT)	{704 251}
+  [Close]	{yes}
+[end]
+[app] (name=gvim) (class=Gvim) (role=vim-32358-3394041660-1300967564)
+  [Position]	(UPPERLEFT)	{704 15}
+  [Close]	{yes}
+[end]
+[app] (name=emacs) (class=Emacs)
+  [Position]	(UPPERLEFT)	{692 21}
+  [Close]	{yes}
+[end]
+[app] (name=okular) (class=Okular) (role=okular::Shell)
+  [Position]	(UPPERLEFT)	{0 0}
+  [Close]	{yes}
+[end]
+[app] (name=Navigator) (class=Conkeror) (role=browser)
+  [Dimensions]	{957 693}
+  [Position]	(UPPERLEFT)	{0 49}
+  [Close]	{yes}
+[end]
+[app] (name=dwb) (class=dwb)
+  [Dimensions]	{963 688}
+  [Position]	(UPPERLEFT)	{0 57}
+  [Close]	{yes}
+[end]
+[app] (name=Conky) (class=Conky)
+  [Close]	{yes}
+[end]
+[app] (name=evolution) (class=Evolution) (role=EShellWindow-24672032)
+  [Dimensions]	{1106 724}
+  [Position]	(UPPERLEFT)	{0 21}
+  [Close]	{yes}
+[end]
+[app] (name=hotot) (class=Hotot)
+  [Dimensions]	{683 745}
+  [Position]	(UPPERLEFT)	{0 0}
+  [Close]	{yes}
+[end]
+[app] (name=qcomicbook) (class=Qcomicbook)
+  [Dimensions]	{1361 732}
+  [Position]	(UPPERLEFT)	{0 14}
+  [Close]	{yes}
+[end]
+[app] (name=Dwarf_Fortress) (class=Dwarf_Fortress)
+  [Dimensions]	{1363 729}
+  [Position]	(UPPERLEFT)	{1 16}
+  [Close]	{yes}
+[end]
+[app] (name=evince) (class=Evince)
+  [Dimensions]	{1195 728}
+  [Position]	(UPPERLEFT)	{0 14}
+  [Close]	{yes}
+[end]
+[app] (name=gvim) (class=Gvim) (role=vim-16326-572684480-1302029502)
+  [Dimensions]	{556 494}
+[end]
+[app] (name=Mail) (class=Thunderbird) (role=3pane)
+  [Dimensions]	{982 729}
+  [Position]	(UPPERLEFT)	{0 16}
+  [Close]	{yes}
+[end]
+[app] (name=deluge) (class=Deluge)
+  [Dimensions]	{925 505}
+  [Position]	(UPPERLEFT)	{439 240}
+  [Close]	{yes}
+[end]
+[app] (name=Thunar) (class=Thunar) (role=Thunar-1302269592-2852345027)
+  [Dimensions]	{844 575}
+  [Close]	{yes}
+[end]
+[app] (name=vlc) (class=Vlc) (role=vlc-main)
+  [Dimensions]	{1024 708}
+  [Close]	{yes}
+[end]
+[app] (name=Thunar) (class=Thunar) (role=Thunar-1302435620-1291645411)
+  [Dimensions]	{746 578}
+  [Close]	{yes}
+[end]
+[app] (name=gimp) (class=Gimp) (role=gimp-image-window)
+  [Dimensions]	{1031 643}
+  [Position]	(UPPERLEFT)	{158 45}
+  [Close]	{yes}
+[end]
+[app] (name=gimp) (class=Gimp) (role=gimp-toolbox)
+  [Dimensions]	{204 659}
+  [Position]	(UPPERLEFT)	{0 45}
+  [Close]	{yes}
+[end]
+[app] (name=gimp) (class=Gimp) (role=gimp-dock)
+  [Dimensions]	{285 659}
+  [Position]	(UPPERLEFT)	{1079 60}
+  [Close]	{yes}
+[end]

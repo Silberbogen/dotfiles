@@ -1,0 +1,3 @@
+#!/bin/bash
+torify ttytter -apibase=http://status.telecomix.org/api -authtype=basic -user=USERNAME:PASSWORD
+

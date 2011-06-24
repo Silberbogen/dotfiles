@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/                 file:///usr/share/openbox/menu.xsd">
+	<menu id="personal-menu" label="OpenBox 3">
+		<menu   id="obfb-home"   label="Dateibrowser"  execute="obfilebrowser  ~
+	      --term 'uxterm -e %s'" />
+		<menu id="devices" label="Geräte" execute="/usr/bin/obdevicemenu" />
+		<menu id="moc" label="Music on Console" execute="/usr/bin/obmocmenu" />
+		<menu id="todo" label="zu erledigen" execute="/usr/bin/openbox-todo" />
+			</menu>
+</openbox_menu>

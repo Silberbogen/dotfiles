@@ -1,0 +1,4 @@
+#!/bin/sh
+cpufreq-set -g ondemand
+echo "95" > /sys/devices/system/cpu/cpufreq/ondemand/up_threshold
+

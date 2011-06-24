@@ -1,0 +1,299 @@
+[begin] (FluxBox)
+	[submenu] (Development)
+		[exec] (Code::Blocks IDE) {codeblocks}
+		[exec] (DDD debugger) {ddd}
+		[exec] (FreePascal) {xterm -e fp}
+		[exec] (GDB) {xterm -e gdb}
+		[exec] (Glade) {glade}
+		[exec] (Golang IDE) {golangide}
+		[exec] (IDLE) {idle}
+		[exec] (LibreOffice Writer/Web) {loweb}
+		[exec] (OpenJDK Monitoring & Management Console) {jconsole}
+		[exec] (OpenJDK Policy Tool) {policytool}
+		[exec] (Python) {xterm -e python}
+		[exec] (Qt Assistant) {assistant}
+		[exec] (Qt Designer) {designer}
+		[exec] (Qt Linguist) {linguist}
+		[exec] (Qt-Creator) {qtcreator}
+	[end]
+	[submenu] (Editors)
+		[exec] (AA Fire) {xterm -e aafire -driver slang}
+		[exec] (Emacs) {xterm -e emacs}
+		[exec] (GVim) {gvim}
+		[exec] (Mousepad) {mousepad}
+		[exec] (Nano) {xterm -e nano}
+		[exec] (Pico) {xterm -e pico}
+		[exec] (Rain) {xterm -e rain}
+		[exec] (Sam) {sam}
+		[exec] (Vi) {xterm -e vi}
+		[exec] (Vim) {xterm -e vim}
+		[exec] (Worms) {xterm -e worms}
+	[end]
+	[submenu] (Education)
+		[exec] (Anki) {anki}
+		[exec] (Arithmetic Quiz) {xterm -e arithmetic}
+	[end]
+	[submenu] (Games)
+		[submenu] (Adventure)
+			[exec] (Adventure) {xterm -e adventure}
+			[exec] (Battlestar) {xterm -e battlestar}
+			[exec] (Hunt the Wumpus) {xterm -e wump}
+			[exec] (Lostlabyrinth) {lostlabyrinth}
+			[exec] (NetHack) {xterm -e nethack}
+			[exec] (Phantasia) {xterm -e phantasia}
+			[exec] (ScummVM) {scummvm}
+		[end]
+		[submenu] (Amusement)
+			[exec] (Ico) {ico}
+		[end]
+		[submenu] (Arcade)
+			[exec] (Goonies) {goonies}
+			[exec] (PacMan) {pacman}
+			[exec] (Robots) {xterm -e robots}
+			[exec] (Snake) {xterm -e snake}
+			[exec] (Star Trek) {xterm -e trek}
+			[exec] (Worm) {xterm -e worm}
+		[end]
+		[submenu] (Board)
+			[exec] (Backgammon) {xterm -e backgammon -pb}
+			[exec] (ChessX) {/opt/chessx/bin/chessx}
+			[exec] (GNU Go) {xterm -e gnugo}
+			[exec] (Go [cgoban]) {cgoban}
+			[exec] (Gomoku) {xterm -e gomoku}
+			[exec] (PyChess) {pychess}
+			[exec] (qGo) {qgo}
+		[end]
+		[submenu] (Card)
+			[exec] (Canfield) {xterm -e canfield}
+			[exec] (Cribbage) {xterm -e cribbage}
+			[exec] (Mille Bournes) {xterm -e mille}
+		[end]
+		[submenu] (Puzzle)
+			[exec] (Boggle) {xterm -e boggle}
+			[exec] (Bsd Tetris) {xterm -e tetris-bsd}
+			[exec] (Hangman) {xterm -e hangman}
+		[end]
+		[submenu] (Simulation)
+			[exec] (Sail) {xterm -e sail}
+		[end]
+		[submenu] (Strategy)
+			[exec] (Widelands) {widelands}
+		[end]
+		[exec] (DeSmuME [Gtk]) {desmume}
+		[exec] (DeSmuME [Gtk-Glade]) {desmume-glade}
+		[exec] (Fabled Lands App) {flands}
+		[exec] (GGoban) {ggoban}
+		[exec] (Invertika) {invertika /usr/local/share/invertika/branding.xml}
+		[exec] (legend-of-kyrandia-1) {Kyrandia1}
+		[exec] (legend-of-kyrandia-2) {Kyrandia2}
+		[exec] (legend-of-kyrandia-3) {Kyrandia3}
+		[exec] (Megazeux) {megazeux}
+		[exec] (MegaZeux [Runtime Only]) {mzxrun}
+		[exec] (NetHack - Vulture's Claw) {vulturesclaw}
+		[exec] (reunion-1) {reunion}
+		[exec] (Stella) {stella}
+	[end]
+	[submenu] (Graphics)
+		[exec] (GNU Image Manipulation Program) {gimp-2.6}
+		[exec] (LibreOffice Draw) {lodraw}
+		[exec] (MuPDF) {mupdf}
+		[exec] (qcomicbook) {qcomicbook}
+		[exec] (Ristretto Photo Viewer) {ristretto}
+		[exec] (scanimage) {xterm -e scanimage}
+		[exec] (The GIMP) {gimp}
+	[end]
+	[submenu] (Multimedia)
+		[exec] (ALSA mixer) {xterm -e alsamixer}
+		[exec] (Audacious) {audacious2}
+		[exec] (Audacious) {audacious}
+		[exec] (Cheese) {cheese}
+		[exec] (Gespeaker) {gespeaker}
+		[exec] (Gtv) {gtv}
+		[exec] (Kaffeine) {kaffeine}
+		[exec] (Mixer) {xfce4-mixer}
+		[exec] (MPlayer) {mplayer}
+		[exec] (Subtitle Composer) {subtitlecomposer}
+		[exec] (VLC media player) {vlc}
+		[exec] (XBMC Media Center) {xbmc}
+		[exec] (Xfburn) {xfburn}
+	[end]
+	[submenu] (Network)
+		[exec] (Aurora - Safe Mode) {firefox-aurora}
+		[exec] (Avahi SSH Server Browser) {bssh}
+		[exec] (Avahi VNC Server Browser) {bvnc}
+		[exec] (FireFox) {firefox}
+		[exec] (FTP) {xterm -e ftp}
+		[exec] (Google Earth) {googleearth}
+		[exec] (heybuddy - Identi.ca µblogging client) {heybuddy}
+		[exec] (Irssi) {xterm -e irssi}
+		[exec] (Links) {xterm -e links}
+		[exec] (Lynx) {xterm -e lynx}
+		[exec] (Mail) {xterm -e mail}
+		[exec] (Mail Reader) {exo-open --launch MailReader}
+		[exec] (Mutt) {xterm -e mutt}
+		[exec] (Opera) {opera}
+		[exec] (Talk) {xterm -e talk}
+		[exec] (Telnet) {xterm -e telnet}
+		[exec] (Thunderbird) {thunderbird}
+		[exec] (TkVNC) {xterm -e tkvnc}
+		[exec] (W3m) {xterm -e w3m}
+		[exec] (w3m) {xterm -e w3m /usr/share/doc/w3m/MANUAL.html}
+		[exec] (Web Browser) {exo-open --launch WebBrowser}
+		[exec] (X-Chat) {xchat}
+		[exec] (Zwrite) {xterm -e read -p 'Zwrite to users: ' u ; zwrite $u}
+	[end]
+	[submenu] (Office)
+		[exec] (Abook) {xterm -e abook}
+		[exec] (Dictionary) {xfce4-dict}
+		[exec] (LibreOffice) {libreoffice}
+		[exec] (LibreOffice Base) {lobase}
+		[exec] (LibreOffice Calc) {localc}
+		[exec] (LibreOffice Impress) {loimpress}
+		[exec] (LibreOffice Writer) {lowriter}
+		[exec] (Orage Calendar) {orage}
+		[exec] (Orage Globaltime) {globaltime}
+		[exec] (PyRoom) {pyroom}
+		[exec] (Storybook) {storybook}
+	[end]
+	[submenu] (Other)
+		[exec] (Armagetronad) {armagetronad}
+		[exec] (AUR) {xdg-open http://aur.archlinux.org}
+		[exec] (Bugs) {xdg-open http://bugs.archlinux.org}
+		[exec] (CMake) {cmake-gui}
+		[exec] (Deluge BitTorrent Client) {deluge-gtk}
+		[exec] (Developers) {xdg-open http://www.archlinux.org/developers/}
+		[exec] (Documentation) {xdg-open http://wiki.archlinux.org/index.php/Official_Arch_Linux_Install_Guide}
+		[exec] (Documentation) {xdg-open https://wiki.archlinux.de/title/Offizielle_Arch_Linux_Installations-Anleitung}
+		[exec] (Donate) {xdg-open http://www.archlinux.org/donate/}
+		[exec] (Donate) {xdg-open https://wiki.archlinux.de/title/Spenden}
+		[exec] (Dropbox) {dropboxd}
+		[exec] (Dwarf Fortress IronHand) {dwarffortress-ih}
+		[exec] (Forum) {xdg-open http://bbs.archlinux.org}
+		[exec] (Forum) {xdg-open http://bbs.archlinux.de}
+		[exec] (German Wiki) {xdg-open http://wiki.archlinux.de}
+		[exec] (Help) {khelpcenter}
+		[exec] (Hitchhiker's Guide to the Galaxy Infocom Adventure) {hitchhikersguide}
+		[exec] (Homepage) {xdg-open http://www.archlinux.org}
+		[exec] (Homepage) {xdg-open http://www.archlinux.de}
+		[exec] (IcedTea Web Control Panel) {itweb-settings}
+		[exec] (LibreOffice Quickstarter) {libreoffice -quickstart -nologo -nodefault}
+		[exec] (ObTheme) {obtheme}
+		[exec] (Schwag) {xdg-open http://www.zazzle.com/archlinux/}
+		[exec] (SVN) {xdg-open http://repos.archlinux.org/}
+		[exec] (Wiki) {xdg-open http://wiki.archlinux.org}
+		[exec] (Xpdf) {xpdf}
+		[exec] (Zathura) {zathura}
+	[end]
+	[submenu] (Science)
+		[exec] (bc) {xterm -e bc}
+		[exec] (dc) {xterm -e dc}
+	[end]
+	[submenu] (Shells)
+		[exec] (Dash) {xterm -e dash -i}
+		[exec] (dosbox Emulator) {dosbox}
+		[exec] (GIT) {xterm -e git}
+		[exec] (MC) {xterm -e mc}
+		[exec] (Root Terminal) {gksu -l gnome-terminal}
+		[exec] (rxvt-unicode) {urxvt}
+		[exec] (Terminal) {Terminal}
+		[exec] (Terminator) {terminator}
+		[exec] (Thunar File Manager) {Thunar}
+		[exec] (Xterm) {xterm}
+		[exec] (XTerm [Unicode]) {uxterm}
+	[end]
+	[submenu] (System)
+		[submenu] (Settings)
+			[submenu] (GNOME)
+				[exec] (Privilege granting) {gksu-properties}
+			[end]
+			[submenu] (Xfce)
+				[exec] (Accessibility) {xfce4-accessibility-settings}
+				[exec] (Appearance) {xfce4-appearance-settings}
+				[exec] (Desktop) {xfdesktop-settings}
+				[exec] (Display) {xfce4-display-settings}
+				[exec] (File Manager) {thunar-settings}
+				[exec] (Keyboard) {xfce4-keyboard-settings}
+				[exec] (Mouse) {xfce4-mouse-settings}
+				[exec] (Notifications) {xfce4-notifyd-config}
+				[exec] (Orage preferences) {orage -p}
+				[exec] (Panel) {xfce4-panel -p}
+				[exec] (Power Manager) {xfce4-power-manager-settings}
+				[exec] (Preferred Applications) {exo-preferred-applications}
+				[exec] (Removable Drives and Media) {thunar-volman-settings}
+				[exec] (Screensaver) {xscreensaver-demo}
+				[exec] (Session and Startup) {xfce4-session-settings}
+				[exec] (Settings Editor) {xfce4-settings-editor}
+				[exec] (Settings Manager) {xfce4-settings-manager}
+				[exec] (Window Manager) {xfwm4-settings}
+				[exec] (Window Manager Tweaks) {xfwm4-tweaks-settings}
+				[exec] (Workspaces) {xfwm4-workspace-settings}
+				[exec] (Xfce 4 Printing System Settings) {xfprint-settings}
+			[end]
+			[exec] (ATI Catalyst Control Center) {amdcccle}
+			[exec] (Customize Look and Feel) {lxappearance}
+			[exec] (Disk Utility) {palimpsest}
+			[exec] (DriConf) {driconf}
+			[exec] (Firewall configuration) {gksudo --preserve-env /usr/share/gufw/gufw.py}
+			[exec] (Openbox Configuration Manager) {obconf}
+			[exec] (Opera Widget Manager) {opera-widget-manager}
+			[exec] (Panel tint2) {tint2conf}
+		[end]
+		[exec] (Avahi Zeroconf Browser) {avahi-discover}
+		[exec] (Bulk Rename) {/usr/lib/Thunar/ThunarBulkRename}
+		[exec] (GDM Setup) {gksu gdmsetup}
+		[exec] (GParted) {gksu /usr/sbin/gparted}
+		[exec] (Htop) {xterm -e htop}
+		[exec] (ISDN Monitor) {xterm -e imon}
+		[exec] (KeePassX) {keepassx}
+		[exec] (Log Out) {xfce4-session-logout}
+		[exec] (Nepomuk Backup) {nepomukbackup}
+		[exec] (pstree) {xterm -e pstree.x11}
+		[exec] (pstree) {xterm -e pstree}
+		[exec] (pstree) {xterm -e /usr/bin/pstree.x11}
+		[exec] (Sensor Viewer) {xfce4-sensors}
+		[exec] (Task Manager) {xfce4-taskmanager}
+		[exec] (Top) {xterm -e top}
+		[exec] (UNetbootin) {unetbootin}
+	[end]
+	[submenu] (Utilities)
+		[exec] (About Xfce) {xfce4-about}
+		[exec] (Activate ScreenSaver [Next]) {xscreensaver-command -next}
+		[exec] (Activate ScreenSaver [Previous]) {xscreensaver-command -prev}
+		[exec] (Activate ScreenSaver [Random]) {xscreensaver-command -activate}
+		[exec] (Application Finder) {xfce4-appfinder}
+		[exec] (CherryTree) {cherrytree}
+		[exec] (Clipman) {xfce4-clipman}
+		[exec] (Demo Screen Hacks) {xscreensaver-command -demo}
+		[exec] (Disable XScreenSaver) {xscreensaver-command -exit}
+		[exec] (Enable XScreenSaver) {xscreensaver}
+		[exec] (File Manager) {exo-open --launch FileManager}
+		[exec] (Help) {xfhelp4}
+		[exec] (Info) {xterm -e info}
+		[exec] (Notes) {xfce4-notes}
+		[exec] (Reinitialize XScreenSaver) {xscreensaver-command -restart}
+		[exec] (Run Program...) {xfrun4}
+		[exec] (ScreenSaver Preferences) {xscreensaver-command -prefs}
+		[exec] (Screenshot) {xfce4-screenshooter}
+		[exec] (SpeedCrunch) {speedcrunch}
+		[exec] (Squeeze) {squeeze}
+		[exec] (Terminal Emulator) {exo-open --launch TerminalEmulator}
+		[exec] (unclutter - start) {unclutter}
+		[exec] (Units) {xterm -e units}
+		[exec] (Xarchiver) {xarchiver}
+		[exec] (Xev) {xterm -e xev}
+		[exec] (Xfce 4 Print Dialog) {xfprint4}
+		[exec] (Xfce 4 Print Manager) {xfprint4-manager}
+	[end]
+	[separator]
+	[submenu] (FluxBox)
+		[workspaces] (Workspaces)
+		[submenu] (Styles)
+			[stylesdir] (/usr/share/fluxbox/styles)
+		[end]
+		[config] (Configure)
+		[reconfig] (Reconfig)
+		[restart] (Restart)
+		[separator]
+		[exit] (Exit)
+	[end]
+[end]

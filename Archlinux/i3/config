@@ -1,0 +1,307 @@
+# This configuration uses Mod1 and Mod3. Make sure they are mapped properly using xev(1)
+# and xmodmap(1). Usually, Mod1 is Alt (Alt_L) and Mod4 is Windows (Super_L) and Mod5 is AltGR
+
+# ISO 10646 = Unicode
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+
+# Use Mouse+Mod1 to drag floating windows to their wanted position
+floating_modifier Mod4
+
+# Fullscreen (Mod1+f)
+bindsym Mod4+f f
+
+# Stacking (Mod1+s)
+bindsym Mod4+s s
+
+# Tabbed (Mod1+w)
+bindsym Mod4+t T
+
+# Default (Mod4+d)
+bindsym Mod4+d d
+
+# Toggle tiling/floating of the current window (Mod4+Shift+Space)
+bind Mod4+Shift+65 t
+
+# Go into the tiling layer / floating layer, depending on whether
+# the current window is tiling / floating (Mod4+w)
+bindsym Mod4+w focus ft
+
+# Focus (Mod4+h/j/k/l)
+bind Mod4+43 h
+bind Mod4+44 j
+bind Mod4+45 k
+bind Mod4+46 l
+# (alternatively, you can use the cursor keys:)
+bindsym Mod4+Left h
+bindsym Mod4+Down j
+bindsym Mod4+Up k
+bindsym Mod4+Right l
+
+# Move (Mod4+Shift+h/j/k/l)
+bind Mod4+Shift+43 mh
+bind Mod4+Shift+44 mj
+bind Mod4+Shift+45 mk
+bind Mod4+Shift+46 ml
+# (alternatively, you can use the cursor keys:)
+bindsym Mod4+Shift+Left mh
+bindsym Mod4+Shift+Down mj
+bindsym Mod4+Shift+Up mk
+bindsym Mod4+Shift+Right ml
+
+# Snap (Mod4+Control+h/j/k/l)
+bind Mod4+Control+43 sh
+bind Mod4+Control+44 sj
+bind Mod4+Control+45 sk
+bind Mod4+Control+46 sl
+# (alternatively, you can use the cursor keys:)
+bindsym Mod4+Control+Left sh
+bindsym Mod4+Control+Down sj
+bindsym Mod4+Control+Up sk
+bindsym Mod4+Control+Right sl
+
+# Focus Container (Mod1+Mod4+h/j/k/l)
+bind Mod1+Mod4+43 wch
+bind Mod1+Mod4+44 wcj
+bind Mod1+Mod4+45 wck
+bind Mod1+Mod4+46 wcl
+# (alternatively, you can use the cursor keys:)
+bindsym Mod1+Mod4+Left wch
+bindsym Mod1+Mod4+Down wcj
+bindsym Mod1+Mod4+Up wck
+bindsym Mod1+Mod4+Right wcl
+
+# Move Container (Mod1+Mod4+Shift+h/j/k/l)
+bind Mod1+Mod4+Shift+43 wcmh
+bind Mod1+Mod4+Shift+44 wcmj
+bind Mod1+Mod4+Shift+45 wcmk
+bind Mod1+Mod4+Shift+46 wcml
+# (alternatively, you can use the cursor keys:)
+bindsym Mod1+Mod4+Shift+Left wcmh
+bindsym Mod1+Mod4+Shift+Down wcmj
+bindsym Mod1+Mod4+Shift+Up wcmk
+bindsym Mod1+Mod4+Shift+Right wcml
+
+# Snap Container (Mod1+Mod4+Control+h/j/k/l)
+bind Mod1+Mod4+Control+43 wcsh
+bind Mod1+Mod4+Control+44 wcsj
+bind Mod1+Mod4+Control+45 wcsk
+bind Mod1+Mod4+Control+46 wcsl
+# (alternatively, you can use the cursor keys:)
+bindsym Mod1+Mod4+Control+Left wcsh
+bindsym Mod1+Mod4+Control+Down wcsj
+bindsym Mod1+Mod4+Control+Up wcsk
+bindsym Mod1+Mod4+Control+Right wcsl
+
+# Workspaces (Mod4+1/2/…)
+bind Mod4+10 1
+bind Mod4+11 2
+bind Mod4+12 3
+bind Mod4+13 4
+bind Mod4+14 5
+bind Mod4+15 6
+bind Mod4+16 7
+bind Mod4+17 8
+bind Mod4+18 9
+bind Mod4+19 10
+
+# Move to Workspaces
+bind Mod4+Shift+10 m1
+bind Mod4+Shift+11 m2
+bind Mod4+Shift+12 m3
+bind Mod4+Shift+13 m4
+bind Mod4+Shift+14 m5
+bind Mod4+Shift+15 m6
+bind Mod4+Shift+16 m7
+bind Mod4+Shift+17 m8
+bind Mod4+Shift+18 m9
+bind Mod4+Shift+19 m10
+
+# Move to previous / next Workspace
+bind Mod4+47	pw
+bind Mod4+48	nw
+
+# Mod4+Enter starts a new terminal
+bind Mod4+36 exec uxterm -fg white -bg black -fn "xft:Bitstream Vera Sans Mono:pixelsize=12"
+bind Mod4+Shift+36 exec uxterm -fn "xft:Bitstream Vera Sans Mono:pixelsize=12"
+
+# Mod5+Enter locks the terminal
+bind Mod5+36 exec slock
+
+# Mod4+Shift+c kills the current client
+bindsym Mod4+Shift+c kill
+
+# Mod4+p starts dmenu and launches the selected application
+# for now, we don’t have a launcher of our own.
+bindsym Mod4+p exec dmenu_run
+
+# Mod4+Shift+q exits i3
+bindsym Mod4+Shift+q exit
+
+# Mod4+Shift+r restarts i3 inplace
+bindsym Mod4+Shift+r restart
+
+# reload config
+bindsym Mod4+Shift+w reload
+
+# Read 1 character and mark the current window with this character
+bindsym Mod4+m exec i3-input -p 'mark ' -l 1 -P 'Mark: '
+
+# Read 1 character and go to the window with the character
+bindsym Mod4+g exec i3-input -p 'goto ' -l 1 -P 'Goto: '
+
+# Rahmen ändern
+bindsym Mod4+b bn # normal mit Titel
+bindsym Mod4+y bp # 1 Pixel
+bindsym Mod4+u bb # ohne Rahmen
+
+############################
+# eigene Tastaturkommandos #
+############################
+bindsym XF86Mail	exec evolution
+bindsym XF86Calculator	exec gnome-calculator
+bindsym XF86AudioRaiseVolume	exec amixer set Master 5%+ unmute
+bindsym XF86AudioLowerVolume	exec amixer set Master 5%- unmute
+bindsym XF86AudioMute	exec amixer set Master toggle
+bindsym XF86HomePage	exec firefox
+bindsym Mod4+F2		exec gmrun
+bindsym Mod4+F3		exec dmenu_run
+bindsym Mod4+F4		exec xfce4-taskmanager
+bindsym Mod4+F5		exec sudo powersave
+bindsym Mod4+F6		exec sudo ondemand
+bindsym Mod4+F7		exec synclient touchpadoff=1
+bindsym Mod4+F8		exec synclient touchpadoff=0
+bindsym Mod4+F12	exec sudo /etc/rc.d/i2prouter start
+bindsym Mod4+Shift+F12	exec sudo /etc/rc.d/i2prouter stop
+bindsym Mod5+a		exec audacious2
+bindsym Mod5+Shift+a	exec uxterm -fn "xft:Bitstream Vera Sans Mono:pixelsize=12" -e "abook"
+bindsym Mod5+b		exec brasero
+bindsym Mod5+c		exec chromium-browser
+bindsym Mod5+Shift+c	exec uxterm -fg white -bg black -fn "xft:Bitstream Vera Sans Mono:pixelsize=12" -e "centerim"
+bindsym Mod5+d		exec dropbox start
+bindsym Mod5+Shift+d	exec dropbox stop
+bindsym Mod5+e		exec gvim
+bindsym Mod5+Shift+e	exec torify ekiga
+bindsym Mod5+f		exec firefox
+bindsym Mod5+g		exec torify gwibber
+bindsym Mod5+Shift+g	exec gedit
+bindsym Mod5+h	exec torify heybuddy
+bindsym Mod5+i		exec uxterm -fg white -bg black -e irssi
+bindsym Mod5+Shift+i	exec uxterm -fg white -bg black -e 'torify identicurse'
+bindsym Mod5+Control+i	exec iscan
+bindsym Mod5+k		exec keepassx
+bindsym Mod5+Shift+k	exec kaffeine
+bindsym Control+l	exec slock
+bindsym Mod5+l		exec uxterm -fn "xft:Bitstream Vera Sans Mono:pixelsize=12" -e "lynx"
+bindsym Mod5+Shift+l	exec leafpad
+bindsym Mod5+m		exec uxterm -fn "xft:Bitstream Vera Sans Mono:pixelsize=12" -e "mc"
+bindsym Mod5+Shift+m 	exec uxterm -fb white -bg black -e 'torify mutt'
+bindsym Mod5+Control+m	exec uxterm -fn "xft:Bitstream Vera Sans Mono:pixelsize=12" -e "mp3blaster"
+bindsym Mod5+n		exec torify uxterm -fn "xft:Bitstream Vera Sans Mono:pixelsize=12" -e "newsbeuter"
+bindsym Mod5+Control+n	exec torify netsurf
+bindsym Mod5+o		exec opera
+bindsym Mod5+p		exec torify pino
+bindsym Mod5+Shift+p	exec torify psi
+bindsym	Mod5+Control+p	exec uxterm -fn "xft:Bitstream Vera Sans Mono:pixelsize=12" -e "podbeuter"
+bindsym Mod5+r		exec rhythmbox
+bindsym Mod5+s		exec gksudo gtkpacman
+bindsym Mod5+Shift+s	exec soffice
+bindsym Mod5+Control+s	exec torify surf
+bindsym Mod5+t		exec turpial
+bindsym Mod5+Shift+t	exec torify urxvt -fn "xft:Bitstream Vera Sans Mono:pixelsize=12" -e "torify 
+ttytter"
+bindsym Mod5+u		exec torify uzbl-browser
+bindsym	Mod5+Shift+u	exec torify uzbl-tabbed 
+bindsym Mod5+v		exec vlc
+bindsym Mod5+w		exec links -g
+bindsym Mod5+Shift+w	exec uxterm -fg black -bg white -e 'w3m http://ddg.gg'
+bindsym Mod5+x		exec xfce4-mixer
+bindsym Mod5+Shift+z	exec i3lock -i /usr/share/pixmaps/backgrounds/archi3standard.xpm
+# Drucktaste
+bindsym Print		exec scrot -e 'mv $f ~/Bilder/Bildschirmfotos/'
+bindsym Mod4+Print	exec scrot -s -e 'mv $f ~/Bilder/Bildschirmfotos/'
+
+# The IPC interface allows programs like an external workspace bar
+# (i3-wsbar) or i3-msg (can be used to "remote-control" i3) to work.
+ipc-socket ~/.i3/ipc.sock
+
+######################
+# Fensterzuweisungen #
+######################
+assign firefox	6
+assign namoroka	6
+assign opera	6
+assign midori	6
+assign chromium	6
+assign google-chrome	6
+assign chrome	6
+assign iron	6
+assign icecat	6
+assign thunderbird	7
+assign shredder	7
+assign "uxterm/mutt"	7
+assign claws	7
+assign claws-mail 7
+assign "uxterm/newsbeuter" 7
+assign skype	8
+assign ekiga	8
+assign heybuddy	9
+assign pino	9
+assign gwibber	9
+assign mitter	9
+assign "uxterm/ttytter" 9
+assign "uxterm/identicurse" 9
+assign psi	10
+assign pidgin	10
+assign kopete	10
+assign choqok	10
+assign "uxterm/finch"	10
+assign "uxterm/centerim"	10
+assign "uxterm/irssi"	10
+
+
+#######################
+# Benannte Workspaces #
+#######################
+
+workspace 6 Browser
+workspace 7 Email
+workspace 8 VoIP
+workspace 9 Twitter
+workspace 10 Jabber
+
+#############################################################
+# DELETE THE FOLLOWING LINES TO DISABLE THE WELCOME MESSAGE #
+#############################################################
+#exec xmessage -file /etc/i3/welcome
+#exec xmessage -file ~/willkommen
+
+# Touchpad ausschalten
+exec synclient touchpadoff=1
+
+# Folgefocus ausschalten
+focus_follows_mouse no
+
+# Interne Workspace Bar ein (yes) oder aus (no)
+workspace_bar no
+
+# Statuszeile
+#exec i3status | dzen2 -dock -fn biolinum-8
+#exec i3status
+exec i3status | i3-wsbar -c "dzen2 -x %x -dock"
+
+# Neue Fenster haben nur 1 Punkt Rahmen
+#new_window bp
+new_window bn
+
+# Laden des Bildschirmhintergrunds
+exec nitrogen --restore
+
+# Dropbox starten
+exec dropbox start
+
+# Zum Neustart des X-Servers
+exec setxkbmap -option terminate:ctrl_alt_bksp
+
+#exec sudo cpufreq-set -g ondemand -c 0
+#exec sudo cpufreq-set -g ondemand -c 1
+

@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openbox_menu xmlns="http://openbox.org/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://openbox.org/ file:///usr/X11R6/share/openbox/menu.xsd">
+<menu id="root-menu" label="openbox3">
+    <item label="Terminal"><action name="Execute"><execute>terminator</execute></action></item>
+    <item label="Dateimanager"><action name="Execute"><execute>thunar</execute></action></item>
+    <item label="Netzwerknavigator"><action name="Execute"><execute>firefox</execute></action></item>
+    <item label="Sofortnachrichten"><action name="Execute"><execute>pidgin</execute></action></item>
+    <item label="Editor"><action name="Execute"><execute>gvim</execute></action></item>
+    <item label="Kommando ausführen"><action name="Execute"><execute>gmrun</execute></action></item>
+    <separator />
+    <menu id="client-list-combined-menu" />
+    <separator label="Anwendungen"/>
+    <menu id="Zubehör" label="Zubehör">
+        <item label="Über Xfce 4"><action name="Execute"><execute>xfce4-about</execute></action></item>
+        <item label="Akonadi-Miniprogramm"><action name="Execute"><execute>akonaditray</execute></action></item>
+        <item label="Anwendungsfinder"><action name="Execute"><execute>xfce4-appfinder</execute></action></item>
+        <item label="Ark"><action name="Execute"><execute>ark -caption "%%c"</execute></action></item>
+        <item label="Avant Window Navigator"><action name="Execute"><execute>avant-window-navigator</execute></action></item>
+        <item label="Bildschirmfoto"><action name="Execute"><execute>xfce4-screenshooter</execute></action></item>
+        <item label="CherryTree"><action name="Execute"><execute>cherrytree</execute></action></item>
+        <item label="Dateimanager"><action name="Execute"><execute>exo-open --launch FileManager</execute></action></item>
+        <item label="Dateimanager"><action name="Execute"><execute>pcmanfm</execute></action></item>
+        <item label="Druckdialog"><action name="Execute"><execute>xfprint4</execute></action></item>
+        <item label="Druckerverwaltung"><action name="Execute"><execute>xfprint4-manager</execute></action></item>
+        <item label="Filelight"><action name="Execute"><execute>filelight</execute></action></item>
+        <item label="Hilfe"><action name="Execute"><execute>xfhelp4</execute></action></item>
+        <item label="Jovie"><action name="Execute"><execute>jovie</execute></action></item>
+        <item label="KAlarm"><action name="Execute"><execute>kalarm -caption "%%c" %%i</execute></action></item>
+        <item label="KCalc"><action name="Execute"><execute>kcalc -caption "%%c"</execute></action></item>
+        <item label="KCharSelect"><action name="Execute"><execute>kcharselect -caption "%%c"</execute></action></item>
+        <item label="KDE Groupware-Assistent"><action name="Execute"><execute>groupwarewizard</execute></action></item>
+        <item label="KFileReplace"><action name="Execute"><execute>kfilereplace %%i -caption "%%c"</execute></action></item>
+        <item label="KFloppy"><action name="Execute"><execute>kfloppy -caption "%%c"</execute></action></item>
+        <item label="KFontView"><action name="Execute"><execute>kfontview</execute></action></item>
+        <item label="KGpg"><action name="Execute"><execute>kgpg</execute></action></item>
+        <item label="KJots"><action name="Execute"><execute>kjots -caption "%%c"</execute></action></item>
+        <item label="KMag"><action name="Execute"><execute>kmag -caption "%%c" %%i</execute></action></item>
+        <item label="KMouseTool"><action name="Execute"><execute>kmousetool -caption "%%c" %%i</execute></action></item>
+        <item label="KMouth"><action name="Execute"><execute>kmouth -caption "%%c" %%i</execute></action></item>
+        <item label="KNotes"><action name="Execute"><execute>knotes</execute></action></item>
+        <item label="KTeaTime"><action name="Execute"><execute>kteatime</execute></action></item>
+        <item label="KTimer"><action name="Execute"><execute>ktimer</execute></action></item>
+        <item label="KWrite"><action name="Execute"><execute>kwrite</execute></action></item>
+        <item label="Kate"><action name="Execute"><execute>kate -b</execute></action></item>
+        <item label="KeePassX"><action name="Execute"><execute>keepassx</execute></action></item>
+        <item label="Kleopatra"><action name="Execute"><execute>kleopatra</execute></action></item>
+        <item label="Kleopatra"><action name="Execute"><execute>kleopatra --import-certificate</execute></action></item>
+        <item label="Konsolen-Kalender"><action name="Execute"><execute>kdialog --sorry "konsolekalendar is a command-line only program.  Please read the handbook at help:/konsolekalendar for more info."</execute></action></item>
+        <item label="LXTerminal"><action name="Execute"><execute>lxterminal</execute></action></item>
+        <item label="Mousepad"><action name="Execute"><execute>mousepad</execute></action></item>
+        <item label="Okteta"><action name="Execute"><execute>okteta -caption "%%c"</execute></action></item>
+        <item label="Programm ausführen..."><action name="Execute"><execute>xfrun4</execute></action></item>
+        <item label="Root Terminal"><action name="Execute"><execute>gksu -l gnome-terminal</execute></action></item>
+        <item label="Sensorbetrachter"><action name="Execute"><execute>xfce4-sensors</execute></action></item>
+        <item label="SpeedCrunch"><action name="Execute"><execute>speedcrunch</execute></action></item>
+        <item label="Squeeze"><action name="Execute"><execute>squeeze</execute></action></item>
+        <item label="Sweeper"><action name="Execute"><execute>sweeper</execute></action></item>
+        <item label="Terminal"><action name="Execute"><execute>exo-open --launch TerminalEmulator</execute></action></item>
+        <item label="Terminator"><action name="Execute"><execute>terminator</execute></action></item>
+        <item label="Textbaustein-Datendatei-Editor"><action name="Execute"><execute>ktesnippets_editor</execute></action></item>
+        <item label="Xarchiver"><action name="Execute"><execute>xarchiver</execute></action></item>
+        <item label="Zwischenablage"><action name="Execute"><execute>xfce4-clipman</execute></action></item>
+        <item label="gVim"><action name="Execute"><execute>gvim</execute></action></item>
+    </menu>
+    <menu id="Graphik" label="Graphik">
+        <item label="Bildbetrachter Ristretto"><action name="Execute"><execute>ristretto</execute></action></item>
+        <item label="E-book Viewer"><action name="Execute"><execute>ebook-viewer</execute></action></item>
+        <item label="GNU Image Manipulation Program"><action name="Execute"><execute>gimp-2.6</execute></action></item>
+        <item label="Gwenview"><action name="Execute"><execute>gwenview  -caption "%%c" %%i</execute></action></item>
+        <item label="Image Scan! for Linux"><action name="Execute"><execute>iscan</execute></action></item>
+        <item label="Image Viewer"><action name="Execute"><execute>gpicview</execute></action></item>
+        <item label="Inkscape"><action name="Execute"><execute>inkscape</execute></action></item>
+        <item label="KColorChooser"><action name="Execute"><execute>kcolorchooser</execute></action></item>
+        <item label="KRuler"><action name="Execute"><execute>kruler</execute></action></item>
+        <item label="KSnapshot"><action name="Execute"><execute>ksnapshot -caption "%%c"</execute></action></item>
+        <item label="KolourPaint"><action name="Execute"><execute>kolourpaint</execute></action></item>
+        <item label="LRF Viewer"><action name="Execute"><execute>lrfviewer</execute></action></item>
+        <item label="LibreOffice Draw"><action name="Execute"><execute>lodraw</execute></action></item>
+        <item label="MuPDF"><action name="Execute"><execute>mupdf</execute></action></item>
+        <item label="Okular"><action name="Execute"><execute>okular  %%i -caption "%%c"</execute></action></item>
+        <item label="xgpsspeed"><action name="Execute"><execute>xgpsspeed</execute></action></item>
+        <item label="xgps"><action name="Execute"><execute>xgps</execute></action></item>
+    </menu>
+    <menu id="Audio und Video" label="Audio und Video">
+        <item label="Audacious"><action name="Execute"><execute>audacious2</execute></action></item>
+        <item label="Dragon Player"><action name="Execute"><execute>dragon</execute></action></item>
+        <item label="Gespeaker"><action name="Execute"><execute>/usr/bin/gespeaker</execute></action></item>
+        <item label="JuK"><action name="Execute"><execute>juk -caption "%%c" %%i</execute></action></item>
+        <item label="Kaffeine"><action name="Execute"><execute>kaffeine</execute></action></item>
+        <item label="KsCD"><action name="Execute"><execute>kscd -caption "%%c" %%i</execute></action></item>
+        <item label="Lautstärkeregelung"><action name="Execute"><execute>xfce4-mixer</execute></action></item>
+        <item label="MPlayer Media Player"><action name="Execute"><execute>mplayer -really-quiet</execute></action></item>
+        <item label="Minitube"><action name="Execute"><execute>minitube</execute></action></item>
+        <item label="Pogo"><action name="Execute"><execute>pogo</execute></action></item>
+        <item label="VLC Media Player"><action name="Execute"><execute>vlc</execute></action></item>
+        <item label="XBMC Media Center"><action name="Execute"><execute>xbmc</execute></action></item>
+        <item label="Xfburn"><action name="Execute"><execute>xfburn</execute></action></item>
+        <item label="eSpeak speech synthesizer"><action name="Execute"><execute>espeak-gui</execute></action></item>
+        <item label="gPodder Podcast-Client"><action name="Execute"><execute>gpodder</execute></action></item>
+    </menu>
+    <menu id="Bildung" label="Bildung">
+        <item label="An Anarchist FAQ"><action name="Execute"><execute>xdg-open file:///usr/share/doc/anarchism/html/index.html</execute></action></item>
+        <item label="Avogadro"><action name="Execute"><execute>avogadro</execute></action></item>
+        <item label="Blinken"><action name="Execute"><execute>blinken</execute></action></item>
+        <item label="Brain Workshop"><action name="Execute"><execute>brainworkshop</execute></action></item>
+        <item label="Cantor"><action name="Execute"><execute>cantor %%i -caption "%%c"</execute></action></item>
+        <item label="KAlgebra Mobil"><action name="Execute"><execute>kalgebramobile</execute></action></item>
+        <item label="KAlgebra"><action name="Execute"><execute>kalgebra</execute></action></item>
+        <item label="KBruch"><action name="Execute"><execute>kbruch -caption "%%c" %%i</execute></action></item>
+        <item label="KGeography"><action name="Execute"><execute>kgeography</execute></action></item>
+        <item label="KHangMan"><action name="Execute"><execute>khangman -caption "%%c" %%i</execute></action></item>
+        <item label="KLettres"><action name="Execute"><execute>klettres -caption "%%c" %%i</execute></action></item>
+        <item label="KStars"><action name="Execute"><execute>kstars -caption "%%c" %%i</execute></action></item>
+        <item label="KTouch"><action name="Execute"><execute>ktouch -caption "%%c" %%i</execute></action></item>
+        <item label="KTurtle"><action name="Execute"><execute>kturtle %%i -caption "%%c"</execute></action></item>
+        <item label="KWordQuiz"><action name="Execute"><execute>kwordquiz -caption "%%c" %%i</execute></action></item>
+        <item label="Kalzium"><action name="Execute"><execute>kalzium -caption "%%c" %%i</execute></action></item>
+        <item label="Kanagram"><action name="Execute"><execute>kanagram</execute></action></item>
+        <item label="Kig"><action name="Execute"><execute>kig %%i -caption "%%c"</execute></action></item>
+        <item label="Kiten"><action name="Execute"><execute>kiten -caption "%%c" %%i</execute></action></item>
+        <item label="KmPlot"><action name="Execute"><execute>kmplot</execute></action></item>
+        <item label="Marble"><action name="Execute"><execute>marble</execute></action></item>
+        <item label="Parley"><action name="Execute"><execute>parley</execute></action></item>
+        <item label="Rocs"><action name="Execute"><execute>rocs %%i -caption "%%c"</execute></action></item>
+        <item label="Step"><action name="Execute"><execute>step -caption "%%c" %%i</execute></action></item>
+        <item label="TIPP10"><action name="Execute"><execute>tipp10</execute></action></item>
+    </menu>
+    <menu id="Büro" label="Büro">
+        <item label="Adressbuch"><action name="Execute"><execute>kaddressbook</execute></action></item>
+        <item label="Calibre"><action name="Execute"><execute>calibre</execute></action></item>
+        <item label="HomeBank"><action name="Execute"><execute>homebank</execute></action></item>
+        <item label="KDE-Zeitplaner"><action name="Execute"><execute>ktimetracker</execute></action></item>
+        <item label="KOrganizer"><action name="Execute"><execute>korganizer</execute></action></item>
+        <item label="Kontact"><action name="Execute"><execute>kontact</execute></action></item>
+        <item label="LibreOffice Base"><action name="Execute"><execute>lobase</execute></action></item>
+        <item label="LibreOffice Calc"><action name="Execute"><execute>localc</execute></action></item>
+        <item label="LibreOffice Extension Manager"><action name="Execute"><execute>unopkg gui</execute></action></item>
+        <item label="LibreOffice Impress"><action name="Execute"><execute>loimpress</execute></action></item>
+        <item label="LibreOffice Math"><action name="Execute"><execute>lomath</execute></action></item>
+        <item label="LibreOffice Quickstarter"><action name="Execute"><execute>libreoffice -quickstart -nologo -nodefault</execute></action></item>
+        <item label="LibreOffice Writer"><action name="Execute"><execute>lowriter</execute></action></item>
+        <item label="LibreOffice"><action name="Execute"><execute>libreoffice</execute></action></item>
+        <item label="LibreOffice"><action name="Execute"><execute>lofromtemplate</execute></action></item>
+        <item label="Orage Weltzeit"><action name="Execute"><execute>globaltime</execute></action></item>
+        <item label="Orage-Kalender"><action name="Execute"><execute>orage</execute></action></item>
+        <item label="Osmo"><action name="Execute"><execute>osmo</execute></action></item>
+        <item label="PyRoom"><action name="Execute"><execute>/usr/bin/pyroom</execute></action></item>
+        <item label="RedNotebook"><action name="Execute"><execute>rednotebook</execute></action></item>
+        <item label="Sweet Home 3D"><action name="Execute"><execute>sweethome3d</execute></action></item>
+        <item label="TextRoom"><action name="Execute"><execute>textroom</execute></action></item>
+        <item label="Wörterbuch"><action name="Execute"><execute>xfce4-dict</execute></action></item>
+        <item label="Xpdf"><action name="Execute"><execute>xpdf</execute></action></item>
+    </menu>
+    <menu id="Spiele" label="Spiele">
+        <item label="AMOR"><action name="Execute"><execute>amor</execute></action></item>
+        <item label="Armagetronad"><action name="Execute"><execute>armagetronad</execute></action></item>
+        <item label="Avanor"><action name="Execute"><execute>terminator -e avanor</execute></action></item>
+        <item label="Battle for Wesnoth Karteneditor"><action name="Execute"><execute>wesnoth -e</execute></action></item>
+        <item label="Battle for Wesnoth"><action name="Execute"><execute>wesnoth</execute></action></item>
+        <item label="Bitfighter"><action name="Execute"><execute>bitfighter.sh</execute></action></item>
+        <item label="Bomber"><action name="Execute"><execute>bomber -caption "%%c"</execute></action></item>
+        <item label="Bovo"><action name="Execute"><execute>bovo -caption "%%c"</execute></action></item>
+        <item label="ChessX"><action name="Execute"><execute>/opt/chessx/bin/chessx</execute></action></item>
+        <item label="DeSmuME (Gtk)"><action name="Execute"><execute>desmume</execute></action></item>
+        <item label="DeSmuME (Gtk-Glade)"><action name="Execute"><execute>desmume-glade</execute></action></item>
+        <item label="Dwarf Fortress"><action name="Execute"><execute>dwarffortress</execute></action></item>
+        <item label="Fabled Lands App"><action name="Execute"><execute>flands</execute></action></item>
+        <item label="Giana's Return"><action name="Execute"><execute>giana -fs</execute></action></item>
+        <item label="Granatier"><action name="Execute"><execute>granatier</execute></action></item>
+        <item label="Hitchhiker's Guide to the Galaxy Infocom Adventure"><action name="Execute"><execute>hitchhikersguide</execute></action></item>
+        <item label="Invertika"><action name="Execute"><execute>invertika /usr/local/share/invertika/branding.xml</execute></action></item>
+        <item label="KAtomic"><action name="Execute"><execute>katomic -caption "%%c"</execute></action></item>
+        <item label="KBlackBox"><action name="Execute"><execute>kblackbox -caption "%%c"</execute></action></item>
+        <item label="KBlocks"><action name="Execute"><execute>kblocks -caption "%%c"</execute></action></item>
+        <item label="KBounce"><action name="Execute"><execute>kbounce -caption "%%c"</execute></action></item>
+        <item label="KBreakOut"><action name="Execute"><execute>kbreakout -caption "%%c"</execute></action></item>
+        <item label="KDiamond"><action name="Execute"><execute>kdiamond -caption "%%c"</execute></action></item>
+        <item label="KGoldrunner"><action name="Execute"><execute>kgoldrunner</execute></action></item>
+        <item label="KJumpingCube"><action name="Execute"><execute>kjumpingcube -caption "%%c"</execute></action></item>
+        <item label="KMahjongg"><action name="Execute"><execute>kmahjongg -caption "%%c"</execute></action></item>
+        <item label="KMines"><action name="Execute"><execute>kmines -caption "%%c"</execute></action></item>
+        <item label="KNetWalk"><action name="Execute"><execute>knetwalk -caption "%%c"</execute></action></item>
+        <item label="KPatience"><action name="Execute"><execute>kpat -caption "%%c"</execute></action></item>
+        <item label="KReversi"><action name="Execute"><execute>kreversi -caption "%%c"</execute></action></item>
+        <item label="KSnake"><action name="Execute"><execute>ktron -snake -caption "%%c" %%i</execute></action></item>
+        <item label="KSpaceDuel"><action name="Execute"><execute>kspaceduel -caption "%%c"</execute></action></item>
+        <item label="KSpaceDuel"><action name="Execute"><execute>ktron -caption "%%c" %%i</execute></action></item>
+        <item label="KSquares"><action name="Execute"><execute>ksquares %%i -caption "%%c"</execute></action></item>
+        <item label="KSudoku"><action name="Execute"><execute>ksudoku %%i -caption "%%c"</execute></action></item>
+        <item label="Kajongg"><action name="Execute"><execute>kajongg</execute></action></item>
+        <item label="Kapman"><action name="Execute"><execute>kapman</execute></action></item>
+        <item label="Kartoffelknülch"><action name="Execute"><execute>ktuberling -caption "%%c"</execute></action></item>
+        <item label="Kigo"><action name="Execute"><execute>kigo %%i -caption "%%c"</execute></action></item>
+        <item label="Killbots"><action name="Execute"><execute>killbots -caption "%%c"</execute></action></item>
+        <item label="Kiriki"><action name="Execute"><execute>kiriki -caption "%%c"</execute></action></item>
+        <item label="Klickety"><action name="Execute"><execute>klickety -caption "%%c"</execute></action></item>
+        <item label="Knights"><action name="Execute"><execute>knights %%i -caption "%%c"</execute></action></item>
+        <item label="Kolf"><action name="Execute"><execute>kolf</execute></action></item>
+        <item label="Kollision"><action name="Execute"><execute>kollision</execute></action></item>
+        <item label="Kolor Lines"><action name="Execute"><execute>klines -caption "%%c"</execute></action></item>
+        <item label="Konquest"><action name="Execute"><execute>konquest -caption %%c</execute></action></item>
+        <item label="KsirK-Design-Editor"><action name="Execute"><execute>ksirkskineditor -caption "%%c" %%i</execute></action></item>
+        <item label="KsirK"><action name="Execute"><execute>ksirk -caption "%%c" %%i</execute></action></item>
+        <item label="Kubrick"><action name="Execute"><execute>kubrick</execute></action></item>
+        <item label="LSkat"><action name="Execute"><execute>lskat</execute></action></item>
+        <item label="MegaZeux (Runtime Only)"><action name="Execute"><execute>mzxrun</execute></action></item>
+        <item label="Megazeux"><action name="Execute"><execute>megazeux</execute></action></item>
+        <item label="Mines of Elderlore"><action name="Execute"><execute>mines-of-elderlore</execute></action></item>
+        <item label="Naval Battle"><action name="Execute"><execute>kbattleship -caption "%%c"</execute></action></item>
+        <item label="OpenArena"><action name="Execute"><execute>openarena</execute></action></item>
+        <item label="Palapeli"><action name="Execute"><execute>palapeli</execute></action></item>
+        <item label="Probiere"><action name="Execute"><execute>klickety --KSameMode -caption "%%c"</execute></action></item>
+        <item label="PyChess"><action name="Execute"><execute>pychess</execute></action></item>
+        <item label="ScummVM"><action name="Execute"><execute>scummvm</execute></action></item>
+        <item label="Shisen-Sho"><action name="Execute"><execute>kshisen -caption "%%c"</execute></action></item>
+        <item label="Stella"><action name="Execute"><execute>stella</execute></action></item>
+        <item label="Stone Soup"><action name="Execute"><execute>stone-soup-tiles</execute></action></item>
+        <item label="Sudoku Savant"><action name="Execute"><execute>sudoku-savant</execute></action></item>
+        <item label="Supertuxkart"><action name="Execute"><execute>/usr/bin/supertuxkart --log</execute></action></item>
+        <item label="Vier gewinnt"><action name="Execute"><execute>kfourinline</execute></action></item>
+        <item label="Warmux"><action name="Execute"><execute>warmux</execute></action></item>
+        <item label="XBoard"><action name="Execute"><execute>xboard</execute></action></item>
+        <item label="alone-in-the-dark-1"><action name="Execute"><execute>/usr/bin/AITD</execute></action></item>
+        <item label="discworld"><action name="Execute"><execute>/usr/bin/discworld</execute></action></item>
+        <item label="legend-of-kyrandia-1"><action name="Execute"><execute>/usr/bin/Kyrandia1</execute></action></item>
+        <item label="legend-of-kyrandia-2"><action name="Execute"><execute>/usr/bin/Kyrandia2</execute></action></item>
+        <item label="legend-of-kyrandia-3"><action name="Execute"><execute>/usr/bin/Kyrandia3</execute></action></item>
+        <item label="leisure-suit-larry"><action name="Execute"><execute>/usr/bin/Larry1</execute></action></item>
+        <item label="space-quest-1"><action name="Execute"><execute>/usr/bin/spaceq1</execute></action></item>
+        <item label="starwars-chess"><action name="Execute"><execute>/usr/bin/sw-chess</execute></action></item>
+        <item label="starwars-vector-arcade"><action name="Execute"><execute>/usr/bin/swarc</execute></action></item>
+        <item label="the-incredible-machine-1"><action name="Execute"><execute>/usr/bin/TIM1</execute></action></item>
+        <item label="the-incredible-machine-2"><action name="Execute"><execute>/usr/bin/TIM2</execute></action></item>
+    </menu>
+    <menu id="Netzwerk" label="Netzwerk">
+        <item label="Akregator"><action name="Execute"><execute>akregator %%i -caption "%%c"</execute></action></item>
+        <item label="Avahi SSH Server Browser"><action name="Execute"><execute>/usr/bin/bssh</execute></action></item>
+        <item label="Avahi VNC-Server-Browser"><action name="Execute"><execute>/usr/bin/bvnc</execute></action></item>
+        <item label="Blogilo"><action name="Execute"><execute>blogilo %%i -caption "%%c"</execute></action></item>
+        <item label="Choqok"><action name="Execute"><execute>choqok %%i -caption "%%c"</execute></action></item>
+        <item label="Chromium"><action name="Execute"><execute>chromium</execute></action></item>
+        <item label="Deluge BitTorrent Client"><action name="Execute"><execute>deluge-gtk</execute></action></item>
+        <item label="Dropbox"><action name="Execute"><execute>/opt/dropbox/dropboxd</execute></action></item>
+        <item label="E-Mail-Programm"><action name="Execute"><execute>exo-open --launch MailReader</execute></action></item>
+        <item label="Elinks"><action name="Execute"><execute>terminator -e elinks</execute></action></item>
+        <item label="Firefox Beta - Safe Mode"><action name="Execute"><execute>firefox-beta-bin -safe-mode</execute></action></item>
+        <item label="Firefox Beta"><action name="Execute"><execute>firefox-beta-bin</execute></action></item>
+        <item label="Gwibber"><action name="Execute"><execute>gwibber</execute></action></item>
+        <item label="KGet"><action name="Execute"><execute>kget -caption "%%c" %%i</execute></action></item>
+        <item label="KMail"><action name="Execute"><execute>kmail -caption "%%c"</execute></action></item>
+        <item label="KNetAttach"><action name="Execute"><execute>knetattach</execute></action></item>
+        <item label="KNode"><action name="Execute"><execute>knode -caption "%%c"</execute></action></item>
+        <item label="KPPP-Protokoll-Betrachter"><action name="Execute"><execute>kppplogview</execute></action></item>
+        <item label="KPPP"><action name="Execute"><execute>kppp</execute></action></item>
+        <item label="KRDC"><action name="Execute"><execute>krdc -caption "%%c"</execute></action></item>
+        <item label="Konqueror"><action name="Execute"><execute>kfmclient openProfile webbrowsing</execute></action></item>
+        <item label="Kopete"><action name="Execute"><execute>kopete -caption "%%c"</execute></action></item>
+        <item label="LibreOffice Writer/Web"><action name="Execute"><execute>loweb</execute></action></item>
+        <item label="Midori"><action name="Execute"><execute>midori</execute></action></item>
+        <item label="OpenArena Server"><action name="Execute"><execute>terminator -e openarena-server</execute></action></item>
+        <item label="Openrpg"><action name="Execute"><execute>openrpg</execute></action></item>
+        <item label="Opera"><action name="Execute"><execute>/usr/bin/opera</execute></action></item>
+        <item label="Pidgin Internet-Sofortnachrichtendienst"><action name="Execute"><execute>pidgin</execute></action></item>
+        <item label="Pino - Twitter and Identi.ca client"><action name="Execute"><execute>pino</execute></action></item>
+        <item label="Turpial"><action name="Execute"><execute>turpial</execute></action></item>
+        <item label="Webbrowser"><action name="Execute"><execute>exo-open --launch WebBrowser</execute></action></item>
+        <item label="Wicd"><action name="Execute"><execute>/usr/bin/wicd-client</execute></action></item>
+        <item label="XChat IRC"><action name="Execute"><execute>xchat</execute></action></item>
+        <item label="heybuddy - Identi.ca µblogging client"><action name="Execute"><execute>heybuddy</execute></action></item>
+    </menu>
+    <menu id="Entwicklung" label="Entwicklung">
+        <item label="Akonadi-Konsole"><action name="Execute"><execute>akonadiconsole</execute></action></item>
+        <item label="CMake"><action name="Execute"><execute>cmake-gui</execute></action></item>
+        <item label="Cervisia"><action name="Execute"><execute>cervisia -caption "%%c" %%i</execute></action></item>
+        <item label="Code::Blocks IDE"><action name="Execute"><execute>codeblocks</execute></action></item>
+        <item label="Emacs Texteditor"><action name="Execute"><execute>emacs</execute></action></item>
+        <item label="Eric 5 IDE"><action name="Execute"><execute>eric5</execute></action></item>
+        <item label="Glade Oberflächenentwicklung"><action name="Execute"><execute>glade-3</execute></action></item>
+        <item label="KAppTemplate"><action name="Execute"><execute>kapptemplate</execute></action></item>
+        <item label="KCachegrind"><action name="Execute"><execute>kcachegrind -caption "%%c"</execute></action></item>
+        <item label="KDE-Source-Builder"><action name="Execute"><execute>terminator -e kdialog --sorry "kdesrc-build is a command-line only program. Please read the handbook at help:/kdesrc-build for more information."</execute></action></item>
+        <item label="KDevelop 4"><action name="Execute"><execute>kdevelop</execute></action></item>
+        <item label="KImageMapEditor"><action name="Execute"><execute>kimagemapeditor -caption "%%c" %%i</execute></action></item>
+        <item label="KLinkStatus"><action name="Execute"><execute>klinkstatus %%i  -caption "%%c"</execute></action></item>
+        <item label="KUIViewer"><action name="Execute"><execute>kuiviewer -caption "%%c"</execute></action></item>
+        <item label="Komodo Edit 6"><action name="Execute"><execute>/opt/komodoedit/bin/komodo</execute></action></item>
+        <item label="Kompare"><action name="Execute"><execute>kompare -caption "%%c" -o</execute></action></item>
+        <item label="Lokalize"><action name="Execute"><execute>lokalize %%i -caption "%%c"</execute></action></item>
+        <item label="OpenJDK Monitoring &amp; Management Console"><action name="Execute"><execute>/usr/bin/jconsole</execute></action></item>
+        <item label="OpenJDK Policy Tool"><action name="Execute"><execute>/usr/bin/policytool</execute></action></item>
+        <item label="Qt Assistant"><action name="Execute"><execute>/usr/bin/assistant</execute></action></item>
+        <item label="Qt Designer"><action name="Execute"><execute>/usr/bin/designer</execute></action></item>
+        <item label="Qt Linguist"><action name="Execute"><execute>/usr/bin/linguist</execute></action></item>
+        <item label="Qt-Creator"><action name="Execute"><execute>/usr/bin/qtcreator</execute></action></item>
+        <item label="SciTE Text Editor"><action name="Execute"><execute>SciTE</execute></action></item>
+        <item label="Umbrello"><action name="Execute"><execute>umbrello -caption "%%c"</execute></action></item>
+    </menu>
+    <menu id="Einstellungen" label="Einstellungen">
+        <item label="ATI Catalyst Control Center"><action name="Execute"><execute>amdcccle</execute></action></item>
+        <item label="Arbeitsflächen"><action name="Execute"><execute>xfwm4-workspace-settings</execute></action></item>
+        <item label="Awn Settings"><action name="Execute"><execute>awn-settings</execute></action></item>
+        <item label="Benachrichtigungen"><action name="Execute"><execute>xfce4-notifyd-config</execute></action></item>
+        <item label="Bevorzugte Anwendungen"><action name="Execute"><execute>exo-preferred-applications</execute></action></item>
+        <item label="Bevorzugte Anwendungen"><action name="Execute"><execute>libfm-pref-apps</execute></action></item>
+        <item label="Broadcast Accounts"><action name="Execute"><execute>gwibber-accounts</execute></action></item>
+        <item label="Broadcast Preferences"><action name="Execute"><execute>gwibber-preferences</execute></action></item>
+        <item label="Dateimanager"><action name="Execute"><execute>thunar-settings</execute></action></item>
+        <item label="Drucksystem-Einstellungen"><action name="Execute"><execute>xfprint-settings</execute></action></item>
+        <item label="Einstellungen für Orage"><action name="Execute"><execute>orage -p</execute></action></item>
+        <item label="Energieverwaltung"><action name="Execute"><execute>xfce4-power-manager-settings</execute></action></item>
+        <item label="Erscheinungsbild anpassen"><action name="Execute"><execute>lxappearance</execute></action></item>
+        <item label="Feineinstellungen des Fensterverhaltens"><action name="Execute"><execute>xfwm4-tweaks-settings</execute></action></item>
+        <item label="Fensterverwaltung"><action name="Execute"><execute>xfwm4-settings</execute></action></item>
+        <item label="Leiste tint2"><action name="Execute"><execute>tint2conf</execute></action></item>
+        <item label="Leiste"><action name="Execute"><execute>xfce4-panel -p</execute></action></item>
+        <item label="Monitor Settings"><action name="Execute"><execute>lxrandr</execute></action></item>
+        <item label="Openbox Configuration Manager"><action name="Execute"><execute>obconf</execute></action></item>
+        <item label="Opera Widget Manager"><action name="Execute"><execute>/usr/bin/opera-widget-manager</execute></action></item>
+        <item label="Passwort ändern"><action name="Execute"><execute>kdepasswd</execute></action></item>
+        <item label="Qt Config"><action name="Execute"><execute>/usr/bin/qtconfig</execute></action></item>
+        <item label="Schreibtisch"><action name="Execute"><execute>xfdesktop-settings</execute></action></item>
+        <item label="Sitzung und Startverhalten"><action name="Execute"><execute>xfce4-session-settings</execute></action></item>
+        <item label="Systemeinstellungen"><action name="Execute"><execute>systemsettings -caption "%%c" %%i</execute></action></item>
+        <item label="Wechseldatenträger- und Medieneinstellungen"><action name="Execute"><execute>thunar-volman-settings</execute></action></item>
+    </menu>
+    <menu id="Systemwerkzeuge" label="Systemwerkzeuge">
+        <item label="Abmelden"><action name="Execute"><execute>xfce4-session-logout</execute></action></item>
+        <item label="Avahi Zeroconf Browser"><action name="Execute"><execute>/usr/bin/avahi-discover</execute></action></item>
+        <item label="Bulk-Rename"><action name="Execute"><execute>/usr/lib/Thunar/ThunarBulkRename</execute></action></item>
+        <item label="Cairo Composite Manager"><action name="Execute"><execute>cairo-compmgr</execute></action></item>
+        <item label="Dateimanager Thunar"><action name="Execute"><execute>Thunar</execute></action></item>
+        <item label="Dolphin"><action name="Execute"><execute>dolphin %%i -caption "%%c"</execute></action></item>
+        <item label="GParted"><action name="Execute"><execute>gksu /usr/sbin/gparted</execute></action></item>
+        <item label="Htop"><action name="Execute"><execute>terminator -e htop</execute></action></item>
+        <item label="KDiskFree"><action name="Execute"><execute>kdf -caption "%%c"</execute></action></item>
+        <item label="KSystemLog"><action name="Execute"><execute>ksystemlog %%i -caption "%%c"</execute></action></item>
+        <item label="KUser"><action name="Execute"><execute>kuser %%i -caption "%%c"</execute></action></item>
+        <item label="Konqueror (Systemverwaltungsmodus)"><action name="Execute"><execute>konqueror --profile filemanagement</execute></action></item>
+        <item label="Konqueror"><action name="Execute"><execute>kfmclient openURL</execute></action></item>
+        <item label="Konqueror"><action name="Execute"><execute>kfmclient openURL  application/x-webarchive</execute></action></item>
+        <item label="Konqueror"><action name="Execute"><execute>kfmclient openURL  inode/directory</execute></action></item>
+        <item label="Konqueror"><action name="Execute"><execute>kfmclient openURL  text/html</execute></action></item>
+        <item label="Konsole"><action name="Execute"><execute>konsole</execute></action></item>
+        <item label="Krfb"><action name="Execute"><execute>krfb -caption "%%c" %%i</execute></action></item>
+        <item label="KwikDisk"><action name="Execute"><execute>kwikdisk -caption "%%c"</execute></action></item>
+        <item label="LXDE-Taskmanager"><action name="Execute"><execute>lxtask</execute></action></item>
+        <item label="Laufwerksverwaltung"><action name="Execute"><execute>palimpsest</execute></action></item>
+        <item label="Nepomuk-Sicherung"><action name="Execute"><execute>nepomukbackup</execute></action></item>
+        <item label="Ordner in Thunar öffnen"><action name="Execute"><execute>Thunar</execute></action></item>
+        <item label="Systemmonitor"><action name="Execute"><execute>ksysguard</execute></action></item>
+        <item label="Task Manager"><action name="Execute"><execute>xfce4-taskmanager</execute></action></item>
+        <item label="Terminal"><action name="Execute"><execute>Terminal</execute></action></item>
+        <item label="Verwaltung für digitale Brieftasche"><action name="Execute"><execute>kwalletmanager</execute></action></item>
+        <item label="gtkpacman"><action name="Execute"><execute>gksu gtkpacman</execute></action></item>
+    </menu>
+    <separator />
+    <menu id="Konfiguration von Openbox" label="Konfiguration von Openbox">
+        <item label="Openbox neu konfigurieren"><action name="Reconfigure" /></item>
+        <item label="Openbox Configuration Manager"><action name="Execute"><execute>obconf</execute></action></item>
+        <item label="Konfiguriere automatisch gestartete Anwendungen"><action name="Execute"><execute>gvim /home/karl/.config/openbox/autostart.sh</execute></action></item>
+        <item label="Bearbeite rc.xml"><action name="Execute"><execute>gvim /home/karl/.config/openbox/rc.xml</execute></action></item>
+        <separator label="Einstellungen von obmenugen"/>
+        <item label="Bearbeite Konfiguration von obmenugen"><action name="Execute"><execute>gvim /home/karl/.config/obmenugen/obmenugen.cfg</execute></action></item>
+        <item label="Bearbeite Ausschlussliste von obmenugen"><action name="Execute"><execute>gvim /home/karl/.config/obmenugen/exclusions</execute></action></item>
+        <item label="Bearbeite Schema von obmenugen"><action name="Execute"><execute>gvim /home/karl/.config/obmenugen/obmenugen.schema</execute></action></item>
+    </menu>
+    <separator />
+    <item label="Bildschirm sperren"><action name="Execute"><execute>slock</execute></action></item>
+    <item label="Beenden"><action name="Exit" /></item>
+</menu>
+</openbox_menu>

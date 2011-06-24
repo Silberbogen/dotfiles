@@ -1,0 +1,2 @@
+<menu id="devices" label="Devices" execute="/usr/bin/obdevicemenu" />
+

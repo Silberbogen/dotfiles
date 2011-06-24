@@ -1,0 +1,9 @@
+out_to_console yes
+out_to_x no
+background no
+update_interval 2
+total_run_times 0
+use_spacer none
+
+TEXT
+\\#32a2f3\${freq_g} GHz \\#32a26e\${cpu cpu1}% \\#ffffff\• \\#f4cf00\${loadavg 2 3} \\#ffffff\• \\#7171ed\$memperc% \\#00b5de\$mem \\#ffffff\• \\#e0d93b\${fs_free /} \\#ffffff\• \\#32a2f3\${wireless_essid wlan0}\\#ffffff\ • \\#00d1a0\${downspeed wlan0} \\#ffffff\• \\#f40000\${upspeed wlan0}\\#ffffff\ • \\#f38b32\${time %a, %d. %b %H:%M%P}

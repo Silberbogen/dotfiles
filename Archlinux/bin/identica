@@ -1,0 +1,2 @@
+#!/bin/bash
+torify ttytter -apibase=http://identi.ca/api -authtype=basic -user=USERNAME:PASSWORD

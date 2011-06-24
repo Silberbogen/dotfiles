@@ -1,0 +1,108 @@
+#!/bin/sh
+
+# dbus-start
+#if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; 
+#then
+#       eval "$(dbus-launch --sh-syntax --exit-with-session)"
+#fi
+
+#source /etc/X11/xinit/xinitrc.d/30-dbus
+#export MEMCPU='memcpu'
+
+# Dropbox entschlüsseln
+#echo "YOURPASSWORD" | encfs -S ~/Dropbox/Encoded ~/DropBox_Decoded
+
+DEFAULT_SESSION=awesome
+synclient touchpadoff=1 &
+setxkbmap -layout de nodeadkeys &
+#$XDG_CONFIG_HOME/wmfs/autostart.sh &
+#(sleep 3s && xfce4-power-manager) &
+#(sleep 45s && dropbox start) &
+#unclutter &
+# exec ck-launch-session dbus-launch irgendwas
+
+case $1 in
+awesome)
+    volumeicon &
+#	conky &
+	exec ck-launch-session dbus-launch awesome
+	;;
+dwm)
+	conky -c .conkydwm | while read -r; do xsetroot -name "$REPLY"; done &
+	nitrogen --restore &
+	unclutter &
+	exec ck-launch-session dbus-launch dwm
+	;;
+e17)
+	exec ck-launch-session dbus-launch enlightenment_start
+	;;
+fluxbox)
+	volumeicon &
+	conky -q -c .conkyrcfluxbox &
+	unclutter &
+	(sleep 3s && mmaker -vf Fluxbox) &
+	exec ck-launch-session dbus-launch startfluxbox
+	;;
+fvwm)
+	exec ck-launch-session dbus-launch fvwm
+	;;
+gnome-session)
+	exec ck-launch-session dbus-launch gnome-session
+	;;
+i3)
+	exec ck-launch-session dbus-launch i3
+	;;
+lxde)
+	exec ck-launch-session dbus-launch startlxde
+	;;
+musca)
+	nitrogen --restore &
+	exec ck-launch-session dbus-launch musca
+	;;
+openbox)
+	exec ck-launch-session dbus-launch openbox-session
+	;;
+pekwm)
+	exec ck-launch-session dbus-launch pekwm
+	;;
+ratpoison)
+	#xmodmap .xmodmaprc &
+	nitrogen --restore &
+	exec ck-launch-session dbus-launch ratpoison
+	;;
+scrotwm)
+	#conky -c .conkydwm | while read -r; do xsetroot -name "$REPLY"; done &
+	(sleep 1s && nitrogen --restore) &
+	exec ck-launch-session dbus-launch scrotwm
+	;;
+startkde)
+	exec ck-launch-session dbus-launch startkde
+	;;
+wmfs)
+	volumeicon &
+	#(sleep 1s && nitrogen --restore) &
+	conky | while read -r; do wmfs -s -name "$REPLY"; done &
+	#(sleep 3s && unclutter) &
+	exec ck-launch-session dbus-launch wmfs
+	;;
+wmii)
+	conky &
+	volumeicon &
+	exec ck-launch-session dbus-launch wmii
+	;;
+xfce)
+	exec ck-launch-session dbus-launch startxfce4
+	;;
+xmonad)
+	xsetroot -cursor_name left_ptr &
+	volumeicon &
+	exec ck-launch-session dbus-launch xmonad
+	;;
+*)
+	volumeicon &
+	#(sleep 1s && nitrogen --restore) &
+	conky | while read -r; do wmfs -s -name "$REPLY"; done &
+	#(sleep 3s && unclutter) &
+	exec ck-launch-session dbus-launch $DEFAULT_SESSION
+	;;
+esac
