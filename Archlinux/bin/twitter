@@ -1,3 +1,5 @@
 #!/bin/bash
+# Since Perl 5.14, the export is needed
+export PERL_SIGNALS=unsafe
 torify ttytter
 
