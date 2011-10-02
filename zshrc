@@ -41,34 +41,46 @@ if [ "$TERM" = "linux" ]; then
   clear #for background artifacting
 fi
 
-export http_proxy="http://127.0.0.1:8118"
-
 export MEMCPU='memcpu'
-export PATH="~/bin/:/usr/lib/colorgcc/bin:$PATH"
+export PATH="/usr/lib/go:/usr/share/go:~/bin:/bin/:/usr/lib/colorgcc/bin:$PATH"
+#export http_proxy="http://127.0.0.1:8123"  # Polipo
+export http_proxy="http://127.0.0.1:8118"  # Privoxy
+#export http_proxy="http://127.0.0.1:3128"  # Squid (+ Privoxy + TOR)
 
-alias chromium='chromium --ignore-gpu-blacklist'
+alias chromium='chromium --proxy-server="http://127.0.0.1:8118" --ignore-gpu-blacklist'
 alias ctw='ctw --refresh=10 GMXX0067'
 alias gcc='gcc -std=c99'
-#alias gwibber='torify gwibber'
-#alias heybuddy='torify heybuddy'
-#alias identicurse='torify identicurse'
-#alias irssi='torify irssi'
-#alias links='torify links'
+alias gwibber='torify gwibber'
+alias heybuddy='torify heybuddy'
+alias identicurse='torify identicurse'
+alias irssi='torify irssi'
+alias links='torify links'
 alias lint='splint'
 #alias ls='ls -CF'
-#alias lynx='torify lynx'
-#alias mutt='torify mutt'
+alias lynx='torify lynx'
+alias mutt='torify mutt'
 #alias -g pacman="pacman-color"
-#alias pino='torify pino'
-#alias qataki='torify qataki'
+alias pino='torify pino'
+alias psg='ps -A | grep '
+alias qataki='torify qataki'
 alias ruby='ruby -KU'
 alias tty-clock='tty-clock -sc -C 4'
 alias ttyclock='tty-clock -sc -C 4'
 #alias ttytter='torify ttytter'
 alias vlock='vlock -a'
-#alias w3m='torify w3m'
+alias w3m='torify w3m'
 alias wetter='ctw --refresh=10 GMXX0067'
 alias taschenrechner='speedcrunch'
+# gc                                                                                                                                                                     
+prefixes=(5 6 8)
+for p in $prefixes; do
+        compctl -g "*.${p}" ${p}l
+        compctl -g "*.go" ${p}g
+done
+# standard go tools
+compctl -g "*.go" gofmt
+# gccgo
+compctl -g "*.go" gccgo  
 
 PROMPT="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%1~ %{$reset_color%}%# "
 RPROMPT="[%{$fg[yellow]%}%?%{$reset_color%}]"
@@ -83,4 +95,6 @@ notizsuche() {
 
 #fortune | cowsay
 #pal -r 2
+
+9 fortune
 
