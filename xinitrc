@@ -10,7 +10,7 @@
 #export MEMCPU='memcpu'
 
 # Dropbox entschlüsseln
-echo "KENNWORT" | encfs -S ~/Dropbox/Encoded ~/DropBox_Decoded
+echo "PLACEFORYOURPASSWORD" | encfs -S ~/Dropbox/Encoded ~/DropBox_Decoded
 
 DEFAULT_SESSION=awesome
 synclient touchpadoff=1 &
@@ -21,8 +21,13 @@ setxkbmap -layout de nodeadkeys &
 #(sleep 45s && dropbox start) &
 #unclutter &
 # exec ck-launch-session dbus-launch irgendwas
+export http_proxy="http://127.0.0.1:8118" # privoxy  
+#export http_proxy="http://127.0.0.1:8123" # polipo
 
 case $1 in
+9wm)
+    exec ck-launch-session dbus-launch 9wm
+    ;;
 awesome)
 	volumeicon &
 	xfce4-power-manager &
@@ -107,6 +112,9 @@ ratpoison)
         (sleep 45s && dropboxd start) &
 	exec ck-launch-session dbus-launch ratpoison
 	;;
+rio)
+    exec ck-launch-session dbus-launch rio
+    ;;
 scrotwm)
 	#conky -c .conkydwm | while read -r; do xsetroot -name "$REPLY"; done &
 	(sleep 1s && nitrogen --restore) &
@@ -135,10 +143,10 @@ wmii)
 	conky &
 	volumeicon &
 	xfce4-power-manager &
-        xscreensaver -no-splash &
-	(sleep 1s && nitrogen --restore) &
-        (sleep 45s && dropboxd start) &
-        wicd-gtk &
+    xscreensaver -no-splash &
+	(sleep 3s && nitrogen --restore) &
+    (sleep 45s && dropboxd start) &
+    wicd-gtk &
 #        guake &
 	exec ck-launch-session dbus-launch wmii
 	;;

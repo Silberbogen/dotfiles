@@ -7,10 +7,10 @@ theme=cdm
 countfrom=1
 
 # List all WM binary names
-wmbinlist=(dwm xfce awesome wmii i3 scrotwm e17 wmfs)
+wmbinlist=(dwm awesome wmii scrotwm i3 wmfs xfce rio 9wm startkde e17 gnome)
 
 # List all WM display names
-wmdisplist=(dwm Xfce awesome wmii i3 ScrotWM enlightenment wmfs) 
+wmdisplist=(dwm awesome wmii ScrotWM i3 wmfs Xfce rio 9wm KDE enlightenment GNOME)
 
 # Allow console login?
 allowconsole=yes
@@ -22,6 +22,7 @@ rebootcommand='sudo shutdown -r now'
 
 # Allow suspend?
 # Note that this option requires pm-utils
+
 # to be installed and properly configured.
 allowsuspend=no
 suspendcommand='sudo pm-suspend'
@@ -37,19 +38,19 @@ userconfig=(courtney)
 
 courtney() {
 	# Set CDM theme
-	theme=lime
+	theme=cdm
 
 	# List user allowed WM binary names
-	wmbinlist=(openbox-session)
+	wmbinlist=(xfce startkde awesome wmii)
 
 	# List user allowed WM display names
-	wmdisplist=(Openbox)
+	wmdisplist=(Xfce KDE awesome wmii)
 
 	# Allow console login?
 	allowconsole=yes
 
 	# Allow shutdown?
-	allowshutdown=no
+	allowshutdown=yes
 
 	# Set specific display for user
 	# (Not honored unless locktty=yes)
