@@ -2,12 +2,17 @@
 
 (in-package :stumpwm)
 
-(run-shell-command "xmodmap -e 'clear Mod4'" t)
-(run-shell-command "xmodmap -e 'keycode 133 = F20'" t)
-(set-prefix-key (kbd "F20"))
-(run-shell-command "xmodmap -e 'keycode 135 = Hyper_L'" t)
-(run-shell-command "xmodmap -e 'clear mod5'" t)
-(run-shell-command "xmodmap -e 'add mod5 = Hyper_L'" t)
+;;; Verworfene Lösungen
+;(run-shell-command "xmodmap -e 'clear Mod4'" t)
+;(run-shell-command "xmodmap -e 'keycode 133 = F20'" t)
+;(set-prefix-key (kbd "F20"))
+;(run-shell-command "xmodmap -e 'keycode 135 = Hyper_L'" t)
+;(run-shell-command "xmodmap -e 'clear mod5'" t)
+;(run-shell-command "xmodmap -e 'add mod5 = Hyper_L'" t)
+;(set-prefix-key (kbd "C-y"))
+;(set-prefix-key (kbd "C-<"))
+;(set-prefix-key (kbd "F20"))
+;(set-prefix-key (kbd "Super_L"))
 
 (defcommand claws-mail () ()
   "Starte/wechsle zu Claws-Mail."
@@ -53,10 +58,14 @@
   "Starte/wechsle zu X-Chat."
   (run-or-raise "xchat" '(:class "Xchat")))
 
-;; Den nervenden Cursor verbannen
-(banish-pointer)
 
-;; Groups    
+
+;; Bewege den Focus und anschließend die Maus in das Fenster
+(defcommand move-focus-warp (dir) ((:direction "Direction:"))
+(move-focus-and-or-window dir)
+(banish-pointer :window))
+
+;; Erzeuge Gruppen    
 (run-commands
       "grename Standard" 
       "gnewbg WWW"
@@ -68,38 +77,26 @@
       "gnewbg Acht"
       "gnewbg Neun")
 
-;(set-prefix-key (kbd "C-y"))
-;(set-prefix-key (kbd "C-<"))
-;(set-prefix-key (kbd "F20"))
-;(set-prefix-key (kbd "Super_L"))
+;; Übersicht zu Zusatztasten
+;; M-s = ALT+SUPER
+;; s- = SUPER
+;; S- = SHIFT
+;; C- = Control/STRG
+;; H- = ALT-GR
 
-(define-key *top-map* (kbd "C-Left") "move-focus left")
-(define-key *top-map* (kbd "C-Right") "move-focus right")
-(define-key *top-map* (kbd "C-Down") "move-focus down")
-(define-key *top-map* (kbd "C-Up") "move-focus up")
-
-(define-key *top-map* (kbd "M-1") "gselect 1")
-(define-key *top-map* (kbd "M-2") "gselect 2")
-(define-key *top-map* (kbd "M-3") "gselect 3")
-(define-key *top-map* (kbd "M-4") "gselect 4")
-(define-key *top-map* (kbd "M-5") "gselect 5")
-(define-key *top-map* (kbd "M-6") "gselect 6")
-(define-key *top-map* (kbd "M-7") "gselect 7")
-(define-key *top-map* (kbd "M-8") "gselect 8")
-(define-key *top-map* (kbd "M-9") "gselect 9")
-
+;; Programme über den stumpwm-like Escape-Modus starten
 (define-key *root-map* (kbd "M-a") "exec uxterm -e abook ")
 (define-key *root-map* (kbd "M-c") "claws-mail")
 (define-key *root-map* (kbd "M-d") "deluge")
 (define-key *root-map* (kbd "M-e") "emacs")
 (define-key *root-map* (kbd "M-f") "firefox")
 (define-key *root-map* (kbd "M-g") "gvim")
+
 (define-key *root-map* (kbd "M-k") "keepassx")
 (define-key *root-map* (kbd "M-m") "exec uxterm -e mc ")
 (define-key *root-map* (kbd "M-n") "nitrogen")
 (define-key *root-map* (kbd "M-o") "okular")
 (define-key *root-map* (kbd "P") "exec dmenu_run ")
-(define-key *top-map* (kbd "M-p") "exec dmenu_run ")
 (define-key *root-map* (kbd "M-s") "exec surf ")
 (define-key *root-map* (kbd "M-t") "exec thunar ")
 (define-key *root-map* (kbd "M-T") "turpial")
@@ -109,24 +106,134 @@
 (define-key *root-map* (kbd "M-x") "xchat")
 (define-key *root-map* (kbd "M-z") "exec zathura ")
 
+(define-key *root-map* (kbd "DEL") "repack-window-numbers")
+(define-key *root-map* (kbd "I") "show-window-properties")
+
+;; Neuere Tasten
+
+;;; Fenster - Verhalten dwm-like
+(define-key *top-map* (kbd "s-Left") "move-focus-warp left")
+(define-key *top-map* (kbd "s-S-Left") "move-window left")
+
+(define-key *top-map* (kbd "s-Right") "move-focus-warp right")
+(define-key *top-map* (kbd "s-S-Right") "move-window right")
+
+(define-key *top-map* (kbd "s-Up") "move-focus-warp up")
+(define-key *top-map* (kbd "s-S-Up") "move-window up")
+
+(define-key *top-map* (kbd "s-Down") "move-focus-warp down")
+(define-key *top-map* (kbd "s-S-Down") "move-window down")
+
+ ;; Durch Fenster wechseln - dwm-like
+(define-key *top-map* (kbd "s-Tab") "next-in-frame")
+(define-key *top-map* (kbd "s-ISO_Left_Tab") "prev-in-frame")     ;; this is Shift Tab
+
+;; Gruppen - Verhalten ist dwm-like
+
+(define-key *top-map* (kbd "M-s-Left") "gprev")
+(define-key *top-map* (kbd "M-s-Right") "gnext")
+(define-key *top-map* (kbd "M-S-s-Left") "gprev-with-window")
+(define-key *top-map* (kbd "M-S-s-Right") "gnext-with-window")
+
+(define-key *top-map* (kbd "s-SPC") "gother")     ;; Go to last group
+(define-key *top-map* (kbd "Pause") "gother")
+(define-key *top-map* (kbd "C-Pause") "grouplist")
+
+(define-key *top-map* (kbd "s-1") "gselect 1")
+(define-key *top-map* (kbd "s-2") "gselect 2")
+(define-key *top-map* (kbd "s-3") "gselect 3")
+(define-key *top-map* (kbd "s-4") "gselect 4")
+(define-key *top-map* (kbd "s-5") "gselect 5")
+(define-key *top-map* (kbd "s-6") "gselect 6")
+(define-key *top-map* (kbd "s-7") "gselect 7")
+(define-key *top-map* (kbd "s-8") "gselect 8")
+(define-key *top-map* (kbd "s-9") "gselect 9")
+(define-key *top-map* (kbd "s-0") "gselect 0")
+
+(define-key *top-map* (kbd "M-s-1") "gmove 1")
+(define-key *top-map* (kbd "M-s-2") "gmove 2")
+(define-key *top-map* (kbd "M-s-3") "gmove 3")
+(define-key *top-map* (kbd "M-s-4") "gmove 4")
+(define-key *top-map* (kbd "M-s-5") "gmove 5")
+(define-key *top-map* (kbd "M-s-6") "gmove 6")
+(define-key *top-map* (kbd "M-s-7") "gmove 7")
+(define-key *top-map* (kbd "M-s-8") "gmove 8")
+(define-key *top-map* (kbd "M-s-9") "gmove 9")
+(define-key *top-map* (kbd "M-s-0") "gmove 0")
+
+;; Terminal + anderes
+(define-key *top-map* (kbd"s-RET") "exec uxterm -e 'tcsh' ")
+(define-key *top-map* (kbd "S-s-RET") "fullscreen")
+(define-key *top-map* (kbd "s-;") "colon")
+(define-key *top-map* (kbd "s-:") "eval")
+(define-key *top-map* (kbd "s-!") "exec")
+(define-key *top-map* (kbd "s-#") "mark")
+(define-key *top-map* (kbd "s-?") "*HELP-MAP*")
+
+(define-key *top-map* (kbd "s-a") "time")
+(define-key *top-map* (kbd "s-A") "title")
+(define-key *top-map* (kbd "s-b") "banish")
+(define-key *top-map* (kbd "s-c") "exec uxterm -e 'tcsh'")
+(define-key *top-map* (kbd "s-e") "emacs")
+(define-key *top-map* (kbd "s-f") "fselect")
+(define-key *top-map* (kbd "s-F") "curframe")
+(define-key *top-map* (kbd "s-g") "abort")
+(define-key *top-map* (kbd "s-G") "vgroups")
+(define-key *top-map* (kbd "s-i") "info")
+(define-key *top-map* (kbd "s-I") "show-window-properties")
+(define-key *top-map* (kbd "s-k") "delete")
+(define-key *top-map* (kbd "s-K") "kill")
+(define-key *top-map* (kbd "s-l") "redisplay")
+(define-key *top-map* (kbd "s-m") "lastmsg")
+(define-key *top-map* (kbd "s-n") "pull-hidden-next")
+(define-key *top-map* (kbd "s-N") "next")
+(define-key *top-map* (kbd "C-s-n") "next-in-frame")
+(define-key *top-map* (kbd "C-s-N") "number")
+(define-key *top-map* (kbd "s-o") "fnext")
+(define-key *top-map* (kbd "s-p") "pull-hidden-previous")
+(define-key *top-map* (kbd "s-P") "prev")
+(define-key *top-map* (kbd "C-s-p") "prev-in-frame")
+(define-key *top-map* (kbd "s-Q") "only")
+(define-key *top-map* (kbd "s-r") "iresize")
+(define-key *top-map* (kbd "s-R") "remove")
+(define-key *top-map* (kbd "s-s") "vsplit")
+(define-key *top-map* (kbd "s-S") "hsplit")
+(define-key *top-map* (kbd "s-t") "send-escape")
+(define-key *top-map* (kbd "s-u") "next-urgent")
+(define-key *top-map* (kbd "s-v") "version")
+(define-key *top-map* (kbd "s-w") "windows")
+(define-key *top-map* (kbd "s-W") "place-existing-windows")
+
+;; Direkte Funktionstasten - dwm-like
 (define-key *top-map* (kbd "Print") "exec scrot ")
 (define-key *top-map* (kbd "XF86HomePage") "firefox")
 (define-key *top-map* (kbd "XF86Mail") "claws-mail")
 
-(define-key *root-map* (kbd"RET") "exec uxterm -e 'tcsh' ")
-(define-key *top-map* (kbd "M-RET") "fullscreen")
-(define-key *top-map* (kbd "M-Left") "gprev")
-(define-key *top-map* (kbd "M-Right") "gnext")
-(define-key *top-map* (kbd "M-TAB") "other")
-
-(define-key *top-map* (kbd "Pause") "gother")
-(define-key *top-map* (kbd "C-Pause") "grouplist")
-
-(define-key *root-map* (kbd "DEL") "repack-window-numbers")
-(define-key *root-map* (kbd "I") "show-window-properties")
+(define-key *top-map* (kbd "M-s-a") "exec uxterm -e abook ")
+(define-key *top-map* (kbd "M-s-c") "claws-mail")
+(define-key *top-map* (kbd "M-s-d") "deluge")
+(define-key *top-map* (kbd "M-s-e") "emacs")
+(define-key *top-map* (kbd "M-s-f") "firefox")
+(define-key *top-map* (kbd "M-s-g") "gvim")
+(define-key *top-map* (kbd "M-s-k") "keepassx")
+(define-key *top-map* (kbd "M-s-m") "exec uxterm -e mc ")
+(define-key *top-map* (kbd "M-s-n") "nitrogen")
+(define-key *top-map* (kbd "M-s-o") "okular")
+(define-key *top-map* (kbd "M-s-p") "exec dmenu_run ")
+(define-key *top-map* (kbd "M-s-s") "exec surf ")
+(define-key *top-map* (kbd "M-s-t") "exec thunar ")
+(define-key *top-map* (kbd "M-s-T") "turpial")
+(define-key *top-map* (kbd "M-s-u") "exec uzbl-browser ")
+(define-key *top-map* (kbd "M-s-v") "vlc")
+(define-key *top-map* (kbd "M-s-w") "exec uxterm -e wicd-curses ")
+(define-key *top-map* (kbd "M-s-x") "xchat")
+(define-key *top-map* (kbd "M-s-z") "exec zathura ")
 
 ;; Sometimes using the mouse is useful too
 (setf *mouse-focus-policy* :click)
+
+;; Erst mal weg mit dem nervenden Cursor
+(banish-pointer)
 
 ;; Start SWANK
 (require 'swank)
