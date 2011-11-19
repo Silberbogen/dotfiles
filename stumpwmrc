@@ -135,7 +135,8 @@
 (define-key *top-map* (kbd "M-S-s-Left") "gprev-with-window")
 (define-key *top-map* (kbd "M-S-s-Right") "gnext-with-window")
 
-(define-key *top-map* (kbd "s-SPC") "gother")     ;; Go to last group
+(define-key *top-map* (kbd "s-SPC") "other")
+(define-key *top-map* (kbd "M-s-SPC") "gother")     ;; Go to last group
 (define-key *top-map* (kbd "Pause") "gother")
 (define-key *top-map* (kbd "C-Pause") "grouplist")
 
