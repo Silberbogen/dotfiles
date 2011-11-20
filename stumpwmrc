@@ -14,6 +14,9 @@
 ;(set-prefix-key (kbd "F20"))
 ;(set-prefix-key (kbd "Super_L"))
 
+;; Statt C-t, ist doch die wirklich unbenützte Menütaste einfach nur am geilsten!?
+(set-prefix-key (kbd "Menu"))
+
 (defcommand claws-mail () ()
   "Starte/wechsle zu Claws-Mail."
   (run-or-raise "claws-mail" '(:class "Claws-mail")))
@@ -90,12 +93,43 @@
       "grename Standard" 
       "gnewbg WWW"
       "gnewbg Emacs"
-      "gnewbg Terminals"
+      "gnewbg Media"
       "gnewbg Fuenf"
       "gnewbg Sechs"
       "gnewbg Sieben"
       "gnewbg Acht"
-      "gnewbg Neun")
+      "gnewbg Neun"
+      )
+
+;; Clear rules
+(clear-window-placement-rules)
+
+(define-frame-preference "WWW"
+  ;; frame raise lock (lock AND raise == jumpto)
+  (0 t   t :class "Claws-mail")
+  (0 t   t :class "Deluge")
+  (0 t   t :class "Firefox")
+  (0 t   t :class "surf")
+  (0 t   t :class "Turpial")
+  (0 t   t :class "Unison-gtk2")
+  (0 t   t :class "Uzbl-core")
+  (0 t   t :class "Xchat")
+  )
+
+(define-frame-preference "Emacs"
+  ;; frame raise lock (lock AND raise == jumpto)
+  (0 t   t :title "emacs")
+  (0 t   t :class "Gvim")
+  )
+
+(define-frame-preference "Media"
+  ;; frame raise lock (lock AND raise == jumpto)
+  (0 t   t :instance "aumix")
+  (0 t   t :class "MPlayer")
+  (0 t   t :class "Avidemux")
+  (0 t   t :class "Kaffeine")
+  (0 t   t :class "Vlc")
+  )
 
 ;; Übersicht zu Zusatztasten
 ;; M-s = ALT+SUPER
@@ -189,7 +223,11 @@
 (define-key *top-map* (kbd "s-:") "eval")
 (define-key *top-map* (kbd "s-!") "exec")
 (define-key *top-map* (kbd "s-#") "mark")
-(define-key *top-map* (kbd "s-?") "*HELP-MAP*")
+;(define-key *top-map* (kbd "s-?") *root-map*)
+(define-key *top-map* (kbd "s--") "fclear")
+(define-key *top-map* (kbd "s-+") "balance-frames")
+(define-key *top-map* (kbd "s-\"") "select")
+(define-key *top-map* (kbd "s-'") "windowlist")
 
 (define-key *top-map* (kbd "s-a") "time")
 (define-key *top-map* (kbd "s-A") "title")
@@ -198,13 +236,15 @@
 (define-key *top-map* (kbd "s-e") "emacs")
 (define-key *top-map* (kbd "s-f") "fselect")
 (define-key *top-map* (kbd "s-F") "curframe")
-(define-key *top-map* (kbd "s-g") "abort")
+(define-key *top-map* (kbd "s-g") *groups-map*)
 (define-key *top-map* (kbd "s-G") "vgroups")
+(define-key *top-map* (kbd "s-h") *help-map*)
 (define-key *top-map* (kbd "s-i") "info")
 (define-key *top-map* (kbd "s-I") "show-window-properties")
 (define-key *top-map* (kbd "s-k") "delete")
 (define-key *top-map* (kbd "s-K") "kill")
 (define-key *top-map* (kbd "s-l") "redisplay")
+(define-key *top-map* (kbd "s-L") "loadrc")
 (define-key *top-map* (kbd "s-m") "lastmsg")
 (define-key *top-map* (kbd "s-n") "pull-hidden-next")
 (define-key *top-map* (kbd "s-N") "next")
@@ -230,7 +270,8 @@
 (define-key *top-map* (kbd "XF86HomePage") "firefox")
 (define-key *top-map* (kbd "XF86Mail") "claws-mail")
 
-(define-key *top-map* (kbd "M-s-a") "exec uxterm -e abook ")
+(define-key *top-map* (kbd "M-s-a") "exec uxterm -e alsamixer ")
+(define-key *top-map* (kbd "M-s-A") "exec uxterm -e abook ")
 (define-key *top-map* (kbd "M-s-c") "claws-mail")
 (define-key *top-map* (kbd "M-s-d") "deluge")
 (define-key *top-map* (kbd "M-s-e") "emacs")
