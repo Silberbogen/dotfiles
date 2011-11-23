@@ -69,6 +69,10 @@
   "Starte/wechsle zu Turpial."
   (run-or-raise "turpial" '(:class "Turpial")))
 
+(defcommand uzbl-browser () ()
+  "Starte/wechsle zu Turpial."
+  (run-or-raise "uzbl-browser" '(:class "Uzbl-core")))
+
 (defcommand unison-gtk2 () ()
   "Starte/wechsle zu Unison."
   (run-or-raise "unison-gtk2" '(:class "Unison-gtk2")))
@@ -290,7 +294,7 @@
 (define-key *top-map* (kbd "M-s-s") "exec surf ")
 (define-key *top-map* (kbd "M-s-t") "exec thunar ")
 (define-key *top-map* (kbd "M-s-T") "turpial")
-(define-key *top-map* (kbd "M-s-u") "exec uzbl-browser ")
+(define-key *top-map* (kbd "M-s-u") "uzbl-browser")
 (define-key *top-map* (kbd "M-s-U") "unison-gtk2")
 (define-key *top-map* (kbd "M-s-v") "vlc")
 (define-key *top-map* (kbd "M-s-w") "exec uxterm -e wicd-curses ")
