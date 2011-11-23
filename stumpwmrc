@@ -78,7 +78,7 @@
   (run-or-raise "turpial" '(:class "Turpial")))
 
 (defcommand uzbl-browser () ()
-  "Starte/wechsle zu Turpial."
+  "Starte/wechsle zu Uzbl."
   (run-or-raise "uzbl-browser" '(:class "Uzbl-core")))
 
 (defcommand unison-gtk2 () ()
