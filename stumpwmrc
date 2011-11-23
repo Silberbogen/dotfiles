@@ -65,6 +65,14 @@
   "Starte/wechsle zu Ristretto."
   (run-or-raise "ristretto" '(:class "Ristretto")))
 
+(defcommand scid () ()
+  "Starte/wechsle zu Scid vs. PC."
+  (run-or-raise "scid" '(:class "Scid")))
+
+(defcommand surf () ()
+  "Starte/wechsle zu Surf."
+  (run-or-raise "surf" '(:class "surf")))
+
 (defcommand turpial () ()
   "Starte/wechsle zu Turpial."
   (run-or-raise "turpial" '(:class "Turpial")))
@@ -98,8 +106,8 @@
       "gnewbg WWW"
       "gnewbg Emacs"
       "gnewbg Media"
-      "gnewbg Fuenf"
-      "gnewbg Sechs"
+      "gnewbg Arbeiten"
+      "gnewbg Erholung"
       "gnewbg Sieben"
       "gnewbg Acht"
       "gnewbg Neun"
@@ -133,6 +141,22 @@
   (0 t   t :class "Avidemux")
   (0 t   t :class "Kaffeine")
   (0 t   t :class "Vlc")
+  )
+
+(define-frame-preference "Arbeiten"
+  ;; frame raise lock (lock AND raise == jumpto)
+  (0 t   t :class "okular")
+  (0 t   t :class "libreoffice-startcenter")
+  (0 t   t :class "libreoffice-writer")
+  (0 t   t :class "libreoffice-calc")
+  (0 t   t :class "libreoffice-impress")
+  (0 t   t :class "libreoffice-draw")
+  (0 t   t :class "libreoffice-math")
+  )
+
+(define-frame-preference "Erholung"
+  ;; frame raise lock (lock AND raise == jumpto)
+  (0 t   t :class "Scid")
   )
 
 ;; Übersicht zu Zusatztasten
@@ -292,6 +316,7 @@
 (define-key *top-map* (kbd "M-s-P") "palapeli")
 (define-key *top-map* (kbd "M-s-r") "ristretto")
 (define-key *top-map* (kbd "M-s-s") "exec surf ")
+(define-key *top-map* (kbd "M-s-S") "scid")
 (define-key *top-map* (kbd "M-s-t") "exec thunar ")
 (define-key *top-map* (kbd "M-s-T") "turpial")
 (define-key *top-map* (kbd "M-s-u") "uzbl-browser")
