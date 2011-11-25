@@ -165,6 +165,7 @@
 (define-frame-preference "Erholung"
   ;; frame raise lock (lock AND raise == jumpto)
   (0 t   t :class "Scid")
+  (0 t   t :class "net-minecraft-MinecraftLauncher")
   )
 
 ;; Übersicht zu Zusatztasten
