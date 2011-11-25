@@ -49,6 +49,10 @@
   "Starte/wechsle zu KeePassX."
   (run-or-raise "keepassx" '(:class "Keepassx")))
 
+(defcommand minitube () ()
+  "Starte/wechsle zu Minitube."
+  (run-or-raise "minitube" '(:class "Minitube")))
+
 (defcommand nitrogen () ()
   "Starte/wechsle zu Nitrogen."
   (run-or-raise "nitrogen" '(:class "Nitrogen")))
@@ -143,6 +147,7 @@
   (0 t   t :class "Avidemux")
   (0 t   t :class "Kaffeine")
   (0 t   t :class "Vlc")
+  (0 t   t :class "Minitube")
   )
 
 (define-frame-preference "Arbeiten"
@@ -170,29 +175,38 @@
 ;; H- = ALT-GR
 
 ;; Programme über den stumpwm-like Escape-Modus starten
-(define-key *root-map* (kbd "M-a") "exec uxterm -e abook ")
-(define-key *root-map* (kbd "M-c") "claws-mail")
-(define-key *root-map* (kbd "M-d") "deluge")
-(define-key *root-map* (kbd "M-e") "emacs")
-(define-key *root-map* (kbd "M-f") "firefox")
-(define-key *root-map* (kbd "M-g") "gvim")
+(define-key *root-map* (kbd "M-s-a") "exec uxterm -e alsamixer ")
+(define-key *root-map* (kbd "M-s-A") "exec uxterm -e abook ")
+(define-key *root-map* (kbd "M-s-c") "claws-mail")
+(define-key *root-map* (kbd "M-s-d") "deluge")
+(define-key *root-map* (kbd "M-s-e") "emacs")
+(define-key *root-map* (kbd "M-s-f") "firefox")
+(define-key *root-map* (kbd "M-s-g") "gvim")
+(define-key *root-map* (kbd "M-s-G") "gimp")
+(define-key *root-map* (kbd "M-s-k") "keepassx")
+(define-key *root-map* (kbd "M-s-K") "kaffeine")
+(define-key *root-map* (kbd "M-s-m") "minitube")
+(define-key *root-map* (kbd "M-s-M") "exec java -jar minecraft.jar ")
+(define-key *root-map* (kbd "M-s-n") "nitrogen")
+(define-key *root-map* (kbd "M-s-o") "okular")
+(define-key *root-map* (kbd "M-s-p") "exec dmenu_run ")
+(define-key *root-map* (kbd "M-s-P") "palapeli")
+(define-key *root-map* (kbd "M-s-r") "ristretto")
+(define-key *root-map* (kbd "M-s-s") "exec surf ")
+(define-key *root-map* (kbd "M-s-S") "scid")
+(define-key *root-map* (kbd "M-s-t") "exec thunar ")
+(define-key *root-map* (kbd "M-s-T") "turpial")
+(define-key *root-map* (kbd "M-s-u") "uzbl-browser")
+(define-key *root-map* (kbd "M-s-U") "unison-gtk2")
+(define-key *root-map* (kbd "M-s-v") "vlc")
+(define-key *root-map* (kbd "M-s-w") "exec uxterm -e wicd-curses ")
+(define-key *root-map* (kbd "M-s-x") "xchat")
+(define-key *root-map* (kbd "M-s-z") "zathura")
 
-(define-key *root-map* (kbd "M-k") "keepassx")
-(define-key *root-map* (kbd "M-m") "exec uxterm -e mc ")
-(define-key *root-map* (kbd "M-n") "nitrogen")
-(define-key *root-map* (kbd "M-o") "okular")
-(define-key *root-map* (kbd "P") "exec dmenu_run ")
-(define-key *root-map* (kbd "M-s") "exec surf ")
-(define-key *root-map* (kbd "M-t") "exec thunar ")
-(define-key *root-map* (kbd "M-T") "turpial")
-(define-key *root-map* (kbd "M-u") "exec uzbl-browser ")
-(define-key *root-map* (kbd "M-v") "vlc")
-(define-key *root-map* (kbd "M-w") "exec uxterm -e wicd-curses ")
-(define-key *root-map* (kbd "M-x") "xchat")
-(define-key *root-map* (kbd "M-z") "zathura")
-
+;; Zusätzliche Optionen über den StumpWM-like Escape-Modus
 (define-key *root-map* (kbd "DEL") "repack-window-numbers")
 (define-key *root-map* (kbd "I") "show-window-properties")
+(define-key *root-map* (kbd "P") "exec dmenu_run ")
 
 ;; Neuere Tasten
 
@@ -222,6 +236,7 @@
 
 (define-key *top-map* (kbd "s-SPC") "other")
 (define-key *top-map* (kbd "M-s-SPC") "gother")     ;; Go to last group
+(define-key *top-map* (kbd "C-s-SPC") "grouplist")
 (define-key *top-map* (kbd "Pause") "gother")
 (define-key *top-map* (kbd "C-Pause") "grouplist")
 
@@ -247,7 +262,7 @@
 (define-key *top-map* (kbd "M-s-9") "gmove 9")
 (define-key *top-map* (kbd "M-s-0") "gmove 0")
 
-;; Terminal + anderes
+;; Terminal + StumpWM-Funktionen als dwm-like
 (define-key *top-map* (kbd"s-RET") "exec uxterm -e 'tcsh' ")
 (define-key *top-map* (kbd "S-s-RET") "fullscreen")
 (define-key *top-map* (kbd "s-;") "colon")
@@ -296,7 +311,7 @@
 (define-key *top-map* (kbd "s-w") "windows")
 (define-key *top-map* (kbd "s-W") "place-existing-windows")
 
-;; Direkte Funktionstasten - dwm-like
+;; Direkte Funktionstasten zum Programmstart - dwm-like
 (define-key *top-map* (kbd "Print") "exec scrot ")
 (define-key *top-map* (kbd "XF86HomePage") "firefox")
 (define-key *top-map* (kbd "XF86Mail") "claws-mail")
@@ -311,7 +326,7 @@
 (define-key *top-map* (kbd "M-s-G") "gimp")
 (define-key *top-map* (kbd "M-s-k") "keepassx")
 (define-key *top-map* (kbd "M-s-K") "kaffeine")
-(define-key *top-map* (kbd "M-s-m") "exec uxterm -e mc ")
+(define-key *top-map* (kbd "M-s-m") "minitube")
 (define-key *top-map* (kbd "M-s-M") "exec java -jar minecraft.jar ")
 (define-key *top-map* (kbd "M-s-n") "nitrogen")
 (define-key *top-map* (kbd "M-s-o") "okular")
