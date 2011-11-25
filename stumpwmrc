@@ -202,6 +202,8 @@
 (define-key *root-map* (kbd "M-s-v") "vlc")
 (define-key *root-map* (kbd "M-s-w") "exec uxterm -e wicd-curses ")
 (define-key *root-map* (kbd "M-s-x") "xchat")
+(define-key *root-map* (kbd "M-s-y") "exec synclient touchpadoff=1 ")
+(define-key *root-map* (kbd "M-s-Y") "exec synclient touchpadoff=0 ")
 (define-key *root-map* (kbd "M-s-z") "zathura")
 
 ;; Zusätzliche Optionen über den StumpWM-like Escape-Modus
@@ -343,6 +345,8 @@
 (define-key *top-map* (kbd "M-s-v") "vlc")
 (define-key *top-map* (kbd "M-s-w") "exec uxterm -e wicd-curses ")
 (define-key *top-map* (kbd "M-s-x") "xchat")
+(define-key *top-map* (kbd "M-s-y") "exec synclient touchpadoff=1 ")
+(define-key *top-map* (kbd "M-s-Y") "exec synclient touchpadoff=0 ")
 (define-key *top-map* (kbd "M-s-z") "zathura")
 
 ;; Sometimes using the mouse is useful too
