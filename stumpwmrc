@@ -17,6 +17,13 @@
 ;; Statt C-t, ist doch die wirklich unbenützte Menütaste einfach nur am geilsten!?
 (set-prefix-key (kbd "Menu"))
 
+;; Farben
+(set-focus-color      "lightblue")
+(set-unfocus-color    "black")
+(set-win-bg-color     "darkblue")
+(set-fg-color         "lightblue")
+(set-bg-color         "darkblue")
+
 (defcommand claws-mail () ()
   "Starte/wechsle zu Claws-Mail."
   (run-or-raise "claws-mail" '(:class "Claws-mail")))
@@ -65,6 +72,10 @@
   "Starte/wechsle zu Palapeli."
   (run-or-raise "palapeli" '(:class "Palapeli")))
 
+(defcommand reinit () ()
+  "docstring"
+  (run-commands "reload" "loadrc"))
+
 (defcommand ristretto () ()
   "Starte/wechsle zu Ristretto."
   (run-or-raise "ristretto" '(:class "Ristretto")))
@@ -106,31 +117,63 @@
 (move-focus-and-or-window dir)
 (banish-pointer :window))
 
+;; Such- und Auswahl-Befehle
+
+(defcommand wikipedia (search)
+  ((:string "Suche in der Wikipedia nach: "))
+  "Dient zur Suche in der Wikipedia per Firefox. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec firefox http://de.wikipedia.org/wiki/" search)))
+
+(defcommand google (search)
+  ((:string "Suche in Google nach: "))
+  "Dient zur Suche bei Google per Firefox. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec firefox http://www.google.de/search?q=" search)))
+
+(defcommand open-selection-browser () ()
+  "Öffnet die markierte Webadresse per Firefox. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (run-shell-command (cat "exec firefox " (get-x-selection))))
+
+(defun cat (&rest strings)
+  "Kürzel für (concatenate 'zeichenkette foo bar)."
+  (apply 'concatenate 'string strings))
+
 ;; Erzeuge Gruppen    
 (run-commands
       "grename Standard" 
       "gnewbg WWW"
+      "gnewbg Kommunikation"
       "gnewbg Emacs"
       "gnewbg Media"
       "gnewbg Arbeiten"
       "gnewbg Erholung"
-      "gnewbg Sieben"
-      "gnewbg Acht"
+      "gnewbg System"
       "gnewbg Neun"
       )
 
 ;; Clear rules
 (clear-window-placement-rules)
 
+(define-frame-preference "Standard"
+  (0 t   t :instance "xterm")
+  (0 t   t :class "st-256color")
+  )
+
 (define-frame-preference "WWW"
   ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :class "Claws-mail")
   (0 t   t :class "Deluge")
   (0 t   t :class "Firefox")
   (0 t   t :class "surf")
-  (0 t   t :class "Turpial")
-  (0 t   t :class "Unison-gtk2")
   (0 t   t :class "Uzbl-core")
+  )
+
+(define-frame-preference "Kommunikation"
+  ;; frame raise lock (lock AND raise == jumpto)
+  (0 t   t :class "Claws-mail")
+  (0 t   t :class "Turpial")
   (0 t   t :class "Xchat")
   )
 
@@ -138,16 +181,22 @@
   ;; frame raise lock (lock AND raise == jumpto)
   (0 t   t :title "emacs")
   (0 t   t :class "Gvim")
+  (0 t   t :class "Focuswriter")
+  (0 t   t :class "Pyroom")
   )
 
 (define-frame-preference "Media"
   ;; frame raise lock (lock AND raise == jumpto)
   (0 t   t :instance "aumix")
+  (0 t   t :class "Audacious")
   (0 t   t :class "MPlayer")
   (0 t   t :class "Avidemux")
   (0 t   t :class "Kaffeine")
   (0 t   t :class "Vlc")
   (0 t   t :class "Minitube")
+  (0 t   t :class "Ristretto")
+  (0 t   t :class "K3b")
+  (0 t   t :class "Iscan")
   )
 
 (define-frame-preference "Arbeiten"
@@ -166,8 +215,25 @@
   ;; frame raise lock (lock AND raise == jumpto)
   (0 t   t :class "Scid")
   (0 t   t :class "net-minecraft-MinecraftLauncher")
+  (0 t   t :class "Desmume-glade")
+  (0 t   t :class "Desmume")
+  (0 t   t :class "Dwarf_Fortress")
+  (0 t   t :class "Dwarftherapist")
+  (0 t   t :class "flands-FLApp")
+  (0 t   t :class "russotto-zplet-ZJApp")
+  (0 t   t :class "Palapelli")
+  (0 t   t :class "warmux")
   )
 
+(define-frame-preference "System"
+  ;; frame raise lock (lock AND raise == jumpto)
+  (0 t   t :class "Keepassx")
+  (0 t   t :class "Gpg-crypter")
+  (0 t   t :class "Nitrogen")
+  (0 t   t :class "Thunar")
+  (0 t   t :class "Unison-gtk2")
+  (0 t   t :class "Xarchiver")
+  )
 ;; Übersicht zu Zusatztasten
 ;; M-s = ALT+SUPER
 ;; s- = SUPER
@@ -266,7 +332,7 @@
 (define-key *top-map* (kbd "M-s-0") "gmove 0")
 
 ;; Terminal + StumpWM-Funktionen als dwm-like
-(define-key *top-map* (kbd"s-RET") "exec uxterm -e 'tcsh' ")
+(define-key *top-map* (kbd"s-RET") "exec uxterm -fg lightblue -bg darkblue -e 'tcsh' ")
 (define-key *top-map* (kbd "S-s-RET") "fullscreen")
 (define-key *top-map* (kbd "s-;") "colon")
 (define-key *top-map* (kbd "s-:") "eval")
@@ -281,7 +347,7 @@
 (define-key *top-map* (kbd "s-a") "time")
 (define-key *top-map* (kbd "s-A") "title")
 (define-key *top-map* (kbd "s-b") "banish")
-(define-key *top-map* (kbd "s-c") "exec uxterm -e 'tcsh'")
+(define-key *top-map* (kbd "s-c") "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
 (define-key *top-map* (kbd "s-e") "emacs")
 (define-key *top-map* (kbd "s-f") "fselect")
 (define-key *top-map* (kbd "s-F") "curframe")
@@ -327,12 +393,14 @@
 (define-key *top-map* (kbd "M-s-f") "firefox")
 (define-key *top-map* (kbd "M-s-g") "gvim")
 (define-key *top-map* (kbd "M-s-G") "gimp")
+(define-key *top-map* (kbd "C-s-g") "google")
 (define-key *top-map* (kbd "M-s-k") "keepassx")
 (define-key *top-map* (kbd "M-s-K") "kaffeine")
 (define-key *top-map* (kbd "M-s-m") "minitube")
 (define-key *top-map* (kbd "M-s-M") "exec java -jar minecraft.jar ")
 (define-key *top-map* (kbd "M-s-n") "nitrogen")
 (define-key *top-map* (kbd "M-s-o") "okular")
+(define-key *top-map* (kbd "C-s-o") "open-selection-browser")
 (define-key *top-map* (kbd "M-s-p") "exec dmenu_run ")
 (define-key *top-map* (kbd "M-s-P") "palapeli")
 (define-key *top-map* (kbd "M-s-r") "ristretto")
@@ -344,10 +412,131 @@
 (define-key *top-map* (kbd "M-s-U") "unison-gtk2")
 (define-key *top-map* (kbd "M-s-v") "vlc")
 (define-key *top-map* (kbd "M-s-w") "exec uxterm -e wicd-curses ")
+(define-key *top-map* (kbd "C-s-w") "wikipedia")
 (define-key *top-map* (kbd "M-s-x") "xchat")
 (define-key *top-map* (kbd "M-s-y") "exec synclient touchpadoff=1 ")
 (define-key *top-map* (kbd "M-s-Y") "exec synclient touchpadoff=0 ")
 (define-key *top-map* (kbd "M-s-z") "zathura")
+
+;; Ein Auswahl-Menü wie es von StumpWM zum Beispiel für Gruppen oder die Hilfe geboten werden.
+;; Die Struktur ist abgestimmt mit den Gruppen
+(defparameter *start-menü*
+  '(
+
+    ("WWW"
+     ("Deluge"         "deluge")
+     ("Firefox"        "firefox")
+     ("Google"         "google")
+     ("MiniTube"       "minitube")
+     ("Surf"           "surf")
+     ("Uzbl"           "uzbl-browser")
+     ("Wikipedia"      "wikipedia")
+    )
+
+    ("Kommunikation"
+     ("Claws-Mail"     "claws-mail")
+     ("Mutt"           "st -e mutt")
+     ("Turpial"        "turpial")
+     ("X-Chat"         "xchat")
+    )    
+    
+    ("Media"
+     ("Audacious"          "audacious")
+     ("AviDeMux"           "avidemux2_qt4")
+     ("K3b Burner"         "k3b")
+     ("Kaffeine"           "kaffeine")
+     ("Lautstärke"         "uxterm -e alsamixer")
+     ("MiniTube"           "minitube")
+     ("Ristretto"          "ristretto")
+     ("VideoLan-Client"    "vlc")
+    )
+
+    ("Arbeiten"
+     ("Emacs"                     "emacs")
+     ("FocusWriter"               "focuswriter")
+     ("GIMP"                      "gimp")
+     ("gVim"                      "gvim")
+     ("LibreOffice-Startcenter"   "libreoffice-startcenter")
+     ("LibreOffice-Writer"        "libreoffice-writer")
+     ("LibreOffice-Calc"          "libreoffice-calc")
+     ("LibreOffice-Impress"       "libreoffice-impress")
+     ("LibreOffice-Draw"          "libreoffice-draw")
+     ("LibreOffice-Math"          "libreoffice-math")
+     ("Mathomatic"                "uxterm -e mathomatic")
+     ("Okular"                    "okular")
+     ("PyRoom"                    "pyroom")
+     ("Scanner"                   "iscan")
+     ("Zathura"                   "zathura")
+    )
+    
+    ("Erholung"
+     ("Desmume"               "desmume-glade")
+     ("Dwarffortress"         "dwarffortress-ih")
+     ("DwarfTherapist"        "dwarftherapist")
+     ("Fabled Lands App"      "flands")
+     ("Hitchhikers Guide"     "hitchhikersguide")
+     ("Multiplayer-Angband"   "mangband")
+     ("Minecraft"             "java -jar minecraft.jar")
+     ("MiniTube"              "minitube")
+     ("Palapelli"             "palapelli")
+     ("Scid vs. PC"           "scid")
+     ("STella"                "stella")
+     ("Warmux"                "warmux")
+     ("Zork 1"                "uxterm -e zork1")
+     ("Zork 2"                "uxterm -e zork2")
+     ("Zork 3"                "uxterm -e zork3")
+     ("ZSNES"                 "zsnes")
+    )
+    
+    ("System"
+     ("Adressbuch"                 "uxterm -e abook")
+     ("Dateimanager"               "thunar")
+     ("Event-Anzeiger XEV"         "xev")
+     ("GParted"                    "gksudo gparted")
+     ("GPG-Crypter"                "gpg-crypter")
+     ("Htop"                       "uxterm -e htop")
+     ("KeePassX"                   "keepassx")
+     ("Lautstärke"                 "uxterm -e alsamixer")
+     ("Midnight Commander"         "uxterm -e mc")
+     ("Netzwerk"                   "uxterm -e wicd-curses")
+     ("Nitrogen"                   "nitrogen")
+     ("StumpWM reinitialisieren"   "reinit")
+     ("Taschenrechner"             "speedcrunch")
+     ("Touchpad AUS"               "synclient touchpadoff=1")
+     ("Touchpad EIN"               "synclient touchpadoff=0")
+     ("UnetBootin"                 "gksudo unetbootin")
+     ("Unison"                     "unison-gtk2")
+     ("XArchiver"                  "xarchiver")
+     ("XFontSel"                   "xfontsel")
+    )
+
+    ("StumpWM"
+     ("Reinitialisieren"   "reinit")
+     ("StumpWM Homepage"   "firefox http://www.nongnu.org/stumpwm/")
+     ("StumpWM Wiki"       "firefox http://stumpwm.svkt.org/cgi-bin/wiki.pl")
+     ("Verlassen"          "quit")
+    )
+))
+
+
+(defcommand menü () ()
+  "menü dient der Abarbeitung der Optionen, die als Menüstruktur-Liste in *start-menü* hinterlegt sind."
+  (labels ((pick (options)
+                 (let ((selection (stumpwm::select-from-menu
+                                   (current-screen) options "")))
+                   (cond
+                    ((null selection)
+                     (throw 'stumpwm::error "Abbruch."))
+                    ((stringp (second selection))
+                     (second selection))
+                    (t
+                     (pick (cdr selection)))))))
+    (let ((choice (pick *start-menü*)))
+      (run-shell-command choice))))
+
+;; Die Tastenanbindung für das Menü
+(define-key *root-map* (kbd ".") "menü")
+(define-key *top-map* (kbd "s-.") "menü")
 
 ;; Sometimes using the mouse is useful too
 (setf *mouse-focus-policy* :click)
