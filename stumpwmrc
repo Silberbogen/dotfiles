@@ -211,6 +211,7 @@
   (0 t   t :class "Ristretto")
   (0 t   t :class "K3b")
   (0 t   t :class "Iscan")
+  (0 t   t :class "tvbrowser-TVBrowser")
   )
 
 (define-frame-preference "Arbeiten"
