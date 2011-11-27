@@ -2,10 +2,10 @@
 ; mit loadrc im colon neu laden
 (in-package :stumpwm)
 
-(load "Dropbox/stumpwm/contrib/sbclfix")
-(load "Dropbox/stumpwm/contrib/notificatinos")
-(load "Dropbox/stumpwm/contrib/net")
-(load "Dropbox/stumpwm/contrib/cpu.lisp")
+(load "devel/git/stumpwm/contrib/sbclfix")
+(load "devel/git/stumpwm/contrib/notifications")
+(load "devel/git/stumpwm/contrib/net")
+(load "devel/git/stumpwm/contrib/cpu")
 
 ;;; Verworfene Lösungen
 ;(run-shell-command "xmodmap -e 'clear Mod4'" t)
@@ -21,6 +21,10 @@
 
 ;; Statt C-t, ist doch die wirklich unbenützte Menütaste einfach nur am geilsten!?
 (set-prefix-key (kbd "Menu"))
+
+;; Zeichensatz - der Standardfont:
+;;(set-font "-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*")
+(set-font "-*-profont-*-*-*-*-12-*-*-*-*-*-*-*")
 
 ;; Farben
 (set-focus-color      "lightblue")
@@ -365,7 +369,8 @@
 (define-key *top-map* (kbd "s-\"") "select")
 (define-key *top-map* (kbd "s-'") "windowlist")
 (define-key *top-map* (kbd "s-,") "switch-modeline")
-	    
+
+
 (define-key *top-map* (kbd "s-a") "time")
 (define-key *top-map* (kbd "s-A") "title")
 (define-key *top-map* (kbd "s-b") "banish")
@@ -384,7 +389,7 @@
 (define-key *top-map* (kbd "s-L") "loadrc")
 (define-key *top-map* (kbd "s-m") "lastmsg")
 (define-key *top-map* (kbd "s-n") "pull-hidden-next")
-(define-key *top-map* (kbd "s-N") "next")
+(define-key *top-map* (kbd "M-s-N") "next")
 (define-key *top-map* (kbd "C-s-n") "next-in-frame")
 (define-key *top-map* (kbd "C-s-N") "number")
 (define-key *top-map* (kbd "s-o") "fnext")
@@ -585,7 +590,7 @@
 
 ;; Modeline zeigt Zeit in lokalem Format, CPU-Nutzung, Netzwerk-Verkehr, Gruppe und aktuellen Rahmen
 (setf *screen-mode-line-format*
-      (list '(:eval (run-shell-command "date '+%c'|tr -d [:cntrl:]" t)) " %t %c %l [^B%n^b] %W "))
+      (list '(:eval (run-shell-command "date '+%c'|tr -d [:cntrl:]" t)) " %t %c %l [^B%n^b] %W"))
 
 ; Zum Aktivieren der Modeline. Wahlweise auch über das ',' Tastenkürzel
 ;(enable-mode-line (current-screen) (current-head) T)
