@@ -159,6 +159,7 @@
 
 (define-frame-preference "Standard"
   (0 t   t :instance "xterm")
+  (0 t   t :class "UXTerm")
   (0 t   t :class "st-256color")
   )
 
@@ -282,6 +283,10 @@
 (define-key *root-map* (kbd "DEL") "repack-window-numbers")
 (define-key *root-map* (kbd "I") "show-window-properties")
 (define-key *root-map* (kbd "P") "exec dmenu_run ")
+
+;; Redefinieren von Standardtastenkombinationen
+(define-key *root-map* (kbd "c") "exec uxterm -fg lightblue -bg darkblue")
+(define-key *root-map* (kbd "C-c") "exec uxterm -fg lightblue -bg darkblue")
 
 ;; Neuere Tasten
 
