@@ -3,9 +3,9 @@
 (in-package :stumpwm)
 
 (load "devel/git/stumpwm/contrib/sbclfix")
-(load "devel/git/stumpwm/contrib/notifications")
 (load "devel/git/stumpwm/contrib/net")
 (load "devel/git/stumpwm/contrib/cpu")
+(load "devel/git/stumpwm/contrib/mem")
 
 ;;; Verworfene Lösungen
 ;(run-shell-command "xmodmap -e 'clear Mod4'" t)
@@ -36,6 +36,10 @@
 (defcommand claws-mail () ()
   "Starte/wechsle zu Claws-Mail."
   (run-or-raise "claws-mail" '(:class "Claws-mail")))
+
+(defcommand conkeror () ()
+  "Starte/wechsle zum Conkeror Webbrowser."
+  (run-or-raise "conkeror" '(:class "Conkeror")))
 
 (defcommand deluge () ()
   "Starte/wechsle zu Deluge."
@@ -134,21 +138,21 @@
 
 (defcommand wikipedia (search)
   ((:string "Suche in der Wikipedia nach: "))
-  "Dient zur Suche in der Wikipedia per Firefox. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  "Dient zur Suche in der Wikipedia per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec firefox http://de.wikipedia.org/wiki/" search)))
+  (run-shell-command (cat "exec conkeror http://de.wikipedia.org/wiki/" search)))
 
 (defcommand google (search)
   ((:string "Suche in Google nach: "))
-  "Dient zur Suche bei Google per Firefox. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  "Dient zur Suche bei Google per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec firefox http://www.google.de/search?q=" search)))
+  (run-shell-command (cat "exec conkeror http://www.google.de/search?q=" search)))
 
 (defcommand open-selection-browser () ()
-  "Öffnet die markierte Webadresse per Firefox. Ist dieser bereits geöffnet, so in einem neuen Tab."
-  (run-shell-command (cat "exec firefox " (get-x-selection))))
+  "Öffnet die markierte Webadresse per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (run-shell-command (cat "exec conkeror " (get-x-selection))))
 
 (defun cat (&rest strings)
   "Kürzel für (concatenate 'zeichenkette foo bar)."
@@ -178,6 +182,7 @@
 
 (define-frame-preference "WWW"
   ;; frame raise lock (lock AND raise == jumpto)
+  (0 t   t :class "Conkeror")
   (0 t   t :class "Deluge")
   (0 t   t :class "Firefox")
   (0 t   t :class "surf")
@@ -241,6 +246,8 @@
   (0 t   t :class "Palapelli")
   (0 t   t :class "Scid")
   (0 t   t :title "SuperTuxKart")
+  (0 t   t :title "t-engine")
+  (0 t   t :title "tome")
   (0 t   t :class "warmux")
   (0 t   t :class "wesnoth")
   (0 t   t :class "widelands")
@@ -265,7 +272,8 @@
 ;; Programme über den stumpwm-like Escape-Modus starten
 (define-key *root-map* (kbd "M-s-a") "exec uxterm -e alsamixer ")
 (define-key *root-map* (kbd "M-s-A") "exec uxterm -e abook ")
-(define-key *root-map* (kbd "M-s-c") "claws-mail")
+(define-key *root-map* (kbd "M-s-c") "conkeror")
+(define-key *root-map* (kbd "M-s-C") "claws-mail")
 (define-key *root-map* (kbd "M-s-d") "deluge")
 (define-key *root-map* (kbd "M-s-e") "emacs")
 (define-key *root-map* (kbd "M-s-f") "firefox")
@@ -410,12 +418,13 @@
 
 ;; Direkte Funktionstasten zum Programmstart - dwm-like
 (define-key *top-map* (kbd "Print") "exec scrot ")
-(define-key *top-map* (kbd "XF86HomePage") "firefox")
+(define-key *top-map* (kbd "XF86HomePage") "conkeror")
 (define-key *top-map* (kbd "XF86Mail") "claws-mail")
 
 (define-key *top-map* (kbd "M-s-a") "exec uxterm -e alsamixer ")
 (define-key *top-map* (kbd "M-s-A") "exec uxterm -e abook ")
-(define-key *top-map* (kbd "M-s-c") "claws-mail")
+(define-key *top-map* (kbd "M-s-c") "conkeror")
+(define-key *top-map* (kbd "M-s-C") "claws-mail")
 (define-key *top-map* (kbd "M-s-d") "deluge")
 (define-key *top-map* (kbd "M-s-e") "emacs")
 (define-key *top-map* (kbd "M-s-f") "firefox")
@@ -518,6 +527,7 @@
      ("STella"                "stella")
      ("Supertux-Kart"         "supertuxkart")
      ("T.O.M.E. 2"            "tome")
+     ("T.O.M.E. 4"            "tome4")
      ("VisualBoy Advanced m"  "gvbam")
      ("Warmux"                "warmux")
      ("Widelands"             "widelands")
@@ -588,7 +598,7 @@
 
 ;; Modeline zeigt Zeit in lokalem Format, CPU-Nutzung, Netzwerk-Verkehr, Gruppe und aktuellen Rahmen
 (setf *screen-mode-line-format*
-      (list '(:eval (run-shell-command "date '+%c '|tr -d [:cntrl:] && uptime | sed 's/.*: //; s/,//g'|tr -d [:cntrl:]" t))   " %t %c %l [^B%n^b] %W"))
+      (list '(:eval (run-shell-command "date '+%c '|tr -d [:cntrl:] && uptime | sed 's/.*: //; s/,//g'|tr -d [:cntrl:]" t))   " %t %c %M %l [^B%n^b] %W"))
 
 ; Zum Aktivieren der Modeline. Wahlweise auch über das ',' Tastenkürzel
 ;(enable-mode-line (current-screen) (current-head) T)
