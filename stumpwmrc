@@ -37,6 +37,10 @@
   "Starte/wechsle zu Claws-Mail."
   (run-or-raise "claws-mail" '(:class "Claws-mail")))
 
+(defcommand chromium () ()
+  "Starte/wechsle zum Chromium Webbrowser."
+  (run-or-raise "chromium" '(:class "Conkeror")))	    
+
 (defcommand conkeror () ()
   "Starte/wechsle zum Conkeror Webbrowser."
   (run-or-raise "conkeror" '(:class "Conkeror")))
@@ -49,9 +53,19 @@
   "Starte/wechsle zu Emacs."
   (run-or-raise "emacs" '(:class "Emacs")))
 
+(defcommand flare () ()
+  "Starte/wechsle zu Flare RPG."
+  (run-or-raise "flare" '(:class "flare.bin(defcommand emacs () ()
+  "Starte/wechsle zu Emacs."
+  (run-or-raise "emacs" '(:class "Emacs")))")))
+
 (defcommand firefox () ()
   "Starte/wechsle zu Firefox."
   (run-or-raise "firefox" '(:class "Firefox")))
+
+(defcommand focuswriter () ()
+  "Starte/wechsle zu Focuswriter."
+  (run-or-raise "focuswriter" '(:class "Focuswriter")))
 
 (defcommand gvim () ()
   "Starte/wechsle zu gVim."
@@ -135,13 +149,21 @@
 (banish-pointer :window))
 
 ;; Such- und Auswahl-Befehle
+;; -------------------------
 
-(defcommand wikipedia (search)
-  ((:string "Suche in der Wikipedia nach: "))
-  "Dient zur Suche in der Wikipedia per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+(defcommand duckduckgo (search)
+  ((:string "Suche in DuckDuckGo nach: "))
+  "Dient zur Suche bei DuckDuckGo per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://de.wikipedia.org/wiki/" search)))
+  (run-shell-command (cat "exec conkeror http://duckduckgo.com/?q=" search)))
+
+(defcommand dwarffortress (search)
+  ((:string "Suche im Dwarf Fortress Wiki nach: "))
+  "Dient zur Suche im Dwarf Fortress Wiki per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://df.magmawiki.com/index.php?title=Special%3ASearch&search=" search)))
 
 (defcommand google (search)
   ((:string "Suche in Google nach: "))
@@ -149,6 +171,111 @@
   (check-type search string)
   (substitute #\+ #\Space search)
   (run-shell-command (cat "exec conkeror http://www.google.de/search?q=" search)))
+
+(defcommand hackernews (search)
+  ((:string "Suche bei Hackernews nach: "))
+  "Dient zur Suche bei Hackernews per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://www.google.com/search?q=site:news.ycombinator.com+" search)))
+
+(defcommand imdb (search)
+  ((:string "Suche in der IMDB nach: "))
+  "Dient zur Suche bei IMDB per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec imdb http://imdb.com/find?q=" search)))
+
+(defcommand ixquick (search)
+  ((:string "Suche in IxQuick nach: "))
+  "Dient zur Suche bei IxQuick per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://ixquick.com/do/metasearch.pl?query=" search)))
+
+(defcommand leo (search)
+  ((:string "Suche im LEO Wörterbuch nach: "))
+  "Dient zur Suche bei LEO per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://pda.leo.org/?lp=ende&lang=de&searchLoc=0&cmpType=relaxed&relink=on&sectHdr=off&spellToler=std&search=" search)))
+
+(defcommand memory-alpha (search)
+  ((:string "Suche in Memory-Alpha nach: "))
+  "Dient zur Suche in der Memory-Alpha per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://memory-alpha.org/en/wiki/Special:Search/?search=" search)))
+
+(defcommand minecraft (search)
+  ((:string "Suche im Minecraft Wiki nach: "))
+  "Dient zur Suche im Minecraft Wiki per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://www.minecraftwiki.net/index.php?title=Special%3ASearch&search=" search)))
+
+(defcommand nachrichten (search)
+  ((:string "Suche in Google News nach: "))
+  "Dient zur Suche bei Google News per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://news.google.com/news/search?q=" search)))
+
+(defcommand news-bbc (search)
+  ((:string "Suche bei BBC News nach: "))
+  "Dient zur Suche bei BBC News per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://www.bbc.co.uk/search/news/?q=" search)))
+
+(defcommand news-guardian (search)
+  ((:string "Suche bei Guardian News nach: "))
+  "Dient zur Suche bei Guardian News per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://www.guardian.co.uk/search?q=" search)))
+
+(defcommand news-register (search)
+  ((:string "Suche bei The Register nach: "))
+  "Dient zur Suche bei The Register per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://search.theregister.co.uk/?q=" search)))
+
+(defcommand revo (search)
+  ((:string "Suche in Revo nach: "))
+  "Dient zur Suche bei Revo per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://reta-vortaro.de/cgi-bin/sercxu.pl?cx=1&sercxata=" search)))
+
+(defcommand sensei (search)
+  ((:string "Suche in Sensei nach: "))
+  "Dient zur Suche bei Sensei per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://senseis.xmp.net/?search=%s&nrchk=1" search)))
+
+(defcommand sonja (search)
+  ((:string "Suche in Sonja nach: "))
+  "Dient zur Suche bei Sonja per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://kisa.ca/vortaro/search.php?someaction=search&word=" search)))
+
+(defcommand stackoverflow (search)
+  ((:string "Suche in Stackoverflow nach: "))
+  "Dient zur Suche bei Stackoverflow per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://stackoverflow.com/search?q=" search)))
+
+(defcommand wikipedia (search)
+  ((:string "Suche in der Wikipedia nach: "))
+  "Dient zur Suche in der Wikipedia per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
+  (check-type search string)
+  (substitute #\+ #\Space search)
+  (run-shell-command (cat "exec conkeror http://de.wikipedia.org/wiki/" search)))
 
 (defcommand open-selection-browser () ()
   "Öffnet die markierte Webadresse per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
@@ -159,16 +286,15 @@
   (apply 'concatenate 'string strings))
 
 ;; Erzeuge Gruppen    
+;;----------------
+
 (run-commands
       "grename Standard" 
       "gnewbg WWW"
-      "gnewbg Kommunikation"
-      "gnewbg Emacs"
-      "gnewbg Media"
       "gnewbg Arbeiten"
+      "gnewbg Media"
       "gnewbg Erholung"
       "gnewbg System"
-      "gnewbg Neun"
       )
 
 ;; Clear rules
@@ -182,26 +308,30 @@
 
 (define-frame-preference "WWW"
   ;; frame raise lock (lock AND raise == jumpto)
+  (0 t   t :class "Claws-mail")  
   (0 t   t :class "Conkeror")
   (0 t   t :class "Deluge")
   (0 t   t :class "Firefox")
   (0 t   t :class "surf")
-  (0 t   t :class "Uzbl-core")
-  )
-
-(define-frame-preference "Kommunikation"
-  ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :class "Claws-mail")
   (0 t   t :class "Turpial")
+  (0 t   t :class "Uzbl-core")
   (0 t   t :class "Xchat")
   )
 
-(define-frame-preference "Emacs"
+(define-frame-preference "Arbeiten"
   ;; frame raise lock (lock AND raise == jumpto)
   (0 t   t :title "emacs")
   (0 t   t :class "Gvim")
   (0 t   t :class "Focuswriter")
+  (0 t   t :class "libreoffice-startcenter")
+  (0 t   t :class "libreoffice-writer")
+  (0 t   t :class "libreoffice-calc")
+  (0 t   t :class "libreoffice-impress")
+  (0 t   t :class "libreoffice-draw")
+  (0 t   t :class "libreoffice-math")
+  (0 t   t :class "Okular")
   (0 t   t :class "Pyroom")
+  (0 t   t :class "Zathura")
   )
 
 (define-frame-preference "Media"
@@ -219,18 +349,6 @@
   (0 t   t :class "tvbrowser-TVBrowser")
   )
 
-(define-frame-preference "Arbeiten"
-  ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :class "Okular")
-  (0 t   t :class "Zathura")
-  (0 t   t :class "libreoffice-startcenter")
-  (0 t   t :class "libreoffice-writer")
-  (0 t   t :class "libreoffice-calc")
-  (0 t   t :class "libreoffice-impress")
-  (0 t   t :class "libreoffice-draw")
-  (0 t   t :class "libreoffice-math")
-  )
-
 (define-frame-preference "Erholung"
   ;; frame raise lock (lock AND raise == jumpto)
   (0 t   t :class "Angband")
@@ -240,6 +358,7 @@
   (0 t   t :class "Dwarf_Fortress")
   (0 t   t :class "Dwarftherapist")
   (0 t   t :class "flands-FLApp")
+  (0 t   t :class "flare.bin")
   (0 t   t :class "Gvbam")
   (0 t   t :class "net-minecraft-MinecraftLauncher")
   (0 t   t :class "russotto-zplet-ZJApp")
@@ -262,6 +381,7 @@
   (0 t   t :class "Unison-gtk2")
   (0 t   t :class "Xarchiver")
   )
+
 ;; Übersicht zu Zusatztasten
 ;; M-s = ALT+SUPER
 ;; s- = SUPER
@@ -276,7 +396,7 @@
 (define-key *root-map* (kbd "M-s-C") "claws-mail")
 (define-key *root-map* (kbd "M-s-d") "deluge")
 (define-key *root-map* (kbd "M-s-e") "emacs")
-(define-key *root-map* (kbd "M-s-f") "firefox")
+(define-key *root-map* (kbd "M-s-f") "focuswriter")
 (define-key *root-map* (kbd "M-s-g") "gvim")
 (define-key *root-map* (kbd "M-s-G") "gimp")
 (define-key *root-map* (kbd "M-s-k") "keepassx")
@@ -292,11 +412,11 @@
 (define-key *root-map* (kbd "M-s-S") "scid")
 (define-key *root-map* (kbd "M-s-t") "exec thunar ")
 (define-key *root-map* (kbd "M-s-T") "turpial")
-(define-key *root-map* (kbd "M-s-u") "uzbl-browser")
-(define-key *root-map* (kbd "M-s-U") "unison-gtk2")
+(define-key *root-map* (kbd "M-s-u") "unison-gtk2")
 (define-key *root-map* (kbd "M-s-v") "vlc")
 (define-key *root-map* (kbd "M-s-w") "exec uxterm -e wicd-curses ")
 (define-key *root-map* (kbd "M-s-x") "xchat")
+(define-key *root-map* (kbd "M-s-X") "xarchiver")
 (define-key *root-map* (kbd "M-s-y") "exec synclient touchpadoff=1 ")
 (define-key *root-map* (kbd "M-s-Y") "exec synclient touchpadoff=0 ")
 (define-key *root-map* (kbd "M-s-z") "zathura")
@@ -394,7 +514,7 @@
 (define-key *top-map* (kbd "s-I") "show-window-properties")
 (define-key *top-map* (kbd "s-k") "delete")
 (define-key *top-map* (kbd "s-K") "kill")
-(define-key *top-map* (kbd "s-l") "redisplay")
+(define-key *top-map* (kbd "s-l") "exec xflock4")
 (define-key *top-map* (kbd "s-L") "loadrc")
 (define-key *top-map* (kbd "s-m") "lastmsg")
 (define-key *top-map* (kbd "s-n") "pull-hidden-next")
@@ -420,6 +540,7 @@
 (define-key *top-map* (kbd "Print") "exec scrot ")
 (define-key *top-map* (kbd "XF86HomePage") "conkeror")
 (define-key *top-map* (kbd "XF86Mail") "claws-mail")
+(define-key *top-map* (kbd "XF86Calculator") "speedcrunch")
 
 (define-key *top-map* (kbd "M-s-a") "exec uxterm -e alsamixer ")
 (define-key *top-map* (kbd "M-s-A") "exec uxterm -e abook ")
@@ -427,17 +548,15 @@
 (define-key *top-map* (kbd "M-s-C") "claws-mail")
 (define-key *top-map* (kbd "M-s-d") "deluge")
 (define-key *top-map* (kbd "M-s-e") "emacs")
-(define-key *top-map* (kbd "M-s-f") "firefox")
+(define-key *top-map* (kbd "M-s-f") "focuswriter")
 (define-key *top-map* (kbd "M-s-g") "gvim")
 (define-key *top-map* (kbd "M-s-G") "gimp")
-(define-key *top-map* (kbd "C-s-g") "google")
 (define-key *top-map* (kbd "M-s-k") "keepassx")
 (define-key *top-map* (kbd "M-s-K") "kaffeine")
 (define-key *top-map* (kbd "M-s-m") "minitube")
 (define-key *top-map* (kbd "M-s-M") "exec java -jar minecraft.jar ")
 (define-key *top-map* (kbd "M-s-n") "nitrogen")
 (define-key *top-map* (kbd "M-s-o") "okular")
-(define-key *top-map* (kbd "C-s-o") "open-selection-browser")
 (define-key *top-map* (kbd "M-s-p") "exec dmenu_run ")
 (define-key *top-map* (kbd "M-s-P") "palapeli")
 (define-key *top-map* (kbd "M-s-r") "ristretto")
@@ -445,15 +564,35 @@
 (define-key *top-map* (kbd "M-s-S") "scid")
 (define-key *top-map* (kbd "M-s-t") "exec thunar ")
 (define-key *top-map* (kbd "M-s-T") "turpial")
-(define-key *top-map* (kbd "M-s-u") "uzbl-browser")
-(define-key *top-map* (kbd "M-s-U") "unison-gtk2")
+(define-key *top-map* (kbd "M-s-u") "unison-gtk2")
 (define-key *top-map* (kbd "M-s-v") "vlc")
 (define-key *top-map* (kbd "M-s-w") "exec uxterm -e wicd-curses ")
-(define-key *top-map* (kbd "C-s-w") "wikipedia")
 (define-key *top-map* (kbd "M-s-x") "xchat")
+(define-key *top-map* (kbd "M-s-X") "xarchiver")
 (define-key *top-map* (kbd "M-s-y") "exec synclient touchpadoff=1 ")
 (define-key *top-map* (kbd "M-s-Y") "exec synclient touchpadoff=0 ")
 (define-key *top-map* (kbd "M-s-z") "zathura")
+
+;; Websuchen
+(define-key *top-map* (kbd "C-s-b") "news-bbc")
+(define-key *top-map* (kbd "C-s-d") "duckduckgo")
+(define-key *top-map* (kbd "C-s-D") "dwarffortress")
+(define-key *top-map* (kbd "C-s-g") "google")
+(define-key *top-map* (kbd "C-s-G") "news-guardian")
+(define-key *top-map* (kbd "C-s-h") "hackernews")
+(define-key *top-map* (kbd "C-s-i") "imdb")
+(define-key *top-map* (kbd "C-s-I") "ixquick")
+(define-key *top-map* (kbd "C-s-l") "leo")
+(define-key *top-map* (kbd "C-s-m") "memory-alpha")
+(define-key *top-map* (kbd "C-s-M") "minecraft")
+(define-key *top-map* (kbd "C-s-n") "nachrichten")
+(define-key *top-map* (kbd "C-s-o") "open-selection-browser")
+(define-key *top-map* (kbd "C-S-O") "sonja")
+(define-key *top-map* (kbd "C-s-r") "revo")
+(define-key *top-map* (kbd "C-s-R") "news-register")
+(define-key *top-map* (kbd "C-s-s") "sensei")
+(define-key *top-map* (kbd "C-s-S") "stackoverflow")
+(define-key *top-map* (kbd "C-s-w") "wikipedia")
 
 ;; Ein Auswahl-Menü wie es von StumpWM zum Beispiel für Gruppen oder die Hilfe geboten werden.
 ;; Die Struktur ist abgestimmt mit den Gruppen
@@ -461,110 +600,137 @@
   '(
 
     ("WWW"
-     ("Deluge"         "deluge")
-     ("Firefox"        "firefox")
-     ("Google"         "google")
-     ("MiniTube"       "minitube")
-     ("Surf"           "surf")
-     ("Uzbl"           "uzbl-browser")
-     ("Wikipedia"      "wikipedia")
-    )
-
-    ("Kommunikation"
-     ("Claws-Mail"     "claws-mail")
-     ("Mutt"           "st -e mutt")
-     ("Turpial"        "turpial")
-     ("X-Chat"         "xchat")
-    )    
-    
-    ("Media"
-     ("Audacious"          "audacious")
-     ("AviDeMux"           "avidemux2_qt4")
-     ("K3b Burner"         "k3b")
-     ("Kaffeine"           "kaffeine")
-     ("Lautstärke"         "uxterm -e alsamixer")
-     ("MiniTube"           "minitube")
-     ("Ristretto"          "ristretto")
-     ("VideoLan-Client"    "vlc")
+     ("Chromium"             "chromium")
+     ("Claws-Mail   M-s-C"   "claws-mail")
+     ("Conkeror     M-s-c"   "conkeror")
+     ("Deluge       M-s-d"   "deluge") 
+     ("MiniTube     M-s-m"   "minitube")
+     ("Mutt"                 "st -e mutt")
+     ("Surf         M-s-s"   "surf")
+     ("Turpial      M-s-T"   "turpial")
+     ("X-Chat       M-s-x"   "xchat")
     )
 
     ("Arbeiten"
-     ("Emacs"                     "emacs")
-     ("FocusWriter"               "focuswriter")
-     ("GIMP"                      "gimp")
-     ("gVim"                      "gvim")
-     ("LibreOffice-Startcenter"   "libreoffice-startcenter")
-     ("LibreOffice-Writer"        "libreoffice-writer")
-     ("LibreOffice-Calc"          "libreoffice-calc")
-     ("LibreOffice-Impress"       "libreoffice-impress")
-     ("LibreOffice-Draw"          "libreoffice-draw")
-     ("LibreOffice-Math"          "libreoffice-math")
-     ("Mathomatic"                "uxterm -e mathomatic")
-     ("Okular"                    "okular")
-     ("PyRoom"                    "pyroom")
-     ("Scanner"                   "iscan")
-     ("Zathura"                   "zathura")
+     ("Emacs                    s-e"     "emacs")
+     ("FocusWriter              M-s-f"   "focuswriter")
+     ("GIMP                     M-s-G"   "gimp")
+     ("gVim                     M-s-g"   "gvim")
+     ("LibreOffice-Startcenter"          "libreoffice-startcenter")
+     ("LibreOffice-Writer"               "libreoffice-writer")
+     ("LibreOffice-Calc"                 "libreoffice-calc")
+     ("LibreOffice-Impress"              "libreoffice-impress")
+     ("LibreOffice-Draw"                 "libreoffice-draw")
+     ("LibreOffice-Math"                 "libreoffice-math")
+     ("Mathomatic"                       "uxterm -e mathomatic")
+     ("Okular                   M-s-o"   "okular")
+     ("PyRoom"                           "pyroom")
+     ("Scanner"                          "iscan")
+     ("Zathura                  M-s-z"   "zathura")
     )
     
+    ("Media"
+     ("Audacious"                "audacious")
+     ("AviDeMux"                 "avidemux2_qt4")
+     ("K3b Burner"               "k3b")
+     ("Kaffeine         M-s-K"   "kaffeine")
+     ("Lautstärke       M-s-a"   "uxterm -e alsamixer")
+     ("MiniTube         M-s-m"   "minitube")
+     ("Ristretto        M-s-r"   "ristretto")
+     ("TV-Browser"               "tvbrowser")
+     ("VideoLan-Client  M-s-v"   "vlc")
+    )
+   
     ("Erholung"
-     ("Adventure 770"         "adv770")
-     ("ASCII-Portal"          "asciiportal")
-     ("Battle for Wesnoth"    "wesnoth --smallgui")
-     ("Crawl"                 "uxterm -e crawl")
-     ("Desmume"               "desmume-glade")
-     ("Dwarffortress"         "dwarffortress-ih")
-     ("DwarfTherapist"        "dwarftherapist")
-     ("Fabled Lands App"      "flands")
-     ("VisualBoy Advanced m"  "gvbam")
-     ("Hitchhikers Guide"     "hitchhikersguide")
-     ("Minecraft"             "java -jar minecraft.jar")
-     ("MiniTube"              "minitube")
-     ("Moria"                 "uxterm -e moria")
-     ("Multiplayer-Angband"   "mangband")
-     ("Palapelli"             "palapelli")
-     ("Rogue"                 "uxterm -e rogue")
-     ("Scid vs. PC"           "scid")
-     ("STella"                "stella")
-     ("Supertux-Kart"         "supertuxkart")
-     ("T.O.M.E. 2"            "tome")
-     ("T.O.M.E. 4"            "tome4")
-     ("VisualBoy Advanced m"  "gvbam")
-     ("Warmux"                "warmux")
-     ("Widelands"             "widelands")
-     ("World of Padman"       "wop")
-     ("Zork 1"                "uxterm -e zork1")
-     ("Zork 2"                "uxterm -e zork2")
-     ("Zork 3"                "uxterm -e zork3")
-     ("ZSNES"                 "zsnes")
+     ("Adventure 770"                 "adv770")
+     ("ASCII-Portal"                  "asciiportal")
+     ("Battle for Wesnoth"            "wesnoth --smallgui")
+     ("Crawl"                         "uxterm -e crawl")
+     ("Desmume"                       "desmume-glade")
+     ("Dwarffortress"                 "dwarffortress-ih")
+     ("DwarfTherapist"                "dwarftherapist")
+     ("Fabled Lands App"              "flands")
+     ("Flare RPG"                     "flare")
+     ("Hitchhikers Guide"             "hitchhikersguide")
+     ("Minecraft             M-s-M"   "java -jar minecraft.jar")
+     ("MiniTube"                      "minitube")
+     ("Moria"                         "uxterm -e moria")
+     ("Multiplayer-Angband"           "mangband")
+     ("Palapelli"                     "palapelli")
+     ("Rogue"                         "uxterm -e rogue")
+     ("Scid vs. PC           M-s-S"   "scid")
+     ("STella"                        "stella")
+     ("Supertux-Kart"                 "supertuxkart")
+     ("T.O.M.E. 2"                    "tome")
+     ("T.O.M.E. 4"                    "tome4")
+     ("VisualBoy Advanced m"          "gvbam")
+     ("Warmux"                        "warmux")
+     ("Widelands"                     "widelands")
+     ("World of Padman"               "wop")
+     ("XorCurses"                     "uxterm -e xorcurses")
+     ("Zork 1"                        "uxterm -e zork1")
+     ("Zork 2"                        "uxterm -e zork2")
+     ("Zork 3"                        "uxterm -e zork3")
+     ("ZSNES"                         "zsnes")
     )
     
     ("System"
-     ("Adressbuch"                 "uxterm -e abook")
-     ("Dateimanager"               "thunar")
-     ("Event-Anzeiger XEV"         "xev")
-     ("GParted"                    "gksudo gparted")
-     ("GPG-Crypter"                "gpg-crypter")
-     ("Htop"                       "uxterm -e htop")
-     ("KeePassX"                   "keepassx")
-     ("Lautstärke"                 "uxterm -e alsamixer")
-     ("Midnight Commander"         "uxterm -e mc")
-     ("Netzwerk"                   "uxterm -e wicd-curses")
-     ("Nitrogen"                   "nitrogen")
-     ("Taschenrechner"             "speedcrunch")
-     ("Touchpad AUS"               "synclient touchpadoff=1")
-     ("Touchpad EIN"               "synclient touchpadoff=0")
-     ("UnetBootin"                 "gksudo unetbootin")
-     ("Unison"                     "unison-gtk2")
-     ("XArchiver"                  "xarchiver")
-     ("XFontSel"                   "xfontsel")
+     ("Adressbuch          M-s-A"   "uxterm -e abook")
+     ("Dateimanager        M-s-T"   "thunar")
+     ("Event-Anzeiger XEV"          "xev")
+     ("GParted"                     "gksudo gparted")
+     ("GPG-Crypter"                 "gpg-crypter")
+     ("Htop"                        "uxterm -e htop")
+     ("KeePassX            M-s-k"   "keepassx")
+     ("Lautstärke          M-s-a"   "uxterm -e alsamixer")
+     ("Midnight Commander"          "uxterm -e mc")
+     ("Netzwerk            M-s-w"   "uxterm -e wicd-curses")
+     ("Nitrogen            M-s-n"   "nitrogen")
+     ("Taschenrechner"              "speedcrunch")
+     ("Touchpad AUS        M-s-y"   "synclient touchpadoff=1")
+     ("Touchpad EIN        M-s-Y"   "synclient touchpadoff=0")
+     ("UnetBootin"                  "gksudo unetbootin")
+     ("Unison              M-s-u"   "unison-gtk2")
+     ("XArchiver           M-s-X"   "xarchiver")
+     ("XFontSel"                    "xfontsel")
     )
 
-    ("StumpWM"
-     ("StumpWM Homepage"   "firefox http://www.nongnu.org/stumpwm/")
-     ("StumpWM Wiki"       "firefox http://stumpwm.svkt.org/cgi-bin/wiki.pl")
+    ("Webseiten"
+     ("Arch Linux"                       "conkeror http://archlinux.org")
+     ("BBC Nachrichten      C-s-b"       "conkeror http://bbc.co.uk/news")
+     ("Diaspora*"                        "conkeror http://joindiaspora.com/stream")
+     ("DuckDuckGo           C-s-d"       "conkeror https://duckduckgo.com")
+     ("Dwarf Fortress Wiki  C-s-D"       "conkeror http://df.magmawiki.com")
+     ("FreshPorts"                       "conkeror http://freshports.org")
+     ("Google               C-s-g"       "conkeror http://google.com")
+     ("Google News          C-s-n"       "conkeror http://news.google.com")
+     ("Google Translate"                 "conkeror http://translate.google.com")
+     ("Gronkh"                           "conkeror http://gronkh.de")
+     ("Hackernews           C-s-h"       "conkeror http://news.ycombinator.com")
+     ("Heise"                            "conkeror http://heise.de")
+     ("i2p"                              "conkeror http://127.0.0.1:7657")
+     ("I.M.D.B.             C-s-i"       "conkeror http://imdb.com")
+     ("IxQuick              C-s-I"       "conkeror http://ixquick.com")
+     ("LEO EN-DE            C-s-l"       "conkeror http://leo.org")
+     ("Lernu Esperanto"                  "conkeror http://lernu.net")
+     ("Memory Alpha         C-s-m"       "conkeror http://memory-alpha.org")
+     ("Nachrichten          C-s-n"       "conkeror http://news.google.de")
+     ("Revo Vortaro EO      C-s-r"       "conkeror http://reta-vortaro.de")
+     ("Sensei               C-s-s"       "conkeror http://seinseis.xmp.net")
+     ("Sonja Vortaro EO     C-s-O"       "conkeror http://kisa.ca/vortaro")
+     ("Stackoverflow        C-s-S"       "conkeror http://stackoverflow.com")
+     ("StumpWM Homepage"                 "conkeror http://www.nongnu.org/stumpwm/")
+     ("StumpWM Wiki"                     "conkeror http://stumpwm.svkt.org/cgi-bin/wiki.pl")
+     ("Thalia"                           "conkeror http://thalia.de")
+     ("The Guardian         C-s-G"       "conkeror http://guardian.co.uk")
+     ("The Register         C-s-R"       "conkeror http://theregister.co.uk")
+     ("TOR check"                        "conkeror https://check.torproject.org")
+     ("Tumblr"                           "conkeror http://tumblr.com/dashboard")
+     ("Übersetzen"                       "conkeror http://translate.google.com")
+     ("Wikipedia            C-s-w"       "conkeror http://de.wikipedia.org")
+     ("YouTube"                          "conkeror http://youtube.com")     
     )
 ))
-
 
 (defcommand menü () ()
   "menü dient der Abarbeitung der Optionen, die als Menüstruktur-Liste in *start-menü* hinterlegt sind."
@@ -599,9 +765,6 @@
 ;; Modeline zeigt Zeit in lokalem Format, CPU-Nutzung, Netzwerk-Verkehr, Gruppe und aktuellen Rahmen
 (setf *screen-mode-line-format*
       (list '(:eval (run-shell-command "date '+%c '|tr -d [:cntrl:] && uptime | sed 's/.*: //; s/,//g'|tr -d [:cntrl:]" t))   " %t %c %M %l [^B%n^b] %W"))
-
-; Zum Aktivieren der Modeline. Wahlweise auch über das ',' Tastenkürzel
-;(enable-mode-line (current-screen) (current-head) T)
 
 ;; Sometimes using the mouse is useful too
 (setf *mouse-focus-policy* :click)
