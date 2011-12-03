@@ -714,6 +714,7 @@
      ("LEO EN-DE            C-s-l"       "conkeror http://leo.org")
      ("Lernu Esperanto"                  "conkeror http://lernu.net")
      ("Memory Alpha         C-s-m"       "conkeror http://memory-alpha.org")
+     ("Minecraft Wiki       C-s-M"       "conkeror http://www.minecraftwiki.net")
      ("Nachrichten          C-s-n"       "conkeror http://news.google.de")
      ("Revo Vortaro EO      C-s-r"       "conkeror http://reta-vortaro.de")
      ("Sensei               C-s-s"       "conkeror http://seinseis.xmp.net")
