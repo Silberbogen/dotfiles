@@ -100,7 +100,7 @@
   (run-or-raise "palapeli" '(:class "Palapeli")))
 
 (defcommand reinit () ()
-  "docstring"
+  "Reinitialisierung des Systems"
   (run-commands "reload" "loadrc"))
 
 (defcommand ristretto () ()
@@ -336,15 +336,15 @@
 
 (define-frame-preference "Media"
   ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :instance "aumix")
-  (0 t   t :class "Audacious")
-  (0 t   t :class "Geeqie")
-  (0 t   t :class "MPlayer")
+;  (0 t   t :instance "aumix")
+;  (0 t   t :class "Audacious")
+;  (0 t   t :class "Geeqie")
+;  (0 t   t :class "MPlayer")
   (0 t   t :class "Avidemux")
-  (0 t   t :class "Kaffeine")
-  (0 t   t :class "Vlc")
+;  (0 t   t :class "Kaffeine")
+;  (0 t   t :class "Vlc")
   (0 t   t :class "Minitube")
-  (0 t   t :class "Ristretto")
+;  (0 t   t :class "Ristretto")
   (0 t   t :class "K3b")
   (0 t   t :class "Iscan")
   (0 t   t :class "tvbrowser-TVBrowser")
@@ -688,6 +688,7 @@
      ("Midnight Commander"          "uxterm -e mc")
      ("Netzwerk            M-s-w"   "uxterm -e wicd-curses")
      ("Nitrogen            M-s-n"   "nitrogen")
+     ("StumpWM reinitialisieren"    "reinit")
      ("Taschenrechner"              "speedcrunch")
      ("Touchpad AUS        M-s-y"   "synclient touchpadoff=1")
      ("Touchpad EIN        M-s-Y"   "synclient touchpadoff=0")
