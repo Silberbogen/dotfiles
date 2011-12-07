@@ -295,15 +295,16 @@
       "gnewbg Media"
       "gnewbg Erholung"
       "gnewbg System"
+;      "gnewbg Fliessend"
       )
 
 ;; Clear rules
 (clear-window-placement-rules)
 
 (define-frame-preference "Standard"
-  (0 t   t :instance "xterm")
-  (0 t   t :class "UXTerm")
-  (0 t   t :class "st-256color")
+;  (0 t   t :instance "xterm")
+;  (0 t   t :class "UXTerm")
+;  (0 t   t :class "st-256color")
   )
 
 (define-frame-preference "WWW"
@@ -430,7 +431,7 @@
 
 ;; Redefinieren von Standardtastenkombinationen
 (define-key *root-map* (kbd "c") "exec uxterm -fg lightblue -bg darkblue")
-(define-key *root-map* (kbd "C-c") "exec uxterm -fg lightblue -bg darkblue")
+(define-key *root-map* (kbd "C-c") "exec st")
 
 ;; Neuere Tasten
 
@@ -447,7 +448,12 @@
 (define-key *top-map* (kbd "s-Down") "move-focus-warp down")
 (define-key *top-map* (kbd "s-S-Down") "move-window down")
 
- ;; Durch Fenster wechseln - dwm-like
+(define-key *top-map* (kbd "C-s-Left") "pull-hidden-previous")
+(define-key *top-map* (kbd "C-s-Right") "pull-hidden-next")
+(define-key *top-map* (kbd "C-s-Up") "mark")
+(define-key *top-map* (kbd "C-s-Down") "pull-marked")
+
+;; Durch Fenster wechseln - dwm-like
 (define-key *top-map* (kbd "s-Tab") "next-in-frame")
 (define-key *top-map* (kbd "s-ISO_Left_Tab") "prev-in-frame")     ;; this is Shift Tab
 
@@ -459,8 +465,11 @@
 (define-key *top-map* (kbd "M-S-s-Right") "gnext-with-window")
 
 (define-key *top-map* (kbd "s-SPC") "other")
+(define-key *top-map* (kbd "S-s-SPC") "windowlist")
 (define-key *top-map* (kbd "M-s-SPC") "gother")     ;; Go to last group
-(define-key *top-map* (kbd "C-s-SPC") "grouplist")
+(define-key *top-map* (kbd "M-S-s-SPC") "grouplist")
+(define-key *top-map* (kbd "C-s-SPC") "pull-hidden-other")
+(define-key *top-map* (kbd "C-S-s-SPC") "pull-marked")
 (define-key *top-map* (kbd "Pause") "gother")
 (define-key *top-map* (kbd "C-Pause") "grouplist")
 
@@ -641,6 +650,7 @@
      ("Ristretto        M-s-r"   "ristretto")
      ("TV-Browser"               "tvbrowser")
      ("VideoLan-Client  M-s-v"   "vlc")
+     ("XVidCap Screencast"       "xvidcap")
     )
    
     ("Erholung"
