@@ -689,10 +689,14 @@
     ("System"
      ("Adressbuch          M-s-A"   "uxterm -e abook")
      ("Dateimanager        M-s-T"   "thunar")
+     ("Dropbox starten"             "dropbox start")
+     ("Dropbox beenden"             "dropbox stop")
      ("Event-Anzeiger XEV"          "xev")
      ("GParted"                     "gksudo gparted")
      ("GPG-Crypter"                 "gpg-crypter")
      ("Htop"                        "uxterm -e htop")
+     ("i2p starten"                 "~/i2p/i2prouter start")
+     ("i2p beenden"                 "~/i2p/i2prouter stop")
      ("KeePassX            M-s-k"   "keepassx")
      ("Lautstärke          M-s-a"   "uxterm -e alsamixer")
      ("Midnight Commander"          "uxterm -e mc")
@@ -778,7 +782,7 @@
       *group-format*                    "%n%s%t"
       *window-format*                   "«%n%s%m%10c»")
 
-;; Modeline zeigt Zeit in lokalem Format, CPU-Nutzung, Netzwerk-Verkehr, Gruppe und aktuellen Rahmen
+;; Modeline zeigt Zeit in lokalem Format, CPU-Nutzung, Netzwerk-Verkehr, Gruppe, Notifikation und aktuellen Rahmen
 (setf *screen-mode-line-format*
       (list '(:eval (run-shell-command "date '+%c '|tr -d [:cntrl:] && uptime | sed 's/.*: //; s/,//g'|tr -d [:cntrl:]" t))   " %t %c %M %l [^B%n^b] %W"))
 
