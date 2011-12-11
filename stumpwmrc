@@ -83,6 +83,10 @@
   "Starte/wechsle zu KeePassX."
   (run-or-raise "keepassx" '(:class "Keepassx")))
 
+(defcommand mcomix () ()
+  "Starte/wechsle zu MComix."
+  (run-or-raise "mcomix" '(:class "Mcomix")))
+
 (defcommand minitube () ()
   "Starte/wechsle zu Minitube."
   (run-or-raise "minitube" '(:class "Minitube")))
@@ -302,9 +306,9 @@
 (clear-window-placement-rules)
 
 (define-frame-preference "Standard"
-;  (0 t   t :instance "xterm")
-;  (0 t   t :class "UXTerm")
-;  (0 t   t :class "st-256color")
+  (0 t   t :instance "xterm")
+  (0 t   t :class "UXTerm")
+  (0 t   t :class "st-256color")
   )
 
 (define-frame-preference "WWW"
@@ -337,18 +341,19 @@
 
 (define-frame-preference "Media"
   ;; frame raise lock (lock AND raise == jumpto)
-;  (0 t   t :instance "aumix")
-;  (0 t   t :class "Audacious")
-;  (0 t   t :class "Geeqie")
-;  (0 t   t :class "MPlayer")
-  (0 t   t :class "Avidemux")
-;  (0 t   t :class "Kaffeine")
-;  (0 t   t :class "Vlc")
-  (0 t   t :class "Minitube")
-;  (0 t   t :class "Ristretto")
-  (0 t   t :class "K3b")
+  (0 t   t :instance "aumix")
+  (0 t   t :class "Audacious")
+  (0 t   t :class "Avidemux")  
+  (0 t   t :class "Geeqie")
   (0 t   t :class "Iscan")
+  (0 t   t :class "K3b")
+  (0 t   t :class "Kaffeine")
+  (0 t   t :class "Mcomix")
+  (0 t   t :class "Minitube")  
+  (0 t   t :class "MPlayer")  
+  (0 t   t :class "Ristretto") 
   (0 t   t :class "tvbrowser-TVBrowser")
+  (0 t   t :class "Vlc")
   )
 
 (define-frame-preference "Erholung"
@@ -646,6 +651,7 @@
      ("K3b Burner"               "k3b")
      ("Kaffeine         M-s-K"   "kaffeine")
      ("Lautstärke       M-s-a"   "uxterm -e alsamixer")
+     ("MComix"                   "mcomix")
      ("MiniTube         M-s-m"   "minitube")
      ("Ristretto        M-s-r"   "ristretto")
      ("TV-Browser"               "tvbrowser")
