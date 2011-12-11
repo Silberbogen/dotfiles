@@ -33,13 +33,17 @@
 (set-fg-color         "lightblue")
 (set-bg-color         "darkblue")
 
+(defcommand geeqie () ()
+  "Starte/wechsle zum Geekie Bildbetrachter."
+  (run-or-raise "geeqie" '(:class "Geeqie")))
+
 (defcommand claws-mail () ()
   "Starte/wechsle zu Claws-Mail."
   (run-or-raise "claws-mail" '(:class "Claws-mail")))
 
 (defcommand chromium () ()
   "Starte/wechsle zum Chromium Webbrowser."
-  (run-or-raise "chromium" '(:class "Conkeror")))	    
+  (run-or-raise "chromium" '(:class "Chromium")))	    
 
 (defcommand conkeror () ()
   "Starte/wechsle zum Conkeror Webbrowser."
@@ -291,103 +295,108 @@
 
 ;; Erzeuge Gruppen    
 ;;----------------
+;; Ohne Gruppen geht es schneller, daher werden sie mal testweise für 7 Tage deaktiviert (reine Theorie)
 
-(run-commands
-      "grename Standard" 
-      "gnewbg WWW"
-      "gnewbg Arbeiten"
-      "gnewbg Media"
-      "gnewbg Erholung"
-      "gnewbg System"
-;      "gnewbg Fliessend"
-      )
+;(run-commands
+;      "grename Standard"
+;      "gnewbg Emacs"
+;      "gnewbg WWW"
+;      "gnewbg Arbeiten"
+;      "gnewbg Media"
+;      "gnewbg Erholung"
+;      "gnewbg System"
+;      )
 
 ;; Clear rules
 (clear-window-placement-rules)
 
-(define-frame-preference "Standard"
-  (0 t   t :instance "xterm")
-  (0 t   t :class "UXTerm")
-  (0 t   t :class "st-256color")
-  )
+;(define-frame-preference "Standard"
+;  (0 t   t :instance "xterm")
+;  (0 t   t :class "UXTerm")
+;  (0 t   t :class "st-256color")
+;  )
 
-(define-frame-preference "WWW"
-  ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :class "Claws-mail")  
-  (0 t   t :class "Conkeror")
-  (0 t   t :class "Deluge")
-  (0 t   t :class "Firefox")
-  (0 t   t :class "surf")
-  (0 t   t :class "Turpial")
-  (0 t   t :class "Uzbl-core")
-  (0 t   t :class "Xchat")
-  )
+;(define-frame-preference "Emacs"
+;  (0 t   t :title "emacs")
+;  )
 
-(define-frame-preference "Arbeiten"
+;(define-frame-preference "WWW"
   ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :title "emacs")
-  (0 t   t :class "Gvim")
-  (0 t   t :class "Focuswriter")
-  (0 t   t :class "libreoffice-startcenter")
-  (0 t   t :class "libreoffice-writer")
-  (0 t   t :class "libreoffice-calc")
-  (0 t   t :class "libreoffice-impress")
-  (0 t   t :class "libreoffice-draw")
-  (0 t   t :class "libreoffice-math")
-  (0 t   t :class "Okular")
-  (0 t   t :class "Pyroom")
-  (0 t   t :class "Zathura")
-  )
+;  (0 t   t :class "Claws-mail")  
+;  (0 t   t :class "Conkeror")
+;  (0 t   t :class "Deluge")
+;  (0 t   t :class "Firefox")
+;  (0 t   t :class "surf")
+;  (0 t   t :class "Turpial")
+;  (0 t   t :class "Uzbl-core")
+;  (0 t   t :class "Xchat")
+;  )
 
-(define-frame-preference "Media"
+;(define-frame-preference "Arbeiten"
   ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :instance "aumix")
-  (0 t   t :class "Audacious")
-  (0 t   t :class "Avidemux")  
-  (0 t   t :class "Geeqie")
-  (0 t   t :class "Iscan")
-  (0 t   t :class "K3b")
-  (0 t   t :class "Kaffeine")
-  (0 t   t :class "Mcomix")
-  (0 t   t :class "Minitube")  
-  (0 t   t :class "MPlayer")  
-  (0 t   t :class "Ristretto") 
-  (0 t   t :class "tvbrowser-TVBrowser")
-  (0 t   t :class "Vlc")
-  )
+;  (0 t   t :class "Gvim")
+;  (0 t   t :class "Focuswriter")
+;  (0 t   t :class "libreoffice-startcenter")
+;  (0 t   t :class "libreoffice-writer")
+;  (0 t   t :class "libreoffice-calc")
+;  (0 t   t :class "libreoffice-impress")
+;  (0 t   t :class "libreoffice-draw")
+;  (0 t   t :class "libreoffice-math")
+;  (0 t   t :class "Okular")
+;  (0 t   t :class "Pyroom")
+;  (0 t   t :class "Zathura")
+;  )
 
-(define-frame-preference "Erholung"
+;(define-frame-preference "Media"
   ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :class "Angband")
-  (0 t   t :class "ASCIIpOrtal")
-  (0 t   t :class "Desmume-glade")
-  (0 t   t :class "Desmume")
-  (0 t   t :class "Dwarf_Fortress")
-  (0 t   t :class "Dwarftherapist")
-  (0 t   t :class "flands-FLApp")
-  (0 t   t :class "flare.bin")
-  (0 t   t :class "Gvbam")
-  (0 t   t :class "net-minecraft-MinecraftLauncher")
-  (0 t   t :class "russotto-zplet-ZJApp")
-  (0 t   t :class "Palapelli")
-  (0 t   t :class "Scid")
-  (0 t   t :title "SuperTuxKart")
-  (0 t   t :title "t-engine")
-  (0 t   t :title "tome")
-  (0 t   t :class "warmux")
-  (0 t   t :class "wesnoth")
-  (0 t   t :class "widelands")
-  )
+;  (0 t   t :instance "aumix")
+;  (0 t   t :class "Audacious")
+;  (0 t   t :class "Avidemux")  
+;  (0 t   t :class "Geeqie")
+;  (0 t   t :class "Gimp")
+;  (0 t   t :class "Iscan")
+;  (0 t   t :class "K3b")
+;  (0 t   t :class "Kaffeine")
+;  (0 t   t :class "Mcomix")
+;  (0 t   t :class "Minitube")  
+;  (0 t   t :class "MPlayer")  
+;  (0 t   t :class "Ristretto") 
+;  (0 t   t :class "tvbrowser-TVBrowser")
+;  (0 t   t :class "Vlc")
+;  )
 
-(define-frame-preference "System"
+;(define-frame-preference "Erholung"
   ;; frame raise lock (lock AND raise == jumpto)
-  (0 t   t :class "Keepassx")
-  (0 t   t :class "Gpg-crypter")
-  (0 t   t :class "Nitrogen")
-  (0 t   t :class "Thunar")
-  (0 t   t :class "Unison-gtk2")
-  (0 t   t :class "Xarchiver")
-  )
+;  (0 t   t :class "Angband")
+;  (0 t   t :class "ASCIIpOrtal")
+;  (0 t   t :class "Desmume-glade")
+;  (0 t   t :class "Desmume")
+;  (0 t   t :class "Dwarf_Fortress")
+;  (0 t   t :class "Dwarftherapist")
+;  (0 t   t :class "flands-FLApp")
+;  (0 t   t :class "flare.bin")
+;  (0 t   t :class "Gvbam")
+;  (0 t   t :class "net-minecraft-MinecraftLauncher")
+;  (0 t   t :class "russotto-zplet-ZJApp")
+;  (0 t   t :class "Palapelli")
+;  (0 t   t :class "Scid")
+;  (0 t   t :title "SuperTuxKart")
+;  (0 t   t :title "t-engine")
+;  (0 t   t :title "tome")
+;  (0 t   t :class "warmux")
+;  (0 t   t :class "wesnoth")
+;  (0 t   t :class "widelands")
+;  )
+
+;(define-frame-preference "System"
+  ;; frame raise lock (lock AND raise == jumpto)
+;  (0 t   t :class "Keepassx")
+;  (0 t   t :class "Gpg-crypter")
+;  (0 t   t :class "Nitrogen")
+;  (0 t   t :class "Thunar")
+;  (0 t   t :class "Unison-gtk2")
+;  (0 t   t :class "Xarchiver")
+;  )
 
 ;; Übersicht zu Zusatztasten
 ;; M-s = ALT+SUPER
@@ -404,7 +413,7 @@
 (define-key *root-map* (kbd "M-s-d") "deluge")
 (define-key *root-map* (kbd "M-s-e") "emacs")
 (define-key *root-map* (kbd "M-s-f") "focuswriter")
-(define-key *root-map* (kbd "M-s-g") "geekie")
+(define-key *root-map* (kbd "M-s-g") "geeqie")
 (define-key *root-map* (kbd "M-s-G") "gimp")
 (define-key *root-map* (kbd "M-s-k") "keepassx")
 (define-key *root-map* (kbd "M-s-K") "kaffeine")
@@ -519,6 +528,7 @@
 (define-key *top-map* (kbd "s-A") "title")
 (define-key *top-map* (kbd "s-b") "banish")
 (define-key *top-map* (kbd "s-c") "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
+(define-key *top-map* (kbd "s-C") "commands")
 (define-key *top-map* (kbd "s-e") "emacs")
 (define-key *top-map* (kbd "s-f") "fselect")
 (define-key *top-map* (kbd "s-F") "curframe")
@@ -721,6 +731,7 @@
     ("Webseiten"
      ("Arch Linux"                       "conkeror http://archlinux.org")
      ("BBC Nachrichten      C-s-b"       "conkeror http://bbc.co.uk/news")
+     ("Detektiv Conan"                   "conkeror http://detektiv-conan.ch")
      ("Diaspora*"                        "conkeror http://joindiaspora.com/stream")
      ("DuckDuckGo           C-s-d"       "conkeror https://duckduckgo.com")
      ("Dwarf Fortress Wiki  C-s-D"       "conkeror http://df.magmawiki.com")
@@ -745,6 +756,7 @@
      ("Stackoverflow        C-s-S"       "conkeror http://stackoverflow.com")
      ("StumpWM Homepage"                 "conkeror http://www.nongnu.org/stumpwm/")
      ("StumpWM Wiki"                     "conkeror http://stumpwm.svkt.org/cgi-bin/wiki.pl")
+     ("SubCentral"                       "conkeror http://subcentral.de")
      ("Telecomix"                        "conkeror https://status.telecomix.org")
      ("Thalia"                           "conkeror http://thalia.de")
      ("The Guardian         C-s-G"       "conkeror http://guardian.co.uk")
@@ -754,7 +766,8 @@
      ("Twitter"                          "conkeror https://twitter.com")
      ("Übersetzen"                       "conkeror http://translate.google.com")
      ("Wikipedia            C-s-w"       "conkeror http://de.wikipedia.org")
-     ("YouTube"                          "conkeror http://youtube.com")     
+     ("YouTube"                          "conkeror http://youtube.com")
+     ("ZenCast"                          "conkeror http://zencast.org")
     )
 ))
 
