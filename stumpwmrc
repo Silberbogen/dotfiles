@@ -33,6 +33,8 @@
 (set-fg-color         "lightblue")
 (set-bg-color         "darkblue")
 
+(defparameter terminal "uxterm -fg lightblue -bg darkblue")
+
 (defcommand geeqie () ()
   "Starte/wechsle zum Geekie Bildbetrachter."
   (run-or-raise "geeqie" '(:class "Geeqie")))
@@ -86,6 +88,10 @@
 (defcommand keepassx () ()
   "Starte/wechsle zu KeePassX."
   (run-or-raise "keepassx" '(:class "Keepassx")))
+
+(defcommand man (man) ((:string "Manual: "))
+	    "Sucht nach einem Befehl in den Manual-Seiten"
+	    (run-shell-command (format nil "~A -e sh -c 'man ~A'" terminal man)))
 
 (defcommand mcomix () ()
   "Starte/wechsle zu MComix."
@@ -395,6 +401,9 @@
 (define-key *top-map* (kbd "Pause") "windowlist")
 (define-key *top-map* (kbd "C-Pause") "grouplist")
 
+;; Fehlende Features in der groups-map
+(define-key *groups-map* (kbd "C") "gnew-float")
+
 ;; Die fehlenden Features auch in der root-map anlegen
 (define-key *root-map* (kbd "C-SPC") "other")
 (define-key *root-map* (kbd "M-SPC") "gother")
@@ -405,7 +414,7 @@
 ;; ==========================================
 ;; Terminal + StumpWM-Funktionen als dwm-like
 ;; ==========================================
-(define-key *top-map* (kbd"s-RET") "exec uxterm -fg lightblue -bg darkblue -e 'tcsh' ")
+(define-key *top-map* (kbd"s-RET") "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
 (define-key *top-map* (kbd "S-s-RET") "fullscreen")
 (define-key *top-map* (kbd "s-;") "colon")
 (define-key *top-map* (kbd "s-:") "eval")
@@ -490,10 +499,13 @@
 ;; Direkte Funktionstasten zum Programmstart - dwm-like
 ;; ====================================================
 
-(define-key *top-map* (kbd "Print") "exec scrot ")
+(define-key *top-map* (kbd "Print") "exec scrot -e 'mv $f ~/Bilder/Bildschirmfotos/ 2>/dev/null'")
 (define-key *top-map* (kbd "XF86HomePage") "conkeror")
 (define-key *top-map* (kbd "XF86Mail") "claws-mail")
 (define-key *top-map* (kbd "XF86Calculator") "speedcrunch")
+(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+ unmute")
+(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%- unmute")
+(define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
 (define-key *top-map* (kbd "M-s-a") "exec uxterm -e alsamixer ")
 (define-key *top-map* (kbd "M-s-A") "exec uxterm -e abook ")
 (define-key *top-map* (kbd "M-s-c") "conkeror")
@@ -505,7 +517,8 @@
 (define-key *top-map* (kbd "M-s-G") "gimp")
 (define-key *top-map* (kbd "M-s-k") "keepassx")
 (define-key *top-map* (kbd "M-s-K") "kaffeine")
-(define-key *top-map* (kbd "M-s-m") "minitube")
+(define-key *top-map* (kbd "M-s-m") "exec uxterm -e mc")
+(define-key *top-map* (kbd "M-s-M") "minitube")
 (define-key *top-map* (kbd "M-s-n") "nitrogen")
 (define-key *top-map* (kbd "M-s-o") "okular")
 (define-key *top-map* (kbd "M-s-p") "exec dmenu_run ")
@@ -555,7 +568,8 @@
     (define-key m (kbd "G") "gimp")
     (define-key m (kbd "k") "keepassx")
     (define-key m (kbd "K") "kaffeine")
-    (define-key m (kbd "m") "minitube")
+    (define-key m (kbd "m") "exec uxterm -e mc")
+    (define-key m (kbd "M") "minitube")
     (define-key m (kbd "n") "nitrogen")
     (define-key m (kbd "o") "okular")
     (define-key m (kbd "p") "exec dmenu_run ")
@@ -630,6 +644,20 @@
      (define-key m (kbd "2") "exec uxterm -e zork2")
      (define-key m (kbd "3") "exec uxterm -e zork3")
      m))
+
+;; ==========================
+;; Ein Ersatz *help-map* Menü
+;; ==========================
+
+(setf *help-map*
+          (let ((m (make-sparse-keymap)))
+	    (define-key m (kbd "m") "man")
+	    (define-key m (kbd "c") "describe-command")
+	    (define-key m (kbd "f") "describe-function")
+	    (define-key m (kbd "k") "describe-key")
+            (define-key m (kbd "v") "describe-variable")
+	    (define-key m (kbd "w") "where-is")
+            m))
 
 ;; ===========================================
 ;; Ein grafisches Auswahl-Menü
