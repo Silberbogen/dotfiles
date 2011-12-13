@@ -7,6 +7,10 @@
 (load "devel/git/stumpwm/contrib/cpu")
 (load "devel/git/stumpwm/contrib/mem")
 
+
+
+;; Statt C-t, ist doch die wirklich unbenützte Menütaste einfach nur am geilsten!?
+(set-prefix-key (kbd "Menu"))
 ;;; Verworfene Lösungen
 ;(run-shell-command "xmodmap -e 'clear Mod4'" t)
 ;(run-shell-command "xmodmap -e 'keycode 133 = F20'" t)
@@ -19,9 +23,6 @@
 ;(set-prefix-key (kbd "F20"))
 ;(set-prefix-key (kbd "Super_L"))
 
-;; Statt C-t, ist doch die wirklich unbenützte Menütaste einfach nur am geilsten!?
-(set-prefix-key (kbd "Menu"))
-
 ;; Zeichensatz - der Standardfont:
 ;;(set-font "-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*")
 (set-font "-*-profont-*-*-*-*-12-*-*-*-*-*-*-*")
@@ -33,7 +34,9 @@
 (set-fg-color         "lightblue")
 (set-bg-color         "darkblue")
 
-(defparameter terminal "uxterm -fg lightblue -bg darkblue")
+;; ============
+;; Neue Befehle
+;; ============
 
 (defcommand geeqie () ()
   "Starte/wechsle zum Geekie Bildbetrachter."
@@ -239,9 +242,25 @@
   "Öffnet die markierte Webadresse per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (run-shell-command (cat "exec conkeror " (get-x-selection))))
 
+; cat statt concat
 (defun cat (&rest strings)
   "Kürzel für (concatenate 'zeichenkette foo bar)."
   (apply 'concatenate 'string strings))
+
+;; ===============
+;; Ein paar Makros
+;; ===============
+
+(defmacro tastenbindung (keymap taste befehl)
+  "Kurzes Macro, um eine Tastenbindung zu definieren"
+  `(define-key, keymap (kbd, taste), befehl))
+
+(defmacro tastaturbelegung (keymap &rest tasten)
+  "Kurzes Macro, um mehrere Tastenbindungen an eine Keymap zu definieren, verwendet pro Taste die Funktion tastenbindung"
+  (let ((ks (mapcar (lambda (k)
+		      (append (list 'tastenbindung keymap) k))
+		    tasten)))
+    `(progn ,@ks)))
 
 ;; Erzeuge Gruppen    
 ;;----------------
@@ -349,6 +368,10 @@
 ;  (0 t   t :class "Xarchiver")
 ;  )
 
+;; ======================================
+;; Neuere Tasten - nach eigenem Gutdünken
+;; ======================================
+
 ;; Übersicht zu Zusatztasten
 ;; M-s = ALT+SUPER
 ;; s- = SUPER
@@ -356,200 +379,195 @@
 ;; C- = Control/STRG
 ;; H- = ALT-GR
 
-
-
-;; ======================================
-;; Neuere Tasten - nach eigenem Gutdünken
-;; ======================================
-
+;; *******************************************************
 ;; Zusätzliche Optionen über den StumpWM-like Escape-Modus
-(define-key *root-map* (kbd "DEL") "repack-window-numbers")
-(define-key *root-map* (kbd "I") "show-window-properties")
-(define-key *root-map* (kbd "P") "exec dmenu_run ")
-(define-key *root-map* (kbd ",") "switch-modeline")
-;; Redefinieren von Standardtastenkombinationen
-(define-key *root-map* (kbd "c") "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
-(define-key *root-map* (kbd "C-c") "exec st")
+;; *******************************************************
 
-;;; Fenster-Verhalten dwm-like
-(define-key *top-map* (kbd "s-Left") "move-focus-warp left")
-(define-key *top-map* (kbd "s-S-Left") "move-window left")
-(define-key *top-map* (kbd "s-Right") "move-focus-warp right")
-(define-key *top-map* (kbd "s-S-Right") "move-window right")
-(define-key *top-map* (kbd "s-Up") "move-focus-warp up")
-(define-key *top-map* (kbd "s-S-Up") "move-window up")
-(define-key *top-map* (kbd "s-Down") "move-focus-warp down")
-(define-key *top-map* (kbd "s-S-Down") "move-window down")
-(define-key *top-map* (kbd "C-s-Left") "pull-hidden-previous")
-(define-key *top-map* (kbd "C-s-Right") "pull-hidden-next")
-(define-key *top-map* (kbd "C-s-Up") "mark")
-(define-key *top-map* (kbd "C-s-Down") "pull-marked")
+(tastaturbelegung *root-map*
+		  ("DEL" "repack-window-numbers")
+		  ("I" "show-window-properties")
+		  ("P" "exec dmenu_run ")
+		  ("," "switch-modeline")
+		  ("c" "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
+		  ("C-c" "exec st")
+		  ;; Die fehlenden Features auch in der root-map anlegen
+		  ("C-SPC" "other")
+		  ("M-SPC" "gother")
+		  ("S-SPC" "pull-marked")
+		  ("Pause" "windowlist")
+		  ("C-Pause" "grouplist")
+		  )
 
-;; Durch Fenster wechseln - dwm-like
-(define-key *top-map* (kbd "s-Tab") "next-in-frame")
-(define-key *top-map* (kbd "s-ISO_Left_Tab") "prev-in-frame")     ;; this is Shift Tab
+;; **************************************************************************************
+;; Zusätzliche Optionen für einen Direktmodus, wie ihn viele andere Fenstermanager bieten
+;; **************************************************************************************
 
-;; Gruppen-Verhalten ist dwm-like
-(define-key *top-map* (kbd "M-s-Left") "gprev")
-(define-key *top-map* (kbd "M-s-Right") "gnext")
-(define-key *top-map* (kbd "M-S-s-Left") "gprev-with-window")
-(define-key *top-map* (kbd "M-S-s-Right") "gnext-with-window")
-(define-key *top-map* (kbd "s-SPC") "pull-hidden-next")
-(define-key *top-map* (kbd "C-s-SPC") "other")
-(define-key *top-map* (kbd "M-s-SPC") "gother")
-(define-key *top-map* (kbd "S-s-SPC") "pull-marked")
-(define-key *top-map* (kbd "Pause") "windowlist")
-(define-key *top-map* (kbd "C-Pause") "grouplist")
+(tastaturbelegung *top-map*
+		  ;;; Fenster-Verhalten dwm-like
+		  ("s-Left" "move-focus-warp left")
+		  ("s-S-Left" "move-window left")
+		  ("s-Right" "move-focus-warp right")
+		  ("s-S-Right" "move-window right")
+		  ("s-Up" "move-focus-warp up")
+		  ("s-S-Up" "move-window up")
+		  ("s-Down" "move-focus-warp down")
+		  ("s-S-Down" "move-window down")
+		  ("C-s-Left" "pull-hidden-previous")
+		  ("C-s-Right" "pull-hidden-next")
+		  ("C-s-Up" "mark")
+		  ("C-s-Down" "pull-marked")
+		  ;; Durch Fenster wechseln - dwm-like
+		  ("s-Tab" "next-in-frame")
+		  ("s-ISO_Left_Tab" "prev-in-frame")     ;; Erinnerung: Das ist  Shift-Tab
+		  ;; Gruppen-Verhalten ist dwm-like
+		  ("M-s-Left" "gprev")
+		  ("M-s-Right" "gnext")
+		  ("M-S-s-Left" "gprev-with-window")
+		  ("M-S-s-Right" "gnext-with-window")
+		  ("s-SPC" "pull-hidden-next")
+		  ("C-s-SPC" "other")
+		  ("M-s-SPC" "gother")
+		  ("S-s-SPC" "pull-marked")
+		  ("Pause" "windowlist")
+		  ("C-Pause" "grouplist")
+		  ;; Nachbildung der vordefinierten StumpWM-Tasten als Direkttasten
+		  ("s-RET" "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
+		  ("S-s-RET" "fullscreen")
+		  ("s-;" "colon")
+		  ("s-:" "eval")
+		  ("s-!" "exec")
+		  ("s-#" "mark")
+		  ("s--" "fclear")
+		  ("s-+" "balance-frames")
+		  ("s-\"" "select")
+		  ("s-'" "windowlist")
+		  ("s-," "switch-modeline")
+		  ("s-a" "time")
+		  ("s-A" "title")
+		  ("s-b" "banish")
+		  ("s-c" "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
+		  ("s-C" "commands")
+		  ("s-e" "emacs")
+		  ("s-f" "fselect")
+		  ("s-F" "curframe")
+		  ("s-g" *groups-map*)
+		  ("s-G" "vgroups")
+		  ("s-h" *help-map*)
+		  ("s-i" "info")
+		  ("s-I" "show-window-properties")
+		  ("s-k" "delete")
+		  ("s-K" "kill")
+		  ("s-l" "exec xflock4")
+		  ("s-L" "loadrc")
+		  ("s-m" "lastmsg")
+		  ("s-n" "pull-hidden-next")
+		  ("M-s-N" "next")
+		  ("C-s-n" "next-in-frame")
+		  ("C-s-N" "number")
+		  ("s-o" "fnext")
+		  ("s-p" "pull-hidden-previous")
+		  ("s-P" "prev")
+		  ("C-s-p" "prev-in-frame")
+		  ("s-Q" "only")
+		  ("s-r" "iresize")
+		  ("s-R" "remove")
+		  ("s-s" "vsplit")
+		  ("s-S" "hsplit")
+		  ("s-t" "send-escape")
+		  ("s-u" "next-urgent")
+		  ("s-v" "version")
+		  ("s-w" "windows")
+		  ("s-W" "place-existing-windows")
+		  ;; Wechseln zu einem anderen Fenster
+		  ("s-1" "select-window-by-number 1")
+		  ("s-2" "select-window-by-number 2")
+		  ("s-3" "select-window-by-number 3")
+		  ("s-4" "select-window-by-number 4")
+		  ("s-5" "select-window-by-number 5")
+		  ("s-6" "select-window-by-number 6")
+		  ("s-7" "select-window-by-number 7")
+		  ("s-8" "select-window-by-number 8")
+		  ("s-9" "select-window-by-number 9")
+		  ("s-0" "select-window-by-number 0")
+		  ;; Wechseln zu einer anderen Gruppe
+		  ("M-s-1" "gselect 1")
+		  ("M-s-2" "gselect 2")
+		  ("M-s-3" "gselect 3")
+		  ("M-s-4" "gselect 4")
+		  ("M-s-5" "gselect 5")
+		  ("M-s-6" "gselect 6")
+		  ("M-s-7" "gselect 7")
+		  ("M-s-8" "gselect 8")
+		  ("M-s-9" "gselect 9")
+		  ("M-s-0" "gselect 0")
+		  ;; Verschieben in eine andere Gruppe
+		  ("M-S-s-1" "gmove 1")
+		  ("M-S-s-2" "gmove 2")
+		  ("M-S-s-3" "gmove 3")
+		  ("M-S-s-4" "gmove 4")
+		  ("M-S-s-5" "gmove 5")
+		  ("M-S-s-6" "gmove 6")
+		  ("M-S-s-7" "gmove 7")
+		  ("M-S-s-8" "gmove 8")
+		  ("M-S-s-9" "gmove 9")
+		  ("M-S-s-0" "gmove 0")
+		  ;; Programme starten
+		  ("Print" "exec scrot -e 'mv $f ~/Bilder/Bildschirmfotos/ 2>/dev/null'")
+		  ("XF86HomePage" "conkeror")
+		  ("XF86Mail" "claws-mail")
+		  ("XF86Calculator" "speedcrunch")
+		  ("XF86AudioRaiseVolume" "exec amixer set Master 5%+ unmute")
+		  ("XF86AudioLowerVolume" "exec amixer set Master 5%- unmute")
+		  ("XF86AudioMute" "exec amixer set Master toggle")
+		  ("M-s-a" "exec uxterm -e alsamixer ")
+		  ("M-s-A" "exec uxterm -e abook ")
+		  ("M-s-c" "conkeror")
+		  ("M-s-C" "claws-mail")
+		  ("M-s-d" "deluge")
+		  ("M-s-e" "emacs")
+		  ("M-s-f" "focuswriter")
+		  ("M-s-g" "geeqie")
+		  ("M-s-G" "gimp")
+		  ("M-s-k" "keepassx")
+		  ("M-s-K" "kaffeine")
+		  ("M-s-m" "exec uxterm -e mc")
+		  ("M-s-M" "minitube")
+		  ("M-s-n" "nitrogen")
+		  ("M-s-o" "okular")
+		  ("M-s-p" "exec dmenu_run ")
+		  ("M-s-r" "ristretto")
+		  ("M-s-s" "exec surf ")
+		  ("M-s-t" "exec thunar ")
+		  ("M-s-T" "turpial")
+		  ("M-s-u" "unison-gtk2")
+		  ("M-s-v" "vlc")
+		  ("M-s-w" "exec uxterm -e wicd-curses ")
+		  ("M-s-x" "xchat")
+		  ("M-s-X" "xarchiver")
+		  ("M-s-y" "exec synclient touchpadoff=1 ")
+		  ("M-s-Y" "exec synclient touchpadoff=0 ")
+		  ("M-s-z" "zathura")
+		  ;; Websuchen
+		  ("C-s-b" "news-bbc")
+		  ("C-s-d" "duckduckgo")
+		  ("C-s-g" "google")
+		  ("C-s-G" "news-guardian")
+		  ("C-s-h" "hackernews")
+		  ("C-s-i" "ixquick")
+		  ("C-s-n" "nachrichten")
+		  ("C-s-o" "open-selection-browser") ;; öffnet den markierten Link im Webbrowser
+		  ("C-s-r" "news-register")
+		  ("C-s-s" "stackoverflow")
+		  ("C-s-w" "wikipedia")
+		  )
 
+;; ***********************************
 ;; Fehlende Features in der groups-map
-(define-key *groups-map* (kbd "C") "gnew-float")
+;; ***********************************
 
-;; Die fehlenden Features auch in der root-map anlegen
-(define-key *root-map* (kbd "C-SPC") "other")
-(define-key *root-map* (kbd "M-SPC") "gother")
-(define-key *root-map* (kbd "S-SPC") "pull-marked")
-(define-key *root-map* (kbd "Pause") "windowlist")
-(define-key *root-map* (kbd "C-Pause") "grouplist")
-
-;; ==========================================
-;; Terminal + StumpWM-Funktionen als dwm-like
-;; ==========================================
-(define-key *top-map* (kbd"s-RET") "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
-(define-key *top-map* (kbd "S-s-RET") "fullscreen")
-(define-key *top-map* (kbd "s-;") "colon")
-(define-key *top-map* (kbd "s-:") "eval")
-(define-key *top-map* (kbd "s-!") "exec")
-(define-key *top-map* (kbd "s-#") "mark")
-(define-key *top-map* (kbd "s--") "fclear")
-(define-key *top-map* (kbd "s-+") "balance-frames")
-(define-key *top-map* (kbd "s-\"") "select")
-(define-key *top-map* (kbd "s-'") "windowlist")
-(define-key *top-map* (kbd "s-,") "switch-modeline")
-(define-key *top-map* (kbd "s-a") "time")
-(define-key *top-map* (kbd "s-A") "title")
-(define-key *top-map* (kbd "s-b") "banish")
-(define-key *top-map* (kbd "s-c") "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
-(define-key *top-map* (kbd "s-C") "commands")
-(define-key *top-map* (kbd "s-e") "emacs")
-(define-key *top-map* (kbd "s-f") "fselect")
-(define-key *top-map* (kbd "s-F") "curframe")
-(define-key *top-map* (kbd "s-g") *groups-map*)
-(define-key *top-map* (kbd "s-G") "vgroups")
-(define-key *top-map* (kbd "s-h") *help-map*)
-(define-key *top-map* (kbd "s-i") "info")
-(define-key *top-map* (kbd "s-I") "show-window-properties")
-(define-key *top-map* (kbd "s-k") "delete")
-(define-key *top-map* (kbd "s-K") "kill")
-(define-key *top-map* (kbd "s-l") "exec xflock4")
-(define-key *top-map* (kbd "s-L") "loadrc")
-(define-key *top-map* (kbd "s-m") "lastmsg")
-(define-key *top-map* (kbd "s-n") "pull-hidden-next")
-(define-key *top-map* (kbd "M-s-N") "next")
-(define-key *top-map* (kbd "C-s-n") "next-in-frame")
-(define-key *top-map* (kbd "C-s-N") "number")
-(define-key *top-map* (kbd "s-o") "fnext")
-(define-key *top-map* (kbd "s-p") "pull-hidden-previous")
-(define-key *top-map* (kbd "s-P") "prev")
-(define-key *top-map* (kbd "C-s-p") "prev-in-frame")
-(define-key *top-map* (kbd "s-Q") "only")
-(define-key *top-map* (kbd "s-r") "iresize")
-(define-key *top-map* (kbd "s-R") "remove")
-(define-key *top-map* (kbd "s-s") "vsplit")
-(define-key *top-map* (kbd "s-S") "hsplit")
-(define-key *top-map* (kbd "s-t") "send-escape")
-(define-key *top-map* (kbd "s-u") "next-urgent")
-(define-key *top-map* (kbd "s-v") "version")
-(define-key *top-map* (kbd "s-w") "windows")
-(define-key *top-map* (kbd "s-W") "place-existing-windows")
-;; Wechseln zu einem anderen Fenster
-(define-key *top-map* (kbd "s-1") "select-window-by-number 1")
-(define-key *top-map* (kbd "s-2") "select-window-by-number 2")
-(define-key *top-map* (kbd "s-3") "select-window-by-number 3")
-(define-key *top-map* (kbd "s-4") "select-window-by-number 4")
-(define-key *top-map* (kbd "s-5") "select-window-by-number 5")
-(define-key *top-map* (kbd "s-6") "select-window-by-number 6")
-(define-key *top-map* (kbd "s-7") "select-window-by-number 7")
-(define-key *top-map* (kbd "s-8") "select-window-by-number 8")
-(define-key *top-map* (kbd "s-9") "select-window-by-number 9")
-(define-key *top-map* (kbd "s-0") "select-window-by-number 0")
-;; Wechseln zu einer anderen Gruppe
-(define-key *top-map* (kbd "M-s-1") "gselect 1")
-(define-key *top-map* (kbd "M-s-2") "gselect 2")
-(define-key *top-map* (kbd "M-s-3") "gselect 3")
-(define-key *top-map* (kbd "M-s-4") "gselect 4")
-(define-key *top-map* (kbd "M-s-5") "gselect 5")
-(define-key *top-map* (kbd "M-s-6") "gselect 6")
-(define-key *top-map* (kbd "M-s-7") "gselect 7")
-(define-key *top-map* (kbd "M-s-8") "gselect 8")
-(define-key *top-map* (kbd "M-s-9") "gselect 9")
-(define-key *top-map* (kbd "M-s-0") "gselect 0")
-;; Verschieben in eine andere Gruppe
-(define-key *top-map* (kbd "M-S-s-1") "gmove 1")
-(define-key *top-map* (kbd "M-S-s-2") "gmove 2")
-(define-key *top-map* (kbd "M-S-s-3") "gmove 3")
-(define-key *top-map* (kbd "M-S-s-4") "gmove 4")
-(define-key *top-map* (kbd "M-S-s-5") "gmove 5")
-(define-key *top-map* (kbd "M-S-s-6") "gmove 6")
-(define-key *top-map* (kbd "M-S-s-7") "gmove 7")
-(define-key *top-map* (kbd "M-S-s-8") "gmove 8")
-(define-key *top-map* (kbd "M-S-s-9") "gmove 9")
-(define-key *top-map* (kbd "M-S-s-0") "gmove 0")
-
-;; ====================================================
-;; Direkte Funktionstasten zum Programmstart - dwm-like
-;; ====================================================
-
-(define-key *top-map* (kbd "Print") "exec scrot -e 'mv $f ~/Bilder/Bildschirmfotos/ 2>/dev/null'")
-(define-key *top-map* (kbd "XF86HomePage") "conkeror")
-(define-key *top-map* (kbd "XF86Mail") "claws-mail")
-(define-key *top-map* (kbd "XF86Calculator") "speedcrunch")
-(define-key *top-map* (kbd "XF86AudioRaiseVolume") "exec amixer set Master 5%+ unmute")
-(define-key *top-map* (kbd "XF86AudioLowerVolume") "exec amixer set Master 5%- unmute")
-(define-key *top-map* (kbd "XF86AudioMute") "exec amixer set Master toggle")
-(define-key *top-map* (kbd "M-s-a") "exec uxterm -e alsamixer ")
-(define-key *top-map* (kbd "M-s-A") "exec uxterm -e abook ")
-(define-key *top-map* (kbd "M-s-c") "conkeror")
-(define-key *top-map* (kbd "M-s-C") "claws-mail")
-(define-key *top-map* (kbd "M-s-d") "deluge")
-(define-key *top-map* (kbd "M-s-e") "emacs")
-(define-key *top-map* (kbd "M-s-f") "focuswriter")
-(define-key *top-map* (kbd "M-s-g") "geeqie")
-(define-key *top-map* (kbd "M-s-G") "gimp")
-(define-key *top-map* (kbd "M-s-k") "keepassx")
-(define-key *top-map* (kbd "M-s-K") "kaffeine")
-(define-key *top-map* (kbd "M-s-m") "exec uxterm -e mc")
-(define-key *top-map* (kbd "M-s-M") "minitube")
-(define-key *top-map* (kbd "M-s-n") "nitrogen")
-(define-key *top-map* (kbd "M-s-o") "okular")
-(define-key *top-map* (kbd "M-s-p") "exec dmenu_run ")
-(define-key *top-map* (kbd "M-s-r") "ristretto")
-(define-key *top-map* (kbd "M-s-s") "exec surf ")
-(define-key *top-map* (kbd "M-s-t") "exec thunar ")
-(define-key *top-map* (kbd "M-s-T") "turpial")
-(define-key *top-map* (kbd "M-s-u") "unison-gtk2")
-(define-key *top-map* (kbd "M-s-v") "vlc")
-(define-key *top-map* (kbd "M-s-w") "exec uxterm -e wicd-curses ")
-(define-key *top-map* (kbd "M-s-x") "xchat")
-(define-key *top-map* (kbd "M-s-X") "xarchiver")
-(define-key *top-map* (kbd "M-s-y") "exec synclient touchpadoff=1 ")
-(define-key *top-map* (kbd "M-s-Y") "exec synclient touchpadoff=0 ")
-(define-key *top-map* (kbd "M-s-z") "zathura")
-
-;; =============================
-;; Direktasten für die Websuchen
-;; =============================
-
-(define-key *top-map* (kbd "C-s-b") "news-bbc")
-(define-key *top-map* (kbd "C-s-d") "duckduckgo")
-(define-key *top-map* (kbd "C-s-g") "google")
-(define-key *top-map* (kbd "C-s-G") "news-guardian")
-(define-key *top-map* (kbd "C-s-h") "hackernews")
-(define-key *top-map* (kbd "C-s-i") "ixquick")
-(define-key *top-map* (kbd "C-s-n") "nachrichten")
-(define-key *top-map* (kbd "C-s-o") "open-selection-browser")
-(define-key *top-map* (kbd "C-s-r") "news-register")
-(define-key *top-map* (kbd "C-s-s") "stackoverflow")
-(define-key *top-map* (kbd "C-s-w") "wikipedia")
+(tastaturbelegung *groups-map*
+		  ("C" "gnew-float")
+		  )
 
 ;; ===========================================
 ;; Ein neues Menü für Programme (stumpwm-like)
@@ -707,6 +725,7 @@
      ("Lautstärke       M-s-a"   "uxterm -e alsamixer")
      ("MComix"                   "mcomix")
      ("MiniTube         M-s-m"   "minitube")
+     ("Music on Console"         "uxterm -e mocp")
      ("Ristretto        M-s-r"   "ristretto")
      ("TV-Browser"               "tvbrowser")
      ("VideoLan-Client  M-s-v"   "vlc")
@@ -777,6 +796,7 @@
     ("Webseiten"
      ("Arch Linux"                       "conkeror http://archlinux.org")
      ("BBC Nachrichten      C-s-b"       "conkeror http://bbc.co.uk/news")
+     ("Blottr Breaking-News"             "conkeror http://blottr.com")
      ("Detektiv Conan"                   "conkeror http://detektiv-conan.ch")
      ("Diaspora*"                        "conkeror http://joindiaspora.com/stream")
      ("DuckDuckGo           C-s-d"       "conkeror https://duckduckgo.com")
@@ -793,9 +813,12 @@
      ("IxQuick              C-s-i"       "conkeror http://ixquick.com")
      ("LEO EN-DE"                        "conkeror http://leo.org")
      ("Lernu Esperanto"                  "conkeror http://lernu.net")
+     ("L1sp"                             "conkeror http://l1sp.org")
      ("Memory Alpha"                     "conkeror http://memory-alpha.org")
      ("Minecraft Wiki"                   "conkeror http://www.minecraftwiki.net")
      ("Nachrichten          C-s-n"       "conkeror http://news.google.de")
+     ("Planet LISP"                      "conkeror http://planet.lisp.org")
+     ("Planet SBCL"                      "conkeror http://planet.sbcl.org")
      ("Revo Vortaro EO"                  "conkeror http://reta-vortaro.de")
      ("Sonja Vortaro EO"                 "conkeror http://kisa.ca/vortaro")
      ("Stackoverflow        C-s-s"       "conkeror http://stackoverflow.com")
@@ -835,14 +858,19 @@
 ;; Die Tastenanbindung für die Menüs
 ;; =================================
 
-(define-key *root-map* (kbd "x") '*programmstart-map*)
-(define-key *root-map* (kbd "y") '*websuche-map*)
-(define-key *root-map* (kbd "X") '*erholung-map*)
-(define-key *root-map* (kbd ".") "menü")
-(define-key *top-map* (kbd "s-x") '*programmstart-map*)
-(define-key *top-map* (kbd "s-y") '*websuche-map*)
-(define-key *top-map* (kbd "s-X") '*erholung-map*)
-(define-key *top-map* (kbd "s-.") "menü")
+(tastaturbelegung *root-map*
+		  ("x" '*programmstart-map*)
+		  ("y" '*websuche-map*)
+		  ("X" '*erholung-map*)
+		  ("." "menü")
+		  )
+
+(tastaturbelegung *top-map*
+		  ("s-x" '*programmstart-map*)
+		  ("s-y" '*websuche-map*)
+		  ("s-X" '*erholung-map*)
+		  ("s-." "menü")
+		  )
 
 ;; =======================
 ;; Die angepasste Modeline
