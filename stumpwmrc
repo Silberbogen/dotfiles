@@ -58,6 +58,10 @@
   "Starte/wechsle zu Deluge."
   (run-or-raise "deluge" '(:class "Deluge")))
 
+(defcommand dwb () ()
+  "Starte/wechsle zum dwb Webbrowser."
+  (run-or-raise "dwb" '(:class "dwb")))	    
+
 (defcommand emacs () ()
   "Starte/wechsle zu Emacs."
   (run-or-raise "emacs" '(:class "Emacs")))
@@ -83,6 +87,10 @@
 (defcommand gimp () ()
   "Starte/wechsle zu GIMP."
   (run-or-raise "gimp" '(:class "Gimp")))
+
+(defcommand jumanji () ()
+  "Starte/wechsle zum Jumanji Webbrowser."
+  (run-or-raise "jumanji" '(:class "Jumanji")))	    
 
 (defcommand kaffeine () ()
   "Starte/wechsle zu Kaffeine."
@@ -384,6 +392,8 @@
 ;; *******************************************************
 
 (tastaturbelegung *root-map*
+		  ("RET" "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
+		  ("S-RET" "fullscreen")
 		  ("DEL" "repack-window-numbers")
 		  ("I" "show-window-properties")
 		  ("P" "exec dmenu_run ")
@@ -524,10 +534,12 @@
 		  ("M-s-c" "conkeror")
 		  ("M-s-C" "claws-mail")
 		  ("M-s-d" "deluge")
+		  ("M-s-D" "dwb")
 		  ("M-s-e" "emacs")
 		  ("M-s-f" "focuswriter")
 		  ("M-s-g" "geeqie")
 		  ("M-s-G" "gimp")
+		  ("M-s-j" "jumanji")
 		  ("M-s-k" "keepassx")
 		  ("M-s-K" "kaffeine")
 		  ("M-s-m" "exec uxterm -e mc")
@@ -580,10 +592,12 @@
     (define-key m (kbd "c") "conkeror")
     (define-key m (kbd "C") "claws-mail")
     (define-key m (kbd "d") "deluge")
+    (define-key m (kbd "D") "dwb")
     (define-key m (kbd "e") "emacs")
     (define-key m (kbd "f") "focuswriter")
     (define-key m (kbd "g") "geeqie")
     (define-key m (kbd "G") "gimp")
+    (define-key m (kbd "j") "jumanji")
     (define-key m (kbd "k") "keepassx")
     (define-key m (kbd "K") "kaffeine")
     (define-key m (kbd "m") "exec uxterm -e mc")
@@ -690,7 +704,9 @@
      ("Chromium"             "chromium")
      ("Claws-Mail   M-s-C"   "claws-mail")
      ("Conkeror     M-s-c"   "conkeror")
-     ("Deluge       M-s-d"   "deluge") 
+     ("Deluge       M-s-d"   "deluge")
+     ("dwb          M-s-D"   "dwb")
+     ("Jumanji      M-s-j"   "jumanji")
      ("MiniTube     M-s-m"   "minitube")
      ("Mutt"                 "st -e mutt")
      ("Surf         M-s-s"   "surf")
