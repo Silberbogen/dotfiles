@@ -124,6 +124,14 @@
   "Starte/wechsle zu Palapeli."
   (run-or-raise "palapeli" '(:class "Palapeli")))
 
+(defcommand pouetChess () ()
+  "Starte/wechsle zu Pouetchess 3Dxp."
+  (run-or-raise "pouetChess" '(:class "pouetChess")))
+
+(defcommand pychess () ()
+  "Starte/wechsle zu PyChess Staunton."
+  (run-or-raise "pychess" '(:class "pychess")))
+
 (defcommand reinit () ()
   "Reinitialisierung des Systems"
   (run-commands "reload" "loadrc"))
@@ -766,6 +774,8 @@
      ("Moria"                         "uxterm -e moria")
      ("Multiplayer-Angband"           "mangband")
      ("Palapelli"                     "palapelli")
+     ("Pouet-Chess 3D"                "pouetChess")
+     ("PyChess Staunton"              "pychess")
      ("Rogue"                         "uxterm -e rogue")
      ("Scid vs. PC"                   "scid")
      ("S.C.U.M.M.-VM"                 "scummvm")
