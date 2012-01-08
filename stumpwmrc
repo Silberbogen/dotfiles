@@ -24,7 +24,7 @@
 ;(set-prefix-key (kbd "Super_L"))
 
 ;; Zeichensatz - der Standardfont:
-;;(set-font "-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*")
+;(set-font "-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*")
 (set-font "-*-profont-*-*-*-*-12-*-*-*-*-*-*-*")
 
 ;; Farben
@@ -144,6 +144,10 @@
   "Starte/wechsle zu Scid vs. PC."
   (run-or-raise "scid" '(:class "Scid")))
 
+(defcommand scribus () ()
+  "Starte/wechsle zu Scribus"
+  (run-or-raise "scribus" '(:class "Scribus")))
+
 (defcommand surf () ()
   "Starte/wechsle zu Surf."
   (run-or-raise "surf" '(:class "surf")))
@@ -167,6 +171,10 @@
 (defcommand vlc () ()
   "Starte/wechsle zu VideoLanClient."
   (run-or-raise "vlc" '(:class "Vlc")))
+
+(defcommand vym () ()
+  "Starte/wechsle zu ViewYourMind."
+  (run-or-raise "vym" '(:class "Vym")))
 
 (defcommand xchat () ()
   "Starte/wechsle zu X-Chat."
@@ -556,11 +564,13 @@
 		  ("M-s-o" "okular")
 		  ("M-s-p" "exec dmenu_run ")
 		  ("M-s-r" "ristretto")
-		  ("M-s-s" "exec surf ")
+		  ("M-s-s" "scribus")
+		  ("M-s-S" "exec surf ")
 		  ("M-s-t" "exec thunar ")
 		  ("M-s-T" "turpial")
 		  ("M-s-u" "unison-gtk2")
 		  ("M-s-v" "vlc")
+		  ("M-s-V" "vym")
 		  ("M-s-w" "exec uxterm -e wicd-curses ")
 		  ("M-s-x" "xchat")
 		  ("M-s-X" "xarchiver")
@@ -614,11 +624,13 @@
     (define-key m (kbd "o") "okular")
     (define-key m (kbd "p") "exec dmenu_run ")
     (define-key m (kbd "r") "ristretto")
-    (define-key m (kbd "s") "exec surf ")
+    (define-key m (kbd "s") "scribus")
+    (define-key m (kbd "S") "exec surf ")
     (define-key m (kbd "t") "exec thunar ")
     (define-key m (kbd "T") "turpial")
     (define-key m (kbd "u") "unison-gtk2")
     (define-key m (kbd "v") "vlc")
+    (define-key m (kbd "V") "vym")
     (define-key m (kbd "w") "exec uxterm -e wicd-curses ")
     (define-key m (kbd "x") "xchat")
     (define-key m (kbd "X") "xarchiver")
@@ -664,10 +676,11 @@
      (define-key m (kbd "C-f") "exec freedroidRPG")
      (define-key m (kbd "h") "exec hitchhikersguide")
      (define-key m (kbd "l") "exec scummvm")
-     (define-key m (kbd "m") "exec java -jar minecraft.jar")
+     (define-key m (kbd "m") "exec minecraft")
      (define-key m (kbd "M") "exec uxterm -e moria")
      (define-key m (kbd "C-m") "exec mangband")
      (define-key m (kbd "p") "exec palapelli")
+     (define-key m (kbd "P") "exec uxterm -e primerl")
      (define-key m (kbd "r") "exec uxterm -e rogue")
      (define-key m (kbd "s") "exec scid")
      (define-key m (kbd "S") "exec stella")
@@ -718,7 +731,7 @@
      ("Jumanji      M-s-j"   "jumanji")
      ("MiniTube     M-s-m"   "minitube")
      ("Mutt"                 "st -e mutt")
-     ("Surf         M-s-s"   "surf")
+     ("Surf         M-s-S"   "surf")
      ("Turpial      M-s-T"   "turpial")
      ("X-Chat       M-s-x"   "xchat")
     )
@@ -737,7 +750,9 @@
      ("Mathomatic"                       "uxterm -e mathomatic")
      ("Okular                   M-s-o"   "okular")
      ("PyRoom"                           "pyroom")
+     ("Scribus                  M-s-s"   "scribus")
      ("Scanner"                          "iscan")
+     ("ViewYourMind             M-s-V"   "vym")
      ("Zathura                  M-s-z"   "zathura")
     )
     
@@ -759,22 +774,26 @@
    
     ("Erholung"
      ("Adventure 770"                 "adv770")
+     ("Aliens RL"                     "uxterm -e aliensrl")
      ("ASCII-Portal"                  "asciiportal")
      ("Battle for Wesnoth"            "wesnoth --smallgui")
      ("Crawl"                         "uxterm -e crawl")
      ("Desmume"                       "desmume-glade")
+     ("Doom RL"                       "uxterm -e doomrl")
      ("Dwarffortress"                 "dwarffortress-ih")
      ("DwarfTherapist"                "dwarftherapist")
      ("Fabled Lands App"              "flands")
      ("Flare RPG"                     "flare")
      ("Freedroid-RPG"                 "freedroidRPG")
      ("Hitchhikers Guide"             "hitchhikersguide")
-     ("Minecraft"                     "java -jar minecraft.jar")
+     ("Minecraft"                     "minecraft")
+     ("Minecraft Editor"              "MCEdit")
      ("MiniTube"                      "minitube")
      ("Moria"                         "uxterm -e moria")
      ("Multiplayer-Angband"           "mangband")
      ("Palapelli"                     "palapelli")
      ("Pouet-Chess 3D"                "pouetChess")
+     ("Prime RL"                      "uxterm -e primerl")
      ("PyChess Staunton"              "pychess")
      ("Rogue"                         "uxterm -e rogue")
      ("Scid vs. PC"                   "scid")
