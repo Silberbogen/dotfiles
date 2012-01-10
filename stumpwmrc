@@ -28,19 +28,25 @@
 (set-font "-*-profont-*-*-*-*-12-*-*-*-*-*-*-*")
 
 ;; Farben
-(set-focus-color      "lightblue")
+(set-focus-color      "DodgerBlue")
 (set-unfocus-color    "black")
-(set-win-bg-color     "darkblue")
-(set-fg-color         "lightblue")
-(set-bg-color         "darkblue")
+(set-win-bg-color     "grey25")
+(set-fg-color         "DodgerBlue")
+(set-bg-color         "grey25")
+
+;(set-focus-color      "lightblue")
+;(set-unfocus-color    "black")
+;(set-win-bg-color     "darkblue")
+;(set-fg-color         "lightblue")
+;(set-bg-color         "darkblue")
 
 ;; ============
 ;; Neue Befehle
 ;; ============
 
-(defcommand geeqie () ()
-  "Starte/wechsle zum Geekie Bildbetrachter."
-  (run-or-raise "geeqie" '(:class "Geeqie")))
+(defcommand cherrytree () ()
+  "Starte/wechsle zum Cherrytree Wiki."
+  (run-or-raise "cherrytree" '(:class "Cherrytree")))
 
 (defcommand claws-mail () ()
   "Starte/wechsle zu Claws-Mail."
@@ -80,13 +86,17 @@
   "Starte/wechsle zu Focuswriter."
   (run-or-raise "focuswriter" '(:class "Focuswriter")))
 
-(defcommand gvim () ()
-  "Starte/wechsle zu gVim."
-  (run-or-raise "gvim" '(:class "Gvim")))
+(defcommand geeqie () ()
+  "Starte/wechsle zum Geekie Bildbetrachter."
+  (run-or-raise "geeqie" '(:class "Geeqie")))
 
 (defcommand gimp () ()
   "Starte/wechsle zu GIMP."
   (run-or-raise "gimp" '(:class "Gimp")))
+
+(defcommand gvim () ()
+  "Starte/wechsle zu gVim."
+  (run-or-raise "gvim" '(:class "Gvim")))
 
 (defcommand jumanji () ()
   "Starte/wechsle zum Jumanji Webbrowser."
@@ -408,13 +418,13 @@
 ;; *******************************************************
 
 (tastaturbelegung *root-map*
-		  ("RET" "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
+		  ("RET" "exec uxterm -fg DodgerBlue -bg grey25 -e 'tcsh'")
 		  ("S-RET" "fullscreen")
 		  ("DEL" "repack-window-numbers")
 		  ("I" "show-window-properties")
 		  ("P" "exec dmenu_run ")
 		  ("," "switch-modeline")
-		  ("c" "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
+		  ("c" "exec uxterm -fg DodgerBlue -bg grey25 -e 'tcsh'")
 		  ("C-c" "exec st")
 		  ;; Die fehlenden Features auch in der root-map anlegen
 		  ("C-SPC" "other")
@@ -457,7 +467,7 @@
 		  ("Pause" "windowlist")
 		  ("C-Pause" "grouplist")
 		  ;; Nachbildung der vordefinierten StumpWM-Tasten als Direkttasten
-		  ("s-RET" "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
+		  ("s-RET" "exec uxterm -fg DodgerBlue -bg grey25 -e 'tcsh'")
 		  ("S-s-RET" "fullscreen")
 		  ("s-;" "colon")
 		  ("s-:" "eval")
@@ -471,7 +481,7 @@
 		  ("s-a" "time")
 		  ("s-A" "title")
 		  ("s-b" "banish")
-		  ("s-c" "exec uxterm -fg lightblue -bg darkblue -e 'tcsh'")
+		  ("s-c" "exec uxterm -fg DodgerBlue -bg grey25 -e 'tcsh'")
 		  ("s-C" "commands")
 		  ("s-e" "emacs")
 		  ("s-f" "fselect")
@@ -732,11 +742,14 @@
      ("MiniTube     M-s-m"   "minitube")
      ("Mutt"                 "st -e mutt")
      ("Surf         M-s-S"   "surf")
+     ("TOR-Conkeror"         "torify conkeror")
+     ("TOR-Chromium"         "chromium --proxy-server='socks://localhost:9050'")
      ("Turpial      M-s-T"   "turpial")
      ("X-Chat       M-s-x"   "xchat")
     )
 
     ("Arbeiten"
+     ("Cherrytree"                       "cherrytree")
      ("Emacs                    s-e"     "emacs")
      ("FocusWriter              M-s-f"   "focuswriter")
      ("GIMP                     M-s-G"   "gimp")
@@ -937,6 +950,8 @@
 ;; Modeline zeigt Zeit in lokalem Format, CPU-Nutzung, Netzwerk-Verkehr, Gruppe, Notifikation und aktuellen Rahmen
 (setf *screen-mode-line-format*
       (list '(:eval (run-shell-command "date '+%c '|tr -d [:cntrl:] && uptime | sed 's/.*: //; s/,//g'|tr -d [:cntrl:]" t))   " %t %c %M %l [^B%n^b] %W"))
+; (setf *screen-mode-line-format*
+;      (list '(:eval (run-shell-command "date '+%c '|tr -d [:cntrl:] && uptime | sed 's/.*: //; s/,//g'|tr -d [:cntrl:]" t))   " %t %c %M %l [^B%n^b] %W"))
 
 ;; =============================
 ;; Das Verhalten des Mauszeigers
