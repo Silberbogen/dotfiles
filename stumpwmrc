@@ -936,10 +936,16 @@
 ;; Die angepasste Modeline
 ;; =======================
 
+(defun datum-uhrzeit ()
+    "(datum-uhrzeit)
+DATUM-UHRZEIT gibt das heutige Datum und die aktuelle Uhrzeit des Systems zurück."
+  (multiple-value-bind (second minute hour day month year) (get-decoded-time)
+    (format nil "~2,'0D.~2,'0D.~4,'0D ~2,'0D:~2,'0D:~2,'0D" day month year hour minute second)))
+
 ;; Vorbereitungen für das Modeline-Verhalten
-(setf *mode-line-background-color*      "darkblue"
-      *mode-line-foreground-color*      "lightblue"
-      *mode-line-border-color*          "lightblue"
+(setf *mode-line-background-color*      "Grey18"
+      *mode-line-foreground-color*      "DodgerBlue"
+      *mode-line-border-color*          "CornflowerBlue"
       *mode-line-timeout*               1
       *mode-line-position*              :top
       *time-format-string-default*      "%a %d.%m.%Y %I:%M%p"
@@ -949,7 +955,7 @@
 
 ;; Modeline zeigt Zeit in lokalem Format, CPU-Nutzung, Netzwerk-Verkehr, Gruppe, Notifikation und aktuellen Rahmen
 (setf *screen-mode-line-format*
-      (list '(:eval (run-shell-command "date '+%c '|tr -d [:cntrl:] && uptime | sed 's/.*: //; s/,//g'|tr -d [:cntrl:]" t))   " %t %c %M %l [^B%n^b] %W"))
+      (list (datum-uhrzeit) " %t %c %M %l [^B%n^b] %W"))
 ; (setf *screen-mode-line-format*
 ;      (list '(:eval (run-shell-command "date '+%c '|tr -d [:cntrl:] && uptime | sed 's/.*: //; s/,//g'|tr -d [:cntrl:]" t))   " %t %c %M %l [^B%n^b] %W"))
 
