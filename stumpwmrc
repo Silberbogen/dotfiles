@@ -40,6 +40,17 @@
 ;(set-fg-color         "lightblue")
 ;(set-bg-color         "darkblue")
 
+(setf *time-format-string-default* "%A %B %e %k:%M:%S")
+
+(setf *time-modeline-string* "%a %b %e %k:%M:%S")
+
+(setf *time-month-names*
+  #("Januar" "Februar" "März" "April" "Mai" "Juni" "Juli" "August"
+    "September" "Oktober" "November" "Dezember"))
+
+(setf *time-day-names*
+  #("Montag" "Dienstag" "Mittwoch" "Donnerstag" "Freitag" "Samstag" "Sonntag"))
+
 ;; ============
 ;; Neue Befehle
 ;; ============
@@ -194,7 +205,35 @@
   "Starte/wechsle zu Zathura."
   (run-or-raise "zathura" '(:class "Zathura")))
 
+;;; ===============================================
+;;; Anpassung der Darstellung von Datum und Uhrzeit
+;;; ===============================================
+
+(defun uhrzeit () "Gibt die aktuelle Uhrzeit zurück"
+(multiple-value-bind (sekunden minuten stunden) (get-decoded-time)
+(format nil "~2,1,0,'0@A:~2,1,0,'0@A:~2,1,0,'0@A" stunden minuten sekunden)))
+
+(defun datum-uhrzeit ()
+    "(datum-uhrzeit)
+DATUM-UHRZEIT gibt das heutige Datum und die aktuelle Uhrzeit des Systems zurück."
+  (multiple-value-bind (sekunden minuten stunden tag monat jahr) (get-decoded-time)
+    (format nil "~2,'0D.~2,'0D.~4,'0D ~2,'0D:~2,'0D:~2,'0D" tag monat jahr stunden minuten sekunden)))
+
+(defcommand echo-date () ()
+  "(echo-date)
+ECHO-DATE stellt das Datum und die Uhrzeit dar.
+Beispiel: (echo-date) => 11.01.2012 06:09:43"
+  (message "~a" (datum-uhrzeit)))
+
+(defcommand echo-time () ()
+  "(echo-date)
+ECHO-DATE stellt die Uhrzeit dar.
+Beispiel: (echo-time) => 06:11:27"
+  (message "~a" (uhrzeit)))
+
 ;; Bewege den Focus und anschließend die Maus in das Fenster
+;; ---------------------------------------------------------
+
 (defcommand move-focus-warp (dir) ((:direction "Direction:"))
 (move-focus-and-or-window dir)
 (banish-pointer :window))
@@ -432,6 +471,7 @@
 		  ("S-SPC" "pull-marked")
 		  ("Pause" "windowlist")
 		  ("C-Pause" "grouplist")
+		  ;; Features umbiegen
 		  )
 
 ;; **************************************************************************************
