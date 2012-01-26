@@ -515,6 +515,7 @@ Beispiel: (echo-time) => 06:11:27"
 ;; *******************************************************
 
 (tastaturbelegung *root-map*
+		  ("Print" "exec scrot -d 5 -e 'mv $f ~/Bilder/Bildschirmfotos/ 2>/dev/null'")
 		  ("RET" "exec uxterm -fg DodgerBlue -bg grey25 -e 'tcsh'")
 		  ("S-RET" "fullscreen")
 		  ("DEL" "repack-window-numbers")
@@ -711,6 +712,7 @@ Beispiel: (echo-time) => 06:11:27"
 
 (defvar *programmstart-map*
   (let ((m (make-sparse-keymap)))
+    (define-key m (kbd "Print") "exec scrot -d 5 -e 'mv $f ~/Bilder/Bildschirmfotos/ 2>/dev/null'")
     (define-key m (kbd "a")   "alsamixer")
     (define-key m (kbd "A")   "abook ")
     (define-key m (kbd "C-a") "exec audacious")
