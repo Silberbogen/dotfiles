@@ -963,6 +963,7 @@ Beispiel: (echo-time) => 06:11:27"
      ("KeePassX                  prefix-x-k"   "keepassx")
      ("Lautstärke                prefix-x-a"   "alsamixer")
      ("Midnight Commander        prefix-x-m"   "mc")
+     ("MODELINE umschalten       prefix-,"     "switch-modeline")
      ("Netzwerk                  prefix-x-w"   "wicd-curses")
      ("Nitrogen                  prefix-x-n"   "nitrogen")
      ("StumpWM reinitialisieren  prefix-x-R"   "reinit")
