@@ -11,17 +11,6 @@
 
 ;; Statt C-t, ist doch die wirklich unbenützte Menütaste einfach nur am geilsten!?
 (set-prefix-key (kbd "Menu"))
-;;; Verworfene Lösungen
-;(run-shell-command "xmodmap -e 'clear Mod4'" t)
-;(run-shell-command "xmodmap -e 'keycode 133 = F20'" t)
-;(set-prefix-key (kbd "F20"))
-;(run-shell-command "xmodmap -e 'keycode 135 = Hyper_L'" t)
-;(run-shell-command "xmodmap -e 'clear mod5'" t)
-;(run-shell-command "xmodmap -e 'add mod5 = Hyper_L'" t)
-;(set-prefix-key (kbd "C-y"))
-;(set-prefix-key (kbd "C-<"))
-;(set-prefix-key (kbd "F20"))
-;(set-prefix-key (kbd "Super_L"))
 
 ;; Zeichensatz - der Standardfont:
 ;(set-font "-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*")
@@ -55,6 +44,26 @@
 ;; Neue Befehle
 ;; ============
 
+(defcommand abook () ()
+  "Starte/wechsle zu Abook."
+  (run-or-raise "uxterm -class 'Abook' -fg DodgerBlue -bg grey25 -e abook" '(:class "Abook")))
+
+(defcommand aliensrl () ()
+  "Starte/wechsle zu AliensRL."
+  (run-or-raise "uxterm -class 'Aliensrl' -e aliensrl" '(:class "Aliensrl")))
+
+(defcommand alsamixer () ()
+  "Starte/wechsle zu Alsa-Mixer."
+  (run-or-raise "uxterm -class 'Alsamixer' -e alsamixer" '(:class "Alsamixer")))
+
+(defcommand brogue () ()
+  "Starte/wechsle zum ansprechenden B-Rogue."
+  (run-or-raise "brogue" '(:class "brogue")))
+
+(defcommand calibre () ()
+  "Starte/wechsle zur Calibre Ebook-Verwaltung."
+  (run-or-raise "calibre" '(:class "Calibre")))
+
 (defcommand cherrytree () ()
   "Starte/wechsle zum Cherrytree Wiki."
   (run-or-raise "cherrytree" '(:class "Cherrytree")))
@@ -63,17 +72,21 @@
   "Starte/wechsle zu Claws-Mail."
   (run-or-raise "claws-mail" '(:class "Claws-mail")))
 
-(defcommand chromium () ()
-  "Starte/wechsle zum Chromium Webbrowser."
-  (run-or-raise "chromium" '(:class "Chromium")))	    
-
 (defcommand conkeror () ()
   "Starte/wechsle zum Conkeror Webbrowser."
   (run-or-raise "conkeror" '(:class "Conkeror")))
 
+(defcommand crawl () ()
+  "Starte/wechsle zu Crawl."
+  (run-or-raise "uxterm -class 'Crawl' -fg DodgerBlue -bg grey25 -e crawl" '(:class "Crawl")))
+
 (defcommand deluge () ()
   "Starte/wechsle zu Deluge."
   (run-or-raise "deluge" '(:class "Deluge")))
+
+(defcommand doomrl () ()
+  "Starte/wechsle zu DoomRL."
+  (run-or-raise "uxterm -class 'Doomrl' -e doomrl" '(:class "Doomrl")))
 
 (defcommand dwb () ()
   "Starte/wechsle zum dwb Webbrowser."
@@ -105,9 +118,13 @@
   "Starte/wechsle zu GIMP."
   (run-or-raise "gimp" '(:class "Gimp")))
 
-(defcommand gvim () ()
-  "Starte/wechsle zu gVim."
-  (run-or-raise "gvim" '(:class "Gvim")))
+(defcommand htop () ()
+  "Starte/wechsle zu Htop."
+  (run-or-raise "uxterm -class 'Htop' -fg DodgerBlue -bg grey25 -e htop" '(:class "Htop")))
+
+(defcommand iceweasel () ()
+  "Starte/wechsle zum Iceweasel Webbrowser."
+  (run-or-raise "iceweasel" '(:class "Iceweasel")))
 
 (defcommand jumanji () ()
   "Starte/wechsle zum Jumanji Webbrowser."
@@ -125,6 +142,14 @@
 	    "Sucht nach einem Befehl in den Manual-Seiten"
 	    (run-shell-command (format nil "~A -e sh -c 'man ~A'" terminal man)))
 
+(defcommand mathomatic () ()
+  "Starte/wechsle zu Mathomatic."
+  (run-or-raise "uxterm -class 'Mathomatic' -e mathomatic" '(:class "Mathomatic")))
+
+(defcommand mc () ()
+  "Starte/wechsle zum Midnight Commander."
+  (run-or-raise "uxterm -class 'MidnightCommander' -e mc" '(:class "MidnightCommander")))
+
 (defcommand mcomix () ()
   "Starte/wechsle zu MComix."
   (run-or-raise "mcomix" '(:class "Mcomix")))
@@ -132,6 +157,14 @@
 (defcommand minitube () ()
   "Starte/wechsle zu Minitube."
   (run-or-raise "minitube" '(:class "Minitube")))
+
+(defcommand mocp () ()
+  "Starte/wechsle zu Music on Console."
+  (run-or-raise "uxterm -class 'Mocp' -e mocp" '(:class "Mocp")))
+
+(defcommand moria () ()
+  "Starte/wechsle zu Moria."
+  (run-or-raise "uxterm -class 'Moria' -fg DodgerBlue -bg grey25 -e moria" '(:class "Moria")))
 
 (defcommand nitrogen () ()
   "Starte/wechsle zu Nitrogen."
@@ -149,6 +182,10 @@
   "Starte/wechsle zu Pouetchess 3Dxp."
   (run-or-raise "pouetChess" '(:class "pouetChess")))
 
+(defcommand primerl () ()
+  "Starte/wechsle zu PrimeRL."
+  (run-or-raise "uxterm -class 'Primerl' -fg DodgerBlue -bg grey25 -e primerl" '(:class "Primerl")))
+
 (defcommand pychess () ()
   "Starte/wechsle zu PyChess Staunton."
   (run-or-raise "pychess" '(:class "pychess")))
@@ -160,6 +197,10 @@
 (defcommand ristretto () ()
   "Starte/wechsle zu Ristretto."
   (run-or-raise "ristretto" '(:class "Ristretto")))
+
+(defcommand rogue () ()
+  "Starte/wechsle zu Rogue."
+  (run-or-raise "uxterm -class 'Rogue' -fg DodgerBlue -bg grey25 -e rogue" '(:class "Rogue")))
 
 (defcommand scid () ()
   "Starte/wechsle zu Scid vs. PC."
@@ -177,9 +218,13 @@
   "Schaltet die Modeline ein oder aus"
   (toggle-mode-line (current-screen) (current-head)))
 
-(defcommand turpial () ()
-  "Starte/wechsle zu Turpial."
-  (run-or-raise "turpial" '(:class "Turpial")))
+(defcommand telecomix () ()
+  "Starte/wechsle zu Telecomix."
+  (run-or-raise "uxterm -class 'Telecomix' -fg white -bg grey10 -e telecomix" '(:class "Telecomix")))
+
+(defcommand twitter () ()
+  "Starte/wechsle zu Twitter."
+  (run-or-raise "uxterm -class 'Twitter' -fg white -bg darkblue -e twitter" '(:class "Twitter")))
 
 (defcommand uzbl-browser () ()
   "Starte/wechsle zu Uzbl."
@@ -197,13 +242,33 @@
   "Starte/wechsle zu ViewYourMind."
   (run-or-raise "vym" '(:class "Vym")))
 
+(defcommand wicd-curses () ()
+  "Starte/wechsle zu WICD (curses)."
+  (run-or-raise "uxterm -class 'Wicdcurses' -e wicd-curses" '(:class "Wicdcurses")))
+
 (defcommand xchat () ()
   "Starte/wechsle zu X-Chat."
   (run-or-raise "xchat" '(:class "Xchat")))
 
+(defcommand xorcurses () ()
+  "Starte/wechsle zu Xorcurses."
+  (run-or-raise "uxterm -class 'Xorcurses' -fg DodgerBlue -bg grey25 -e xorcurses" '(:class "Xorcurses")))
+
 (defcommand zathura () ()
   "Starte/wechsle zu Zathura."
   (run-or-raise "zathura" '(:class "Zathura")))
+
+(defcommand zork1 () ()
+  "Starte/wechsle zu Zork 1."
+  (run-or-raise "uxterm -class 'Zork1' -fg MidnightBlue -bg NavajoWhite -e zork1" '(:class "Zork1")))
+
+(defcommand zork2 () ()
+  "Starte/wechsle zu Zork 2."
+  (run-or-raise "uxterm -class 'Zork2' -fg MidnightBlue -bg NavajoWhite -e zork2" '(:class "Zork2")))
+
+(defcommand zork3 () ()
+  "Starte/wechsle zu Zork 3."
+  (run-or-raise "uxterm -class 'Zork3' -fg MidnightBlue -bg NavajoWhite -e zork3" '(:class "Zork3")))
 
 ;;; ===============================================
 ;;; Anpassung der Darstellung von Datum und Uhrzeit
@@ -241,79 +306,72 @@ Beispiel: (echo-time) => 06:11:27"
 ;; Such- und Auswahl-Befehle
 ;; -------------------------
 
-(defcommand duckduckgo (search)
+(defcommand ddg (search)
   ((:string "Suche in DuckDuckGo nach: "))
   "Dient zur Suche bei DuckDuckGo per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://duckduckgo.com/?q=" search)))
-
-(defcommand google (search)
-  ((:string "Suche in Google nach: "))
-  "Dient zur Suche bei Google per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
-  (check-type search string)
-  (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://www.google.de/search?q=" search)))
+  (run-shell-command (cat "torify conkeror http://duckduckgo.com/?q=" search)))
 
 (defcommand hackernews (search)
   ((:string "Suche bei Hackernews nach: "))
   "Dient zur Suche bei Hackernews per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://www.google.com/search?q=site:news.ycombinator.com+" search)))
+  (run-shell-command (cat "torify conkeror http://www.google.com/search?q=site:news.ycombinator.com+" search)))
 
 (defcommand ixquick (search)
   ((:string "Suche in IxQuick nach: "))
   "Dient zur Suche bei IxQuick per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://ixquick.com/do/metasearch.pl?query=" search)))
+  (run-shell-command (cat "torify conkeror http://ixquick.com/do/metasearch.pl?query=" search)))
 
 (defcommand nachrichten (search)
   ((:string "Suche in Google News nach: "))
   "Dient zur Suche bei Google News per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://news.google.com/news/search?q=" search)))
+  (run-shell-command (cat "torify conkeror http://news.google.com/news/search?q=" search)))
 
 (defcommand news-bbc (search)
   ((:string "Suche bei BBC News nach: "))
   "Dient zur Suche bei BBC News per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://www.bbc.co.uk/search/news/?q=" search)))
+  (run-shell-command (cat "torify conkeror http://www.bbc.co.uk/search/news/?q=" search)))
 
 (defcommand news-guardian (search)
   ((:string "Suche bei Guardian News nach: "))
   "Dient zur Suche bei Guardian News per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://www.guardian.co.uk/search?q=" search)))
+  (run-shell-command (cat "torify conkeror http://www.guardian.co.uk/search?q=" search)))
 
 (defcommand news-register (search)
   ((:string "Suche bei The Register nach: "))
   "Dient zur Suche bei The Register per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://search.theregister.co.uk/?q=" search)))
+  (run-shell-command (cat "torify conkeror http://search.theregister.co.uk/?q=" search)))
 
 (defcommand stackoverflow (search)
   ((:string "Suche in Stackoverflow nach: "))
   "Dient zur Suche bei Stackoverflow per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://stackoverflow.com/search?q=" search)))
+  (run-shell-command (cat "torify conkeror http://stackoverflow.com/search?q=" search)))
 
 (defcommand wikipedia (search)
   ((:string "Suche in der Wikipedia nach: "))
   "Dient zur Suche in der Wikipedia per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "exec conkeror http://de.wikipedia.org/wiki/" search)))
+  (run-shell-command (cat "torify conkeror http://de.wikipedia.org/wiki/" search)))
 
 (defcommand open-selection-browser () ()
   "Öffnet die markierte Webadresse per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
-  (run-shell-command (cat "exec conkeror " (get-x-selection))))
+  (run-shell-command (cat "torify conkeror " (get-x-selection))))
 
 ; cat statt concat
 (defun cat (&rest strings)
@@ -595,8 +653,8 @@ Beispiel: (echo-time) => 06:11:27"
 		  ("XF86AudioRaiseVolume" "exec amixer set Master 5%+ unmute")
 		  ("XF86AudioLowerVolume" "exec amixer set Master 5%- unmute")
 		  ("XF86AudioMute" "exec amixer set Master toggle")
-		  ("M-s-a" "exec uxterm -e alsamixer ")
-		  ("M-s-A" "exec uxterm -e abook ")
+		  ("M-s-a" "alsamixer ")
+		  ("M-s-A" "abook ")
 		  ("M-s-c" "conkeror")
 		  ("M-s-C" "claws-mail")
 		  ("M-s-d" "deluge")
@@ -608,7 +666,7 @@ Beispiel: (echo-time) => 06:11:27"
 		  ("M-s-j" "jumanji")
 		  ("M-s-k" "keepassx")
 		  ("M-s-K" "kaffeine")
-		  ("M-s-m" "exec uxterm -e mc")
+		  ("M-s-m" "mc")
 		  ("M-s-M" "minitube")
 		  ("M-s-n" "nitrogen")
 		  ("M-s-o" "okular")
@@ -617,11 +675,10 @@ Beispiel: (echo-time) => 06:11:27"
 		  ("M-s-s" "scribus")
 		  ("M-s-S" "exec surf ")
 		  ("M-s-t" "exec thunar ")
-		  ("M-s-T" "turpial")
 		  ("M-s-u" "unison-gtk2")
 		  ("M-s-v" "vlc")
 		  ("M-s-V" "vym")
-		  ("M-s-w" "exec uxterm -e wicd-curses ")
+		  ("M-s-w" "wicd-curses ")
 		  ("M-s-x" "xchat")
 		  ("M-s-X" "xarchiver")
 		  ("M-s-y" "exec synclient touchpadoff=1 ")
@@ -629,9 +686,8 @@ Beispiel: (echo-time) => 06:11:27"
 		  ("M-s-z" "zathura")
 		  ;; Websuchen
 		  ("C-s-b" "news-bbc")
-		  ("C-s-d" "duckduckgo")
-		  ("C-s-g" "google")
-		  ("C-s-G" "news-guardian")
+		  ("C-s-d" "ddg")
+		  ("C-s-g" "news-guardian")
 		  ("C-s-h" "hackernews")
 		  ("C-s-i" "ixquick")
 		  ("C-s-n" "nachrichten")
@@ -655,38 +711,55 @@ Beispiel: (echo-time) => 06:11:27"
 
 (defvar *programmstart-map*
   (let ((m (make-sparse-keymap)))
-    (define-key m (kbd "a") "exec uxterm -e alsamixer ")
-    (define-key m (kbd "A") "exec uxterm -e abook ")
-    (define-key m (kbd "c") "conkeror")
-    (define-key m (kbd "C") "claws-mail")
-    (define-key m (kbd "d") "deluge")
-    (define-key m (kbd "D") "dwb")
-    (define-key m (kbd "e") "emacs")
-    (define-key m (kbd "f") "focuswriter")
-    (define-key m (kbd "g") "geeqie")
-    (define-key m (kbd "G") "gimp")
-    (define-key m (kbd "j") "jumanji")
-    (define-key m (kbd "k") "keepassx")
-    (define-key m (kbd "K") "kaffeine")
-    (define-key m (kbd "m") "exec uxterm -e mc")
-    (define-key m (kbd "M") "minitube")
-    (define-key m (kbd "n") "nitrogen")
-    (define-key m (kbd "o") "okular")
-    (define-key m (kbd "p") "exec dmenu_run ")
-    (define-key m (kbd "r") "ristretto")
-    (define-key m (kbd "s") "scribus")
-    (define-key m (kbd "S") "exec surf ")
-    (define-key m (kbd "t") "exec thunar ")
-    (define-key m (kbd "T") "turpial")
-    (define-key m (kbd "u") "unison-gtk2")
-    (define-key m (kbd "v") "vlc")
-    (define-key m (kbd "V") "vym")
-    (define-key m (kbd "w") "exec uxterm -e wicd-curses ")
-    (define-key m (kbd "x") "xchat")
-    (define-key m (kbd "X") "xarchiver")
-    (define-key m (kbd "y") "exec synclient touchpadoff=1 ")
-    (define-key m (kbd "Y") "exec synclient touchpadoff=0 ")
-    (define-key m (kbd "z") "zathura")
+    (define-key m (kbd "a")   "alsamixer")
+    (define-key m (kbd "A")   "abook ")
+    (define-key m (kbd "C-a") "exec audacious")
+    (define-key m (kbd "C-A") "exec avidemux2_qt4")
+    (define-key m (kbd "c")   "conkeror")
+    (define-key m (kbd "C")   "claws-mail")
+    (define-key m (kbd "C-c") "cherrytree")
+    (define-key m (kbd "C-C") "calbire")
+    (define-key m (kbd "d")   "deluge")
+    (define-key m (kbd "D")   "dwb")
+    (define-key m (kbd "C-d") "exec dropbox start")
+    (define-key m (kbd "C-D") "exec dropbox stop")
+    (define-key m (kbd "e")   "emacs")
+    (define-key m (kbd "f")   "focuswriter")
+    (define-key m (kbd "g")   "geeqie")
+    (define-key m (kbd "G")   "gimp")
+    (define-key m (kbd "h")   "htop")
+    (define-key m (kbd "i")   "iceweasel")
+    (define-key m (kbd "I")   "exec iscan")
+    (define-key m (kbd "C-i") "exec ~/i2p/i2prouter start")
+    (define-key m (kbd "C-I") "exec ~/i2p/i2prouter stop")
+    (define-key m (kbd "j")   "jumanji")
+    (define-key m (kbd "k")   "keepassx")
+    (define-key m (kbd "K")   "kaffeine")
+    (define-key m (kbd "C-k") "exec k3b")
+    (define-key m (kbd "m")   "mc")
+    (define-key m (kbd "M")   "minitube")
+    (define-key m (kbd "C-m") "mocp")  
+    (define-key m (kbd "C-M") "mathomatic")  
+    (define-key m (kbd "n")   "nitrogen")
+    (define-key m (kbd "o")   "okular")
+    (define-key m (kbd "p")   "exec dmenu_run")
+    (define-key m (kbd "P")   "exec pyroom")
+    (define-key m (kbd "r")   "ristretto")
+    (define-key m (kbd "R")   "reinit")
+    (define-key m (kbd "s")   "scribus")
+    (define-key m (kbd "S")   "surf")
+    (define-key m (kbd "t")   "exec thunar")
+    (define-key m (kbd "T")   "exec tvbrowser")
+    (define-key m (kbd "u")   "unison-gtk2")
+    (define-key m (kbd "v")   "vlc")
+    (define-key m (kbd "V")   "vym")
+    (define-key m (kbd "C-v") "exec xvidcap")
+    (define-key m (kbd "w")   "wicd-curses")
+    (define-key m (kbd "x")   "xchat")
+    (define-key m (kbd "X")   "xarchiver")
+    (define-key m (kbd "y")   "exec synclient touchpadoff=1 ")
+    (define-key m (kbd "Y")   "exec synclient touchpadoff=0 ")
+    (define-key m (kbd "z")   "zathura")
     m))
 
 ;; ===========================================
@@ -696,15 +769,15 @@ Beispiel: (echo-time) => 06:11:27"
 (defvar *websuche-map*
   (let ((m (make-sparse-keymap)))
     (define-key m (kbd "b") "news-bbc")
-    (define-key m (kbd "d") "duckduckgo")
-    (define-key m (kbd "g") "google")
-    (define-key m (kbd "G") "news-guardian")
+    (define-key m (kbd "d") "ddg")
+    (define-key m (kbd "g") "news-guardian")
     (define-key m (kbd "h") "hackernews")
     (define-key m (kbd "i") "ixquick")
-    (define-key m (kbd "n") "nachrichten")
     (define-key m (kbd "o") "open-selection-browser")
     (define-key m (kbd "r") "news-register")
     (define-key m (kbd "s") "stackoverflow")
+    (define-key m (kbd "t") "telecomix")
+    (define-key m (kbd "T") "twitter")
     (define-key m (kbd "w") "wikipedia")
     m))
 
@@ -714,39 +787,46 @@ Beispiel: (echo-time) => 06:11:27"
 
 (defvar *erholung-map*
   (let ((m (make-sparse-keymap)))
-     (define-key m (kbd "a") "exec adv770")
-     (define-key m (kbd "A") "exec asciiportal")
-     (define-key m (kbd "b") "exec wesnoth --smallgui")
-     (define-key m (kbd "c") "exec uxterm -e crawl")
-     (define-key m (kbd "d") "exec desmume-glade")
-     (define-key m (kbd "D") "exec dwarffortress-ih")
+     (define-key m (kbd "a")   "exec adv770")
+     (define-key m (kbd "A")   "exec asciiportal")
+     (define-key m (kbd "C-a") "aliensrl")
+     (define-key m (kbd "b")   "exec wesnoth --smallgui")
+     (define-key m (kbd "B")   "brogue")
+     (define-key m (kbd "c")   "crawl")
+     (define-key m (kbd "d")   "exec desmume-glade")
+     (define-key m (kbd "D")   "exec dwarffortress-ih")
      (define-key m (kbd "C-d") "exec dwarftherapist")
-     (define-key m (kbd "f") "exec flands")
-     (define-key m (kbd "F") "exec flare")
+     (define-key m (kbd "C-D") "doomrl")
+     (define-key m (kbd "f")   "exec flands")
+     (define-key m (kbd "F")   "exec flare")
      (define-key m (kbd "C-f") "exec freedroidRPG")
-     (define-key m (kbd "h") "exec hitchhikersguide")
-     (define-key m (kbd "l") "exec scummvm")
-     (define-key m (kbd "m") "exec minecraft")
-     (define-key m (kbd "M") "exec uxterm -e moria")
+     (define-key m (kbd "h")   "exec hitchhikersguide")
+     (define-key m (kbd "l")   "exec scummvm")
+     (define-key m (kbd "m")   "exec minecraft")
+     (define-key m (kbd "C-M") "moria")
      (define-key m (kbd "C-m") "exec mangband")
-     (define-key m (kbd "p") "exec palapelli")
-     (define-key m (kbd "P") "exec uxterm -e primerl")
-     (define-key m (kbd "r") "exec uxterm -e rogue")
-     (define-key m (kbd "s") "exec scid")
-     (define-key m (kbd "S") "exec stella")
-     (define-key m (kbd "C-s") "exec supertuxkart")
-     (define-key m (kbd "t") "exec tome")
-     (define-key m (kbd "T") "exec tome4")
-     (define-key m (kbd "v") "exec gvbam")
-     (define-key m (kbd "w") "exec warmux")
-     (define-key m (kbd "W") "exec widelands")
+     (define-key m (kbd "M")   "exec MCEdit")
+     (define-key m (kbd "p")   "exec palapelli")
+     (define-key m (kbd "P")   "primerl")
+     (define-key m (kbd "C-p") "exec pouetChess")
+     (define-key m (kbd "C-P") "exec pychess")
+     (define-key m (kbd "r")   "rogue")
+     (define-key m (kbd "s")   "exec scid")
+     (define-key m (kbd "C-S") "exec stella")
+     (define-key m (kbd "S")   "exec supertuxkart")
+     (define-key m (kbd "C-s") "exec scummvm")
+     (define-key m (kbd "t")   "exec tome")
+     (define-key m (kbd "T")   "exec tome4")
+     (define-key m (kbd "v")   "exec gvbam")
+     (define-key m (kbd "w")   "exec warmux")
+     (define-key m (kbd "W")   "exec widelands")
      (define-key m (kbd "C-w") "exec wop")
-     (define-key m (kbd "x") "exec uxterm -e xorcurses")
-     (define-key m (kbd "X") "exec xskat")
-     (define-key m (kbd "z") "exec zsnes")
-     (define-key m (kbd "1") "exec uxterm -e zork1")
-     (define-key m (kbd "2") "exec uxterm -e zork2")
-     (define-key m (kbd "3") "exec uxterm -e zork3")
+     (define-key m (kbd "x")   "xorcurses")
+     (define-key m (kbd "X")   "exec xskat")
+     (define-key m (kbd "z")   "exec zsnes")
+     (define-key m (kbd "1")   "zork1")
+     (define-key m (kbd "2")   "zork2")
+     (define-key m (kbd "3")   "zork3")
      m))
 
 ;; ==========================
@@ -773,167 +853,164 @@ Beispiel: (echo-time) => 06:11:27"
   '(
 
     ("WWW"
-     ("Chromium"             "chromium")
-     ("Claws-Mail   M-s-C"   "claws-mail")
-     ("Conkeror     M-s-c"   "conkeror")
-     ("Deluge       M-s-d"   "deluge")
-     ("dwb          M-s-D"   "dwb")
-     ("Jumanji      M-s-j"   "jumanji")
-     ("MiniTube     M-s-m"   "minitube")
-     ("Mutt"                 "st -e mutt")
-     ("Surf         M-s-S"   "surf")
-     ("TOR-Conkeror"         "torify conkeror")
-     ("TOR-Chromium"         "chromium --proxy-server='socks://localhost:9050'")
-     ("Turpial      M-s-T"   "turpial")
-     ("X-Chat       M-s-x"   "xchat")
+     ("Claws-Mail   prefix-x-C"   "claws-mail")
+     ("Conkeror     prefix-x-c"   "conkeror")
+     ("Deluge       prefix-x-d"   "deluge")
+     ("dwb          prefix-x-D"   "dwb")
+     ("Iceweasel    prefix-x-i"   "iceweasel")
+     ("Jumanji      prefix-x-j"   "jumanji")
+     ("MiniTube     prefix-x-M"   "minitube")
+     ("Mutt"                      "st -e mutt")
+     ("Surf         prefix-x-S"   "surf")
+     ("Telecomix    prefix-y-t"   "telecomix")
+     ("Twitter      prefix-y-T"   "twitter")
+     ("X-Chat       prefix-x-x"   "xchat")
     )
 
     ("Arbeiten"
-     ("Cherrytree"                       "cherrytree")
-     ("Emacs                    s-e"     "emacs")
-     ("FocusWriter              M-s-f"   "focuswriter")
-     ("GIMP                     M-s-G"   "gimp")
-     ("gVim"                             "gvim")
-     ("LibreOffice-Startcenter"          "libreoffice-startcenter")
-     ("LibreOffice-Writer"               "libreoffice-writer")
-     ("LibreOffice-Calc"                 "libreoffice-calc")
-     ("LibreOffice-Impress"              "libreoffice-impress")
-     ("LibreOffice-Draw"                 "libreoffice-draw")
-     ("LibreOffice-Math"                 "libreoffice-math")
-     ("Mathomatic"                       "uxterm -e mathomatic")
-     ("Okular                   M-s-o"   "okular")
-     ("PyRoom"                           "pyroom")
-     ("Scribus                  M-s-s"   "scribus")
-     ("Scanner"                          "iscan")
-     ("ViewYourMind             M-s-V"   "vym")
-     ("Zathura                  M-s-z"   "zathura")
+     ("Calibre                  prefix-x C-C" "calibre")
+     ("Cherrytree               prefix-x C-c" "cherrytree")
+     ("Emacs                    prefix-e"     "emacs")
+     ("FocusWriter              prefix-x-f"   "focuswriter")
+     ("GIMP                     prefix-x-G"   "gimp")
+     ("LibreOffice-Startcenter"               "libreoffice-startcenter")
+     ("LibreOffice-Writer"                    "libreoffice-writer")
+     ("LibreOffice-Calc"                      "libreoffice-calc")
+     ("LibreOffice-Impress"                   "libreoffice-impress")
+     ("LibreOffice-Draw"                      "libreoffice-draw")
+     ("LibreOffice-Math"                      "libreoffice-math")
+     ("Mathomatic               prefix-x C-M" "mathomatic")
+     ("Okular                   prefix-x-o"   "okular")
+     ("PyRoom                   prefix-x-P"   "pyroom")
+     ("Scribus                  prefix-x-s"   "scribus")
+     ("Scanner                  prefix-x-I"   "iscan")
+     ("ViewYourMind             prefix-x-V"   "vym")
+     ("Zathura                  prefix-x-z"   "zathura")
     )
     
     ("Media"
-     ("Audacious"                "audacious")
-     ("AviDeMux"                 "avidemux2_qt4")
-     ("Geeqie           M-s-g"   "geeqie")
-     ("K3b Burner"               "k3b")
-     ("Kaffeine         M-s-K"   "kaffeine")
-     ("Lautstärke       M-s-a"   "uxterm -e alsamixer")
-     ("MComix"                   "mcomix")
-     ("MiniTube         M-s-m"   "minitube")
-     ("Music on Console"         "uxterm -e mocp")
-     ("Ristretto        M-s-r"   "ristretto")
-     ("TV-Browser"               "tvbrowser")
-     ("VideoLan-Client  M-s-v"   "vlc")
-     ("XVidCap Screencast"       "xvidcap")
+     ("Audacious           prefix-x C-a" "audacious")
+     ("AviDeMux            prefix-x C-A" "avidemux2_qt4")
+     ("Geeqie              prefix-x-g"   "geeqie")
+     ("K3b Burner          prefix-x C-k" "k3b")
+     ("Kaffeine            prefix-x-K"   "kaffeine")
+     ("Lautstärke          prefix-x-a"   "alsamixer")
+     ("MComix"                           "mcomix")
+     ("MiniTube            prefix-x-M"   "minitube")
+     ("Music on Console    prefix-x C-m" "mocp")
+     ("Ristretto           prefix-x-r"   "ristretto")
+     ("TV-Browser          prefix-x-T"   "tvbrowser")
+     ("VideoLan-Client     prefix-x-v"   "vlc")
+     ("XVidCap Screencast  prefix-x C-v" "xvidcap")
     )
    
     ("Erholung"
-     ("Adventure 770"                 "adv770")
-     ("Aliens RL"                     "uxterm -e aliensrl")
-     ("ASCII-Portal"                  "asciiportal")
-     ("Battle for Wesnoth"            "wesnoth --smallgui")
-     ("Crawl"                         "uxterm -e crawl")
-     ("Desmume"                       "desmume-glade")
-     ("Doom RL"                       "uxterm -e doomrl")
-     ("Dwarffortress"                 "dwarffortress-ih")
-     ("DwarfTherapist"                "dwarftherapist")
-     ("Fabled Lands App"              "flands")
-     ("Flare RPG"                     "flare")
-     ("Freedroid-RPG"                 "freedroidRPG")
-     ("Hitchhikers Guide"             "hitchhikersguide")
-     ("Minecraft"                     "minecraft")
-     ("Minecraft Editor"              "MCEdit")
-     ("MiniTube"                      "minitube")
-     ("Moria"                         "uxterm -e moria")
-     ("Multiplayer-Angband"           "mangband")
-     ("Palapelli"                     "palapelli")
-     ("Pouet-Chess 3D"                "pouetChess")
-     ("Prime RL"                      "uxterm -e primerl")
-     ("PyChess Staunton"              "pychess")
-     ("Rogue"                         "uxterm -e rogue")
-     ("Scid vs. PC"                   "scid")
-     ("S.C.U.M.M.-VM"                 "scummvm")
-     ("STella"                        "stella")
-     ("Supertux-Kart"                 "supertuxkart")
-     ("T.O.M.E. 2"                    "tome")
-     ("T.O.M.E. 4"                    "tome4")
-     ("VisualBoy Advanced m"          "gvbam")
-     ("Warmux"                        "warmux")
-     ("Widelands"                     "widelands")
-     ("World of Padman"               "wop")
-     ("XorCurses"                     "uxterm -e xorcurses")
-     ("X-Skat"                        "exec xskat")
-     ("Zork 1"                        "uxterm -e zork1")
-     ("Zork 2"                        "uxterm -e zork2")
-     ("Zork 3"                        "uxterm -e zork3")
-     ("ZSNES"                         "zsnes")
+     ("Adventure 770        prefix-X-a"   "adv770")
+     ("Aliens RL            prefix-X C-a" "aliensrl")
+     ("ASCII-Portal         prefix-X-A"   "asciiportal")
+     ("Battle for Wesnoth   prefix-X-b"   "wesnoth --smallgui")
+     ("B-Rogue              prefix-X-B"   "brogue")
+     ("Crawl                prefix-X-c"   "crawl")
+     ("Desmume              prefix-X-d"   "desmume-glade")
+     ("Doom RL              prefix-X C-D" "doomrl")
+     ("Dwarffortress        prefix-X-D"   "dwarffortress-ih")
+     ("DwarfTherapist       prefix-X C-d" "dwarftherapist")
+     ("Fabled Lands App     prefix-X-f"   "flands")
+     ("Flare RPG            prefix-X-F"   "flare")
+     ("Freedroid-RPG        prefix-X C-f" "freedroidRPG")
+     ("Hitchhikers Guide    prefix-X-h"   "hitchhikersguide")
+     ("Minecraft            prefix-X-m"   "minecraft")
+     ("Minecraft Editor     prefix-X-M"   "MCEdit")
+     ("MiniTube             prefix-x-M"   "minitube")
+     ("Moria                prefix-X C-M" "moria")
+     ("Multiplayer-Angband  prefix-X C-m" "mangband")
+     ("Palapelli            prefix-X-p"   "palapelli")
+     ("Pouet-Chess 3D       prefix-X C-p" "pouetChess")
+     ("Prime RL             prefix-X-P"   "primerl")
+     ("PyChess Staunton     prefix-X C-P" "pychess")
+     ("Rogue                prefix-X-r"   "rogue")
+     ("Scid vs. PC          prefix-X-s"   "scid")
+     ("S.C.U.M.M.-VM        prefix-X C-s" "scummvm")
+     ("STella               prefix-X C-S" "stella")
+     ("Supertux-Kart        prefix-X-S"   "supertuxkart")
+     ("T.O.M.E. 2           prefix-X-t"   "tome")
+     ("T.O.M.E. 4           prefix-X-T"   "tome4")
+     ("VisualBoy Advanced m prefix-X-v"   "gvbam")
+     ("Warmux               prefix-X-w"   "warmux")
+     ("Widelands            prefix-X-W"   "widelands")
+     ("World of Padman      prefix-X C-w" "wop")
+     ("XorCurses            prefix-X-x"   "xorcurses")
+     ("X-Skat               prefix-X-X"   "exec xskat")
+     ("Zork 1               prefix-X-1"   "zork1")
+     ("Zork 2               prefix-X-2"   "zork2")
+     ("Zork 3               prefix-X-3"   "zork3")
+     ("ZSNES                prefix-X-z"   "zsnes")
     )
     
     ("System"
-     ("Adressbuch          M-s-A"   "uxterm -e abook")
-     ("Dateimanager        M-s-T"   "thunar")
-     ("Dropbox starten"             "dropbox start")
-     ("Dropbox beenden"             "dropbox stop")
-     ("Event-Anzeiger XEV"          "xev")
-     ("GParted"                     "gksudo gparted")
-     ("GPG-Crypter"                 "gpg-crypter")
-     ("Htop"                        "uxterm -e htop")
-     ("i2p starten"                 "~/i2p/i2prouter start")
-     ("i2p beenden"                 "~/i2p/i2prouter stop")
-     ("KeePassX            M-s-k"   "keepassx")
-     ("Lautstärke          M-s-a"   "uxterm -e alsamixer")
-     ("Midnight Commander"          "uxterm -e mc")
-     ("Netzwerk            M-s-w"   "uxterm -e wicd-curses")
-     ("Nitrogen            M-s-n"   "nitrogen")
-     ("StumpWM reinitialisieren"    "reinit")
-     ("Taschenrechner"              "speedcrunch")
-     ("Touchpad AUS        M-s-y"   "synclient touchpadoff=1")
-     ("Touchpad EIN        M-s-Y"   "synclient touchpadoff=0")
-     ("UnetBootin"                  "gksudo unetbootin")
-     ("Unison              M-s-u"   "unison-gtk2")
-     ("XArchiver           M-s-X"   "xarchiver")
-     ("XFontSel"                    "xfontsel")
+     ("Adressbuch                prefix-x-A"   "abook")
+     ("Dateimanager              prefix-x-t"   "thunar")
+     ("Dropbox starten           prefix-x C-d" "dropbox start")
+     ("Dropbox beenden           prefix-x C-D" "dropbox stop")
+     ("Event-Anzeiger XEV"                     "xev")
+     ("GParted"                                "gksudo gparted")
+     ("GPG-Crypter"                            "gpg-crypter")
+     ("Htop                      prefix-x h"   "htop")
+     ("i2p starten               prefix-x C-i" "~/i2p/i2prouter start")
+     ("i2p beenden               prefix-x C-I" "~/i2p/i2prouter stop")
+     ("KeePassX                  prefix-x-k"   "keepassx")
+     ("Lautstärke                prefix-x-a"   "alsamixer")
+     ("Midnight Commander        prefix-x-m"   "mc")
+     ("Netzwerk                  prefix-x-w"   "wicd-curses")
+     ("Nitrogen                  prefix-x-n"   "nitrogen")
+     ("StumpWM reinitialisieren  prefix-x-R"   "reinit")
+     ("Taschenrechner            CALC-KEY"     "speedcrunch")
+     ("Touchpad AUS              prefix-x-y"   "synclient touchpadoff=1")
+     ("Touchpad EIN              prefix-x-Y"   "synclient touchpadoff=0")
+     ("UnetBootin"                             "gksudo unetbootin")
+     ("Unison                    prefix-x-u"   "unison-gtk2")
+     ("WICD (curses)             prefix-x-w"   "wicd-curses")
+     ("XArchiver                 prefix-x-X"   "xarchiver")
+     ("XFontSel"                               "xfontsel")
     )
 
     ("Webseiten"
      ("Arch Linux"                       "conkeror http://archlinux.org")
-     ("BBC Nachrichten      C-s-b"       "conkeror http://bbc.co.uk/news")
+     ("BBC Nachrichten      prefix-y-b"  "conkeror http://bbc.co.uk/news")
      ("Blottr Breaking-News"             "conkeror http://blottr.com")
      ("Detektiv Conan"                   "conkeror http://detektiv-conan.ch")
      ("Diaspora*"                        "conkeror http://joindiaspora.com/stream")
-     ("DuckDuckGo           C-s-d"       "conkeror https://duckduckgo.com")
+     ("DuckDuckGo           prefix-y-d"  "ddg")
      ("Dwarf Fortress Wiki"              "conkeror http://df.magmawiki.com")
      ("FreshPorts"                       "conkeror http://freshports.org")
-     ("Google               C-s-g"       "conkeror http://google.com")
-     ("Google News          C-s-n"       "conkeror http://news.google.com")
-     ("Google Translate"                 "conkeror http://translate.google.com")
      ("Gronkh"                           "conkeror http://gronkh.de")
-     ("Hackernews           C-s-h"       "conkeror http://news.ycombinator.com")
+     ("Hackernews           prefix-y-h"  "conkeror http://news.ycombinator.com")
      ("Heise"                            "conkeror http://heise.de")
      ("i2p"                              "conkeror http://127.0.0.1:7657")
      ("I.M.D.B."                         "conkeror http://imdb.com")
-     ("IxQuick              C-s-i"       "conkeror http://ixquick.com")
+     ("IxQuick              prefix-y-i"  "conkeror http://ixquick.com")
      ("LEO EN-DE"                        "conkeror http://leo.org")
      ("Lernu Esperanto"                  "conkeror http://lernu.net")
      ("L1sp"                             "conkeror http://l1sp.org")
      ("Memory Alpha"                     "conkeror http://memory-alpha.org")
      ("Minecraft Wiki"                   "conkeror http://www.minecraftwiki.net")
-     ("Nachrichten          C-s-n"       "conkeror http://news.google.de")
      ("Planet LISP"                      "conkeror http://planet.lisp.org")
      ("Planet SBCL"                      "conkeror http://planet.sbcl.org")
      ("Revo Vortaro EO"                  "conkeror http://reta-vortaro.de")
      ("Sonja Vortaro EO"                 "conkeror http://kisa.ca/vortaro")
-     ("Stackoverflow        C-s-s"       "conkeror http://stackoverflow.com")
+     ("Stackoverflow        prefix-y-s"  "conkeror http://stackoverflow.com")
      ("StumpWM Homepage"                 "conkeror http://www.nongnu.org/stumpwm/")
      ("StumpWM Wiki"                     "conkeror http://stumpwm.svkt.org/cgi-bin/wiki.pl")
      ("SubCentral"                       "conkeror http://subcentral.de")
      ("Telecomix"                        "conkeror https://status.telecomix.org")
      ("Thalia"                           "conkeror http://thalia.de")
-     ("The Guardian         C-s-G"       "conkeror http://guardian.co.uk")
-     ("The Register         C-s-r"       "conkeror http://theregister.co.uk")
+     ("The Guardian         prefix-y-g"  "conkeror http://guardian.co.uk")
+     ("The Register         prefix-y-r"  "conkeror http://theregister.co.uk")
      ("TOR check"                        "conkeror https://check.torproject.org")
      ("Tumblr"                           "conkeror http://tumblr.com/dashboard")
      ("Twitter"                          "conkeror https://twitter.com")
      ("Übersetzen"                       "conkeror http://translate.google.com")
-     ("Wikipedia            C-s-w"       "conkeror http://de.wikipedia.org")
+     ("Wikipedia            prefix-y-w"  "conkeror http://de.wikipedia.org")
      ("YouTube"                          "conkeror http://youtube.com")
      ("ZenCast"                          "conkeror http://zencast.org")
     )
