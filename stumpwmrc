@@ -2,10 +2,10 @@
 ; mit loadrc im colon neu laden
 (in-package :stumpwm)
 
-(load "devel/git/stumpwm/contrib/sbclfix")
-(load "devel/git/stumpwm/contrib/net")
-(load "devel/git/stumpwm/contrib/cpu")
-(load "devel/git/stumpwm/contrib/mem")
+(load "~/Git/stumpwm/contrib/sbclfix")
+(load "~/Git/stumpwm/contrib/net")
+(load "~/Git/stumpwm/contrib/cpu")
+(load "~/Git/stumpwm/contrib/mem")
 
 
 
@@ -13,8 +13,8 @@
 (set-prefix-key (kbd "Menu"))
 
 ;; Zeichensatz - der Standardfont:
-;(set-font "-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*")
-(set-font "-*-profont-*-*-*-*-12-*-*-*-*-*-*-*")
+(set-font "-*-terminus-*-*-*-*-*-*-*-*-*-*-*-*")
+;(set-font "-*-profont-*-*-*-*-12-*-*-*-*-*-*-*")
 
 ;; Farben
 (set-focus-color      "DodgerBlue")
@@ -95,6 +95,10 @@
 (defcommand emacs () ()
   "Starte/wechsle zu Emacs."
   (run-or-raise "emacs" '(:class "Emacs")))
+
+(defcommand epiphany () ()
+  "Starte/wechsle zu Epiphany."
+  (run-or-raise "epiphany" '(:class "Epiphany")))
 
 (defcommand flare () ()
   "Starte/wechsle zu Flare RPG."
@@ -311,67 +315,67 @@ Beispiel: (echo-time) => 06:11:27"
   "Dient zur Suche bei DuckDuckGo per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "torify conkeror http://duckduckgo.com/?q=" search)))
+  (run-shell-command (cat "epiphany http://duckduckgo.com/?q=" search)))
 
 (defcommand hackernews (search)
   ((:string "Suche bei Hackernews nach: "))
   "Dient zur Suche bei Hackernews per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "torify conkeror http://www.google.com/search?q=site:news.ycombinator.com+" search)))
+  (run-shell-command (cat "epiphany http://www.google.com/search?q=site:news.ycombinator.com+" search)))
 
 (defcommand ixquick (search)
   ((:string "Suche in IxQuick nach: "))
   "Dient zur Suche bei IxQuick per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "torify conkeror http://ixquick.com/do/metasearch.pl?query=" search)))
+  (run-shell-command (cat "epiphany http://ixquick.com/do/metasearch.pl?query=" search)))
 
 (defcommand nachrichten (search)
   ((:string "Suche in Google News nach: "))
   "Dient zur Suche bei Google News per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "torify conkeror http://news.google.com/news/search?q=" search)))
+  (run-shell-command (cat "epiphany http://news.google.com/news/search?q=" search)))
 
 (defcommand news-bbc (search)
   ((:string "Suche bei BBC News nach: "))
   "Dient zur Suche bei BBC News per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "torify conkeror http://www.bbc.co.uk/search/news/?q=" search)))
+  (run-shell-command (cat "epiphany http://www.bbc.co.uk/search/news/?q=" search)))
 
 (defcommand news-guardian (search)
   ((:string "Suche bei Guardian News nach: "))
   "Dient zur Suche bei Guardian News per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "torify conkeror http://www.guardian.co.uk/search?q=" search)))
+  (run-shell-command (cat "epiphany http://www.guardian.co.uk/search?q=" search)))
 
 (defcommand news-register (search)
   ((:string "Suche bei The Register nach: "))
   "Dient zur Suche bei The Register per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "torify conkeror http://search.theregister.co.uk/?q=" search)))
+  (run-shell-command (cat "epiphany http://search.theregister.co.uk/?q=" search)))
 
 (defcommand stackoverflow (search)
   ((:string "Suche in Stackoverflow nach: "))
   "Dient zur Suche bei Stackoverflow per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "torify conkeror http://stackoverflow.com/search?q=" search)))
+  (run-shell-command (cat "epiphany http://stackoverflow.com/search?q=" search)))
 
 (defcommand wikipedia (search)
   ((:string "Suche in der Wikipedia nach: "))
   "Dient zur Suche in der Wikipedia per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
   (check-type search string)
   (substitute #\+ #\Space search)
-  (run-shell-command (cat "torify conkeror http://de.wikipedia.org/wiki/" search)))
+  (run-shell-command (cat "epiphany http://de.wikipedia.org/wiki/" search)))
 
 (defcommand open-selection-browser () ()
   "Öffnet die markierte Webadresse per Conkeror. Ist dieser bereits geöffnet, so in einem neuen Tab."
-  (run-shell-command (cat "torify conkeror " (get-x-selection))))
+  (run-shell-command (cat "epiphany " (get-x-selection))))
 
 ; cat statt concat
 (defun cat (&rest strings)
@@ -516,13 +520,13 @@ Beispiel: (echo-time) => 06:11:27"
 
 (tastaturbelegung *root-map*
 		  ("Print" "exec scrot -d 5 -e 'mv $f ~/Bilder/Bildschirmfotos/ 2>/dev/null'")
-		  ("RET" "exec uxterm -fg DodgerBlue -bg grey25 -e 'tcsh'")
+		  ("RET" "exec uxterm -fg DodgerBlue -bg grey25")
 		  ("S-RET" "fullscreen")
 		  ("DEL" "repack-window-numbers")
 		  ("I" "show-window-properties")
 		  ("P" "exec dmenu_run ")
 		  ("," "switch-modeline")
-		  ("c" "exec uxterm -fg DodgerBlue -bg grey25 -e 'tcsh'")
+		  ("c" "exec uxterm -fg DodgerBlue -bg grey25")
 		  ("C-c" "exec st")
 		  ;; Die fehlenden Features auch in der root-map anlegen
 		  ("C-SPC" "other")
@@ -566,7 +570,7 @@ Beispiel: (echo-time) => 06:11:27"
 		  ("Pause" "windowlist")
 		  ("C-Pause" "grouplist")
 		  ;; Nachbildung der vordefinierten StumpWM-Tasten als Direkttasten
-		  ("s-RET" "exec uxterm -fg DodgerBlue -bg grey25 -e 'tcsh'")
+		  ("s-RET" "exec uxterm -fg DodgerBlue -bg grey25")
 		  ("S-s-RET" "fullscreen")
 		  ("s-;" "colon")
 		  ("s-:" "eval")
@@ -580,7 +584,7 @@ Beispiel: (echo-time) => 06:11:27"
 		  ("s-a" "time")
 		  ("s-A" "title")
 		  ("s-b" "banish")
-		  ("s-c" "exec uxterm -fg DodgerBlue -bg grey25 -e 'tcsh'")
+		  ("s-c" "exec uxterm -fg DodgerBlue -bg grey25")
 		  ("s-C" "commands")
 		  ("s-e" "emacs")
 		  ("s-f" "fselect")
@@ -656,7 +660,7 @@ Beispiel: (echo-time) => 06:11:27"
 		  ("XF86AudioMute" "exec amixer set Master toggle")
 		  ("M-s-a" "alsamixer ")
 		  ("M-s-A" "abook ")
-		  ("M-s-c" "conkeror")
+		  ("M-s-c" "epiphany")
 		  ("M-s-C" "claws-mail")
 		  ("M-s-d" "deluge")
 		  ("M-s-D" "dwb")
@@ -717,7 +721,7 @@ Beispiel: (echo-time) => 06:11:27"
     (define-key m (kbd "A")   "abook ")
     (define-key m (kbd "C-a") "exec audacious")
     (define-key m (kbd "C-A") "exec avidemux2_qt4")
-    (define-key m (kbd "c")   "conkeror")
+    (define-key m (kbd "c")   "epiphany")
     (define-key m (kbd "C")   "claws-mail")
     (define-key m (kbd "C-c") "cherrytree")
     (define-key m (kbd "C-C") "calbire")
