@@ -1,0 +1,101 @@
+# conky configuration
+#
+# The list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+#
+# For ideas about how to modify conky, please see:
+# http://crunchbanglinux.org/forums/topic/59/my-conky-config/
+#
+# For help with conky, please see:
+# http://crunchbanglinux.org/forums/topic/2047/conky-help/
+#
+# Enjoy! :)
+##############################################
+# Settings
+##############################################
+background yes
+use_xft yes
+xftfont Liberation Sans:size=9
+xftalpha 1
+update_interval 1.0
+total_run_times 0
+own_window yes
+own_window_transparent yes
+own_window_type desktop
+#own_window_argb_visual yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+double_buffer yes
+minimum_size 240 200
+maximum_width 240
+draw_shades no
+draw_outline no
+draw_borders no
+draw_graph_borders no
+default_color 444444 # for white background
+#default_color 828282
+#default_color b5b5b5 # for dark background
+default_shade_color 000000
+default_outline_color 828282
+alignment top_right
+gap_x 12
+gap_y 56
+no_buffers yes
+uppercase no
+cpu_avg_samples 2
+override_utf8_locale no
+##############################################
+#  Output
+##############################################
+TEXT
+S Y S T E M    I N F O
+${hr}
+Host:$alignr$nodename
+Uptime:$alignr$uptime
+Kernel:$alignr$kernel
+RAM:$alignr$mem/$memmax
+#Swap usage:$alignr$swap/$swapmax
+Disk usage:$alignr${fs_used /}/${fs_size /}
+CPU usage:$alignr${cpu cpu1}% / ${cpu cpu2}%
+CPU temperature: $alignr${acpitemp} C
+Load average:$alignr${loadavg 1 2 3}
+LAN:$alignr d ${downspeed eth0} / u ${upspeed eth0}
+Wi-Fi:$alignr d ${downspeed wlan0} / u ${upspeed wlan0}
+
+S H O R T C U T    K E Y S
+${hr}
+Alt+F2$alignr Run Dialog
+Alt+F3$alignr Alt Menu
+Super+Space$alignr Main Menu
+Super+Tab$alignr Client Menu
+Super+t$alignr Terminal
+Super+f$alignr File Manager
+Super+e$alignr Editor
+Super+m$alignr Media Player
+Super+w$alignr Web Browser
+Super+h$alignr Task Manager
+Super+l$alignr Lock Screen
+Super+v$alignr Volume Control
+Super+x$alignr Logout
+PrtSc$alignr Screenshot
+${hr}
+Super+b$alignr bPython 3 Interpreter
+Super+D$alignr Icedove (E-Mail)
+Super+E$alignr EMACS (Common Lisp)
+Super+g$alignr GoLiteIDE (Go)
+Super+i$alignr Idle (Python 3)
+Super+k$alignr Password Safe
+Super+s$alignr Package Manager
+Super+u$alignr Synchronisation
+Super+y$alignr Toggle Touchpad
+${hr}
+${font Liberation Sans:size=7}${color}NAME              ${alignr}PID       CPU    MEM
+${font Liberation Sans:size=9}${color #111111} ${top name 1} $alignr${top pid 1} ${top cpu 1} ${top mem 1}
+${color} ${top name 2} $alignr${top pid 2} ${top cpu 2} ${top mem 2}
+${color} ${top name 3} $alignr${top pid 3} ${top cpu 3} ${top mem 3}
+${color} ${top name 4} $alignr${top pid 4} ${top cpu 4} ${top mem 4}
+${color} ${top name 5} $alignr${top pid 5} ${top cpu 5} ${top mem 5}
+${color} ${top name 6} $alignr${top pid 6} ${top cpu 6} ${top mem 6}
+${color} ${top name 7} $alignr${top pid 7} ${top cpu 7} ${top mem 7}
+${color} ${top name 8} $alignr${top pid 8} ${top cpu 8} ${top mem 8}
+${color} ${top name 9} $alignr${top pid 9} ${top cpu 9} ${top mem 9}
